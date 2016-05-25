@@ -23,6 +23,7 @@ tags: [博客, hexo, github]
 # cd d:/w/hexo
 # hexo init
 ```
+<!--more-->
 
 #### 【基本命令】
 ``` 
