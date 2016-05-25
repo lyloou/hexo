@@ -1,11 +1,14 @@
 ---
 title: Do it well
 date: 2016-05-08 18:18:18
-tags: 
+categories: Testing
+tags: [hello, one, two]
 ---
 
 ### 做最好的自己 /* 世界，你好*/
 #### Better Than Last Best.
+
+<!--more-->
 
 ``` java
 public class Main{
@@ -14,4 +17,3 @@ public class Main{
     }
 }
 ```
-<!--more-->
