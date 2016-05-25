@@ -1,16 +1,50 @@
+---
+title: 用Hexo搭建的本博客平台
+date: 2016-05-25 22:18:18
+categories: 
+- 工具
+tags: [Hexo]
+---
 
 ### 文档管理工具
-名称：Android Studio
+名称：AS *(Android Studio)*
 
 ### 教程、文档、API
 网址：`https://hexo.io`
 安装hexo教程（需要VPN）：`https://hexo.io/zh-cn/docs/`
 
+<!--more-->
+
 ### 主题
 名称：NexT
 网址：`http://theme-next.iissnan.com/`
 
-<!--more-->
+### 插入多媒体
+插入图片：
+```
+// 首先需要在source中加入文件夹images，并放入图片smile01.gif;
+![](/images/smile01.gif)
+```
+
+插入音乐：
+```
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+	src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
+</iframe>
+```
+
+插入视频：
+```
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+	src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
+</iframe>	
+</center>
+```
+外部链接：
+* [Hexo博客添加图片、音乐、视频](http://blog.wleyuan.me/2015/07/18/Hexo-AddSoundPicMovie/)
+
+
 ### 问题列表
 #### Error Local hexo not found
 具体描述：从github上直接克隆下来的源码，执行`hexo s`会出现错误：
@@ -25,8 +59,8 @@
 
 
 外部连接：
-    * [用Hexo写博客 - ERROR Local hexo not found in xxx](http://blog.csdn.net/burststar/article/details/45115905)
-    * [npm WARN optional dep failed, continuing fsevents@1.0.6](https://github.com/foreverjs/forever/issues/788)
+* [用Hexo写博客 - ERROR Local hexo not found in xxx](http://blog.csdn.net/burststar/article/details/45115905)
+* [npm WARN optional dep failed, continuing fsevents@1.0.6](https://github.com/foreverjs/forever/issues/788)
 
 
 #### add Read More
