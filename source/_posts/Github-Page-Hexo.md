@@ -1,11 +1,13 @@
 ---
 title: 用 GitHub Page 和 Hexo 搭建个人博客
 date: 2016-05-08 17:09:10
-tags: [博客, hexo, github]
-categories: Testing
+categories:
+- Tool
+tags:
+- Hexo
 ---
 
-#### 【步骤】
+## 步骤
 1. 安装[Node.js](https://nodejs.org/en/)
 2. 安装[Git ](https://git-scm.com/)
 3. 安装Hexo（所有操作均在Windows自带的cmd命令行中运行：`npm install -g hexo`）
@@ -16,7 +18,7 @@ categories: Testing
 ```
 <!--more-->
 
-#### 【基本命令】
+## 基本命令
 ``` 
 hexo generate  == hexo g
 hexo server    == hexo s
@@ -24,25 +26,29 @@ hexo deploy    == hexo d
 hexo new       == hexo n
 ```
 
-#### 【部署到Github】
-* 配置_config.yml
+## 部署到Github
+配置_config.yml
 ```
 deploy:
   type: git
   repo: git@github.com:lyloou/lyloou.github.io.git
   branch: master
 ```
-* 开始部署
+
+安装部署
 ```
 npm install hexo-deployer-git --save
 hexo d
 ```
 
-#### 【绑定独立域名】
+## 绑定独立域名
 * 在Hexo项目的Source中新建文件CNAME
 * 添加`lyloou.com`
 * 然后`hexo d -g`上传即可
 
+## 常见问题
+* 执行了 `hexo d -g`后，未能成功部署到网站：请先clean一下，`hexo clean`
+
 ---
-#### 【参考资料】
+## 外部链接
 * [在Github上搭建一个Hexo博客系统](http://wenjunoy.com/2016/hexo-github-blog/)
