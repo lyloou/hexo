@@ -5,16 +5,6 @@ tags: [博客, hexo, github]
 categories: Testing
 ---
 
-<!-- MarkdownTOC -->
-
-- [【步骤】](#【步骤】)
-- [【基本命令】](#【基本命令】)
-- [【部署到Github】](#【部署到github】)
-- [【绑定独立域名】](#【绑定独立域名】)
-- [【参考资料】](#【参考资料】)
-
-<!-- /MarkdownTOC -->
-
 #### 【步骤】
 1. 安装[Node.js](https://nodejs.org/en/)
 2. 安装[Git ](https://git-scm.com/)

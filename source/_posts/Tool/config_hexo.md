@@ -41,6 +41,7 @@ tags: [Hexo]
 </iframe>	
 </center>
 ```
+
 外部链接：
 * [Hexo博客添加图片、音乐、视频](http://blog.wleyuan.me/2015/07/18/Hexo-AddSoundPicMovie/)
 
