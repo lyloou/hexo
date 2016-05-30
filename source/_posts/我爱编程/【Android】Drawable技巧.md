@@ -2,7 +2,7 @@
 title: 【Android】Drawable技巧
 date: 2016-05-30 08:59:00
 categories:
-- Android
+- 我爱编程
 tags:
 - Android
 - Drawable

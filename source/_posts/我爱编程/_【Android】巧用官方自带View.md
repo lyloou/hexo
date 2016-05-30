@@ -20,14 +20,14 @@ tags:
 <!--more-->
 
 ## EditText
-- 定位光标位置：
+定位光标位置：
 ```
 String name = "Lou";
 EditText et = (EditText)findViewById(R.id.et_name);
 et.setSelection(name.length()); // 将光标至于文字最后
 ```
 
-- 使光标颜色和文字颜色保持一致：
+使光标颜色和文字颜色保持一致（EditText不显示光标问题）：
 ```
 <!-- 有的时候发现EditText里的光标无法显示的问题，很可能是光标的颜色和背景重合了，可以通过设置光标的颜色属性来让其显示 -->
 <!-- 在EditText标签中添加如下属性 -->
