@@ -51,6 +51,7 @@ textView.setText(Html.fromHtml(HTML_STR));
 
 
 
+---
 
 ## EditText
 ### 定位光标位置：
@@ -70,3 +71,10 @@ android:textCursorDrawable="@null"
 ### 外部链接
 - [修改EditText的光标颜色](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2013/0216/858.html)
 - [Set EditText cursor color](http://stackoverflow.com/questions/7238450/set-edittext-cursor-color)
+
+
+---
+## ListView
+ListView中不可见的元素，其对应的view为null。这是容易理解的，性能优化。
+（在updateItem的时候要做两方面的处理，即数据(updateItemData)和视图(updateItemView)）
+
