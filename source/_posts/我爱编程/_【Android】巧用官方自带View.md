@@ -73,8 +73,44 @@ android:textCursorDrawable="@null"
 - [Set EditText cursor color](http://stackoverflow.com/questions/7238450/set-edittext-cursor-color)
 
 
+
+
+
 ---
 ## ListView
 ListView中不可见的元素，其对应的view为null。这是容易理解的，性能优化。
 （在updateItem的时候要做两方面的处理，即数据(updateItemData)和视图(updateItemView)）
 
+### 添加空白
+- 在ListView的顶部和底部添加空白（见外部链接）
+- 在Item之间添加空白（通过Divider的方式）
+
+#### 代码
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alarm_bg"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/lv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+
+        android:scrollbars="none"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        />
+</LinearLayout>
+```
+
+#### 外部链接
+- [Add margin above top ListView item (and below last) in Android](http://stackoverflow.com/questions/6288167/add-margin-above-top-listview-item-and-below-last-in-android)
+- [Spacing between listView Items Android](http://stackoverflow.com/questions/4984313/spacing-between-listview-items-android)
