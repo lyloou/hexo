@@ -20,3 +20,5 @@ tags:
 android:splitMotionEvents="false"
 ```
 
+## 外部链接
+- [Using Touch Gestures](https://developer.android.com/training/gestures/index.html)

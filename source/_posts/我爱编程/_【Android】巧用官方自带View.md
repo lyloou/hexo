@@ -39,6 +39,12 @@ String str = getString(R.string.replace_str, "小明");
 ```
 textView.setText(Html.fromHtml(HTML_STR));
 ```
+
+### 跑马灯效果不生效
+需要在代码中设置`tv.setSelected(true)`
+> [TextView Marquee not working](http://stackoverflow.com/questions/3332924/textview-marquee-not-working)
+
+
 ### 外部链接
 - [TextView实战之你真的懂我么？](http://blog.csdn.net/sdkfjksf/article/details/51317204)
 
