@@ -15,7 +15,7 @@ tags:
 任务列表：
 - [ ] TextView
 - [x] EditText
-
+- [ ] ImageView
 
 <!--more-->
 
@@ -49,6 +49,19 @@ textView.setText(Html.fromHtml(HTML_STR));
 - [TextView实战之你真的懂我么？](http://blog.csdn.net/sdkfjksf/article/details/51317204)
 
 
+## ImageView
+### 交叉使用mipmap和drawable
+钻牛角尖：先必须获取到之前的Drawable，然后将这个Drawable进行转换，然后进行图片替换；
+解决思路：通过覆盖的单向方式，而不用知道之前是图片资源还是Drawable资源。
+
+``` java
+ImageView ivMain = findViewById(R.id.iv_main);
+if(满足条件){
+  ivMain.setBackgroundResource(R.id.selected);
+} else {
+  ivMain.setBackgroundResource(R.id.unselected);
+}
+```
 
 
 
@@ -61,14 +74,14 @@ textView.setText(Html.fromHtml(HTML_STR));
 
 ## EditText
 ### 定位光标位置：
-```
+``` java
 String name = "Lou";
 EditText et = (EditText)findViewById(R.id.et_name);
 et.setSelection(name.length()); // 将光标至于文字最后
 ```
 
 ### 使光标颜色和文字颜色保持一致（EditText不显示光标问题）：
-```
+``` xml
 <!-- 有的时候发现EditText里的光标无法显示的问题，很可能是光标的颜色和背景重合了，可以通过设置光标的颜色属性来让其显示 -->
 <!-- 在EditText标签中添加如下属性 -->
 android:textCursorDrawable="@null"
@@ -92,7 +105,7 @@ ListView中不可见的元素，其对应的view为null。这是容易理解的�
 - 在Item之间添加空白（通过Divider的方式）
 
 #### 代码
-```
+``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
