@@ -63,6 +63,29 @@ if(满足条件){
 }
 ```
 
+### ImageView加载GIF图片
+代码
+``` java
+ImageView iv = (ImageView) findViewById(R.id.vp_iv);
+Glide
+  .with(this)
+  .load("https://i.imgur.com/l9lffwf.gif")
+  .into(iv);
+```
+外部链接
+- [Glide](https://github.com/bumptech/glide)
+
+### 加载网络图片
+代码
+``` java
+Picasso
+  .with(this)
+  .load("https://i.imgur.com/l9lffwf.gif")
+  .placeholder(R.mipmap.ic_launcher)
+  .into(iv);
+```
+外部链接
+- [Picasso](https://github.com/square/picasso)
 
 
 
