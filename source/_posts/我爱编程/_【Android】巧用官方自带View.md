@@ -13,9 +13,11 @@ tags:
 
 
 任务列表：
-- [ ] TextView
+- [x] TextView
+- [x] ImageView
 - [x] EditText
-- [ ] ImageView
+- [x] ListView
+- [x] DatePicker
 
 <!--more-->
 
@@ -156,3 +158,91 @@ ListView中不可见的元素，其对应的view为null。这是容易理解的�
 #### 外部链接
 - [Add margin above top ListView item (and below last) in Android](http://stackoverflow.com/questions/6288167/add-margin-above-top-listview-item-and-below-last-in-android)
 - [Spacing between listView Items Android](http://stackoverflow.com/questions/4984313/spacing-between-listview-items-android)
+
+
+
+
+
+---
+## 修改DatePicker日期选择器默认样式（同理适用于TimePicker）
+### 效果图
+![DatePicker](images/20160706/date_picker.jpg)
+
+### 代码
+```xml
+<DatePicker
+        android:id="@+id/dialog_personal_birth_dp"
+        style="@android:style/Widget.Holo.DatePicker" // 使用Holo样式
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+```
+
+```java
+private String mBirth = "1981.12.11";
+final DatePicker dp = dialogBirth.getView(R.id.dialog_personal_birth_dp);
+dp.setCalendarViewShown(false); // 不要显示Calendar视图
+Uview.changeTimePickerSepColor(dp, Color.DKGRAY); // 修改分割线样式
+String[] birth = mBirth.split("\\.");
+dp.init(Integer.parseInt(birth[0]),
+        Integer.parseInt(birth[1]) - 1,
+        Integer.parseInt(birth[2]),
+        null);
+```
+
+```java
+//: Uview.java
+public static void changeTimePickerSepColor(ViewGroup group, int color) {
+    for (NumberPicker np : getNumberPickers(group)) {
+        changeNumberPickerSepColor(np, color);
+    }
+}
+
+
+private static List<NumberPicker> getNumberPickers(ViewGroup group) {
+    List<NumberPicker> lists = new ArrayList<NumberPicker>();
+    if (group == null) {
+        return lists;
+    }
+
+    for (int i = 0; i < group.getChildCount(); i++) {
+        View v = group.getChildAt(i);
+        if (v instanceof NumberPicker) {
+            lists.add((NumberPicker) v);
+        } else if (v instanceof LinearLayout) {
+            List<NumberPicker> ls = getNumberPickers((ViewGroup) v);
+            if (ls.size() > 0) {
+                return ls;
+            }
+        }
+    }
+    return lists;
+}
+
+public static void changeNumberPickerSepColor(NumberPicker np, int color) {
+    Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+    for (Field f : pickerFields) {
+        if (f.getName().equals("mSelectionDivider")) {
+            try {
+                f.setAccessible(true);
+                f.set(np, new ColorDrawable(color));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        }
+    }
+
+    // 分割线粗细
+    for (Field f : pickerFields) {
+        if (f.getName().equals("mSelectionDividerHeight")) {
+            try {
+                f.setAccessible(true);
+                f.set(np, 1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            break;
+        }
+    }
+}
+```
