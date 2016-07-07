@@ -166,8 +166,7 @@ ListView中不可见的元素，其对应的view为null。这是容易理解的�
 ---
 ## 修改DatePicker日期选择器默认样式（同理适用于TimePicker）
 ### 效果图
-![DatePicker](images/20160706/date_picker.jpg)
-
+![DatePicker](https://github.com/lyloou/hexo/blob/master/source/images/20160706/date_picker.jpg?raw=true)
 ### 代码
 ```xml
 <DatePicker
