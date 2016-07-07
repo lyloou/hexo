@@ -31,9 +31,9 @@ tags:
 - 在命令行窗口执行下面命令（当发生错误时，参照错误提示进行修改）
 ``` java
 gradlew clean build bintrayUpload
--PbintrayUser=「Your Name」
--PbintrayKey=「API KEY」
--PdryRun=false
+  -PbintrayUser=「Your Name」
+  -PbintrayKey=「API KEY」
+  -PdryRun=false
  ```
 
  ### 外部链接
