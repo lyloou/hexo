@@ -1,6 +1,7 @@
 ---
 title: 【Android】关于jcenter的一些总结
 date: 2016-07-06 16:18:12
+toc: true
 categories:
 - 我爱编程
 tags:

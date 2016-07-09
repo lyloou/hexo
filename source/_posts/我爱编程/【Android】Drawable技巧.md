@@ -1,6 +1,7 @@
 ---
 title: 【Android】Drawable技巧
 date: 2016-05-30 08:59:00
+toc: true
 categories:
 - 我爱编程
 tags:
@@ -72,6 +73,7 @@ drawable.setColor(Color.parseColor("#2b3c89"));
 ```
 
 ``` java
+
 public RadioButton getCircleRadioButton(int color) {
 	Context context = getContext();
 	int w = Uscreen.dp2Px(context, 48);

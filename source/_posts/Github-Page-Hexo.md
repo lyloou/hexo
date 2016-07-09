@@ -1,6 +1,7 @@
 ---
 title: 用 GitHub Page 和 Hexo 搭建个人博客
 date: 2016-05-08 17:09:10
+toc: true
 categories:
 - Tool
 tags:
