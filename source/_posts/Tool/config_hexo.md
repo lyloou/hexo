@@ -77,7 +77,7 @@ Error Try running: 'npm install hexo --save'
 `.gitignore`文件中忽略了`node_modules`文件夹，所以从github上的克隆的源码中不存在此文件夹；
 
 解决方案：
-重新执行`npm install`命令即可；
+重新执行`npm install`命令即可；（用自带CMD）
 执行 `npm install`可能会出现失败的警告，有可能是npm版本问题：
 执行下面命令来降低npm的版本：
 `npm install -g npm@3.3.12`

@@ -1,5 +1,5 @@
 ---
-title:【Java】instanceof-isInstanceOf-isAssignableFrom的区别
+title: 【Java】instanceof-isInstanceOf-isAssignableFrom的区别
 date: 2016-06-29 09:10:24
 categories:
 - 我爱编程

@@ -1,5 +1,5 @@
 ---
-title:【Android】支持库（Support Library）的一些东西
+title: 【Android】支持库（Support Library）的一些东西
 date: 2016-07-01 10:38:49
 categories:
 - 我爱编程
