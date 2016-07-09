@@ -37,6 +37,8 @@ tags:
 
 // 方式2，加入图床中的图片地址：
 ![](图片地址)
+
+// 方式3，获取到github的raw图片网址；
 ```
 
 #### 插入音乐：
@@ -59,7 +61,11 @@ tags:
 * [Hexo博客添加图片、音乐、视频](http://blog.wleyuan.me/2015/07/18/Hexo-AddSoundPicMovie/)
 
 
+
+---
+
 ## 问题列表
+
 ### Error Local hexo not found
 具体描述：从github上直接克隆下来的源码，执行`hexo s`会出现错误：
 ```
@@ -67,11 +73,15 @@ Error Local hexo not found in /XXX
 Error Try running: 'npm install hexo --save'
 ```
 
-原因分析：`.gitignore`文件中忽略了`node_modules`文件，所以从github上的克隆的源码中不存在此文件；    
+原因分析：
+`.gitignore`文件中忽略了`node_modules`文件夹，所以从github上的克隆的源码中不存在此文件夹；
 
-解决方案：重新执行`npm install`命令即可；
+解决方案：
+重新执行`npm install`命令即可；
+执行 `npm install`可能会出现失败的警告，有可能是npm版本问题：
+执行下面命令来降低npm的版本：
+`npm install -g npm@3.3.12`
 
-扩展：执行 `npm install`可能会出现失败的警告，有可能是npm版本问题：
 
 外部连接：
 * [用Hexo写博客 - ERROR Local hexo not found in xxx](http://blog.csdn.net/burststar/article/details/45115905)
