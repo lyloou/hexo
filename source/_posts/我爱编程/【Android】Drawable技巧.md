@@ -105,6 +105,8 @@ public RadioButton getCircleRadioButton(int color) {
 }
 ```
 
+具体应用参考：[【Android】自定义View —— 设置中的选择皮肤项](http://blog.csdn.net/ly1414725328/article/details/51386418)
+
 ## 让Selector中的图片居右对齐
 抛出问题：
 实现如图的效果和功能，当选中时后面有一个对勾，当非选中时没有对勾，点击「发送」的时候给所有选中的item发送消息。
