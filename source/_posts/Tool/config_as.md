@@ -14,6 +14,10 @@ tags:
 
 <!--more-->
 
+## 用途
+- 编写Android代码；
+- 写hexo上的文章；
+
 ## Theme
 - Darcula + Sublime Text 2
 
