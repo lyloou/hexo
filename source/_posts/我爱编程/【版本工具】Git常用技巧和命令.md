@@ -10,8 +10,7 @@ tags:
 `Git` `GitHub` `版本控制`
 
 ## 摘要：
-> 主要内容：
-本文介绍了版本控制的常用技巧和命令等内容；
+> 本文介绍了版本控制的常用技巧和命令等内容；
 
 
 <!--more-->
@@ -48,8 +47,10 @@ ssh -T git@github.com
 - 添加远程仓库： `git remote add origin git@github.com:lyloou/lou.git`
 - 提交到远程仓库： `git push -u origin master`
 
+- 修改提交信息：`git commit --amend`
 
+- 查看图形log：`git log --graph`
 ---
 ## 外部链接
 - [git-ssh 配置和使用](https://segmentfault.com/a/1190000002645623)
-
+- 《GitHub入门与实践》
