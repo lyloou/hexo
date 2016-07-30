@@ -26,3 +26,6 @@ tags:
 如果你在lib库的build.gradle中引用了Butterknife的compile信息，
 然后想要在app中直接使用Butterknife，这样的结果是注解失败；就会出现NullpointException;
 `https://www.google.com/search?q=NullPointerException+butterknife`
+
+**AS插件**：Android Butterknife Zelezny
+在使用的时候，注意，把光标放置在`R.layout.layout_other`上面，点击`Alt+Insert`，选择`Generate ButterKnife Injections`；
