@@ -19,6 +19,8 @@ tags:
 - [x] EditText
 - [x] ListView
 - [x] DatePicker
+- [x] DrawerLayout & NavigationView
+- [x] ToolBar
 
 <!--more-->
 
@@ -246,3 +248,48 @@ public static void changeNumberPickerSepColor(NumberPicker np, int color) {
     }
 }
 ```
+
+
+## DrawerLayout & NavigationView
+- NavigationView隐藏menu：不使用app:menu属性即可；
+- 给NavigationView头部布局组件设置点击事件：可以通过`mNavView.getHeaderView(0)`获取根布局的view引用；
+
+
+## ToolBar
+- 切换fragment时对应显示不同的菜单：
+  通过控制自定义的标志，然后调用`invalidateOptionsMenu();`刷新菜单即可；
+```
+@Override
+protected boolean onPrepareOptionsPanel(View view, Menu menu) {
+    if (mMode == DEVICE_FRAGMENT) {
+        menu.findItem(R.id.action_add).setVisible(true);
+        menu.findItem(R.id.action_ok).setVisible(false);
+    } else if (mMode == SETTING_TIME_FRAGMENT) {
+        menu.findItem(R.id.action_add).setVisible(false);
+        menu.findItem(R.id.action_ok).setVisible(true);
+    }
+    return super.onPrepareOptionsPanel(view, menu);
+}
+```
+- 在Fragment中获取ToolBar对象；
+```
+Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+TextView tvTitle = (TextView) toolbar.findViewById(R.id.tv_nav_title);
+tvTitle.setText("标题1");
+
+// 处理toolbar上的菜单点击事件；
+toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_ok:
+                Usp.init(mContext).putInt(CKeys.KEY_TS, indexInTIMES(mRgSettingTime.getCheckedRadioButtonId()));
+                Utoast.toastOnMain(mContext, mContext.getString(R.string.time_setting_setted));
+                break;
+        }
+        return false;
+    }
+});
+
+```
+
