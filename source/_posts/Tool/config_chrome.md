@@ -4,7 +4,7 @@ date: 2016-05-26 19:07:44
 categories:
 - Tool
 tags:
-- AutoHotKey
+- Chrome
 ---
 
 ## 摘要：
@@ -13,3 +13,10 @@ tags:
 
 <!--more-->
 
+## Plugin
+- oneTab
+- 直接访问(直接访问 Google 搜索结果。)
+- Markdown Preview Plus
+- cVim
+- Codota
+- AdBlock
