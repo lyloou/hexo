@@ -23,8 +23,8 @@ tags:
 、`string`、`style`。
 
 
-## string标签
-使用`translatable="false"`标签可以让内容直接嵌入到引用的地方，而不做翻译处理。
+## string标签translatable属性
+使用`translatable="false"`属性可以让内容直接嵌入到引用的地方，而不做翻译处理。
  * 举例来说，下面的用法就可以将`android.support.design.widget.AppBarLayout$ScrollingViewBehavior`直接嵌入到了`ScrollView`。
 
  ``` xml
@@ -57,3 +57,68 @@ tags:
 - [What is the purpose of using translatable in Android strings?](http://stackoverflow.com/questions/3925072/what-is-the-purpose-of-using-translatable-in-android-strings/13688979)
 - [Avoid Android Lint complains about not-translated string](http://stackoverflow.com/questions/12590739/avoid-android-lint-complains-about-not-translated-string)
 > If you don't want a string to be translated, you should only define it in the "base values/folder", which means do not enter the string in the translated values/folder.
+
+## string动态设置下划线文本的方案；
+```xml
+<!-- 还可以使用：<b>、<i>、<u>等html标签 -->
+<string name="nav_name"><u>%1$s</u></string>
+```
+
+```xml
+<TextView
+    android:id="@+id/tv_nav_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/nav_name"
+    android:textColor="@color/colorPrimary"
+    android:textSize="18sp"/>
+```
+
+``` java
+// 动态控制带下划线的文本内容
+String name = "昵称";
+tvName.setText(mContext.getString(R.string.nav_name, name));
+```
+
+## 使用string字符串资源的一些建议
+- 不同模块相同的文字不要复用，最好每个模块都对应自己的字符串资源（否则，牵一发而动全身，除非你就想要这样）；
+
+## string字符串中的单复数
+- 单纯引用
+```xml
+<plurals name="book">
+    <item name="one">book</item>
+    <item name="others">books</item>
+</plurals>
+```
+
+``` java
+int bookCount = 4;
+mContext.gerResources().getQuantityString(R.plurals.book, bookCount);
+//~ result: books
+```
+
+```xml
+<plurals name="book">
+    <item name="one">%d book found.</item>
+    <item name="others">%d books found.</item>
+</plurals>
+```
+
+``` java
+int bookCount = 4;
+mContext.gerResources().getQuantityString(R.plurals.book, bookCount, bookCount);
+//~ result: 4 books found.
+```
+
+> When using the getQuantityString() method,
+you need to pass the count twice if your string includes string formatting with a number.
+For example, for the string %d songs found,
+the first count parameter selects the appropriate plural string
+and the second count parameter is inserted into the %d placeholder.
+If your plural strings do not include string formatting,
+you don't need to pass the third parameter to getQuantityString.
+
+### 外部链接
+- [不可不知的 Android strings.xml 那些事](http://blog.jiguang.cn/android-strings/)
+- [String Resources](https://developer.android.com/guide/topics/resources/string-resource.html#StylingWithSpannables)

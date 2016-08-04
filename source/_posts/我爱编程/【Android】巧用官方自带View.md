@@ -19,8 +19,7 @@ tags:
 - [x] EditText
 - [x] ListView
 - [x] DatePicker
-- [x] DrawerLayout & NavigationView
-- [x] ToolBar
+
 
 <!--more-->
 
@@ -30,18 +29,18 @@ tags:
 ## TextView
 ### 字符串资源里的变量替换
 在xml中定位占位符（其中`1`表示第一个变量，多个变量递增表示）
-```
+``` xml
 <!-- values/strings.xml -->
 <string name="replace_str">你好，%1$s：欢迎您！</string>
 ```
 
 java代码中动态指定`%1$s`处的值
-```
+``` java
 String str = getString(R.string.replace_str, "小明");
 ```
 
 ### 使用HTML格式化文本
-```
+``` java
 textView.setText(Html.fromHtml(HTML_STR));
 ```
 
@@ -171,15 +170,16 @@ ListView中不可见的元素，其对应的view为null。这是容易理解的�
 ### 效果图
 ![DatePicker](https://github.com/lyloou/hexo/blob/master/source/images/20160706/date_picker.jpg?raw=true)
 ### 代码
-```xml
+``` xml
+<!-- 使用Holo样式 -->
 <DatePicker
         android:id="@+id/dialog_personal_birth_dp"
-        style="@android:style/Widget.Holo.DatePicker" // 使用Holo样式
+        style="@android:style/Widget.Holo.DatePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
 
-```java
+``` java
 private String mBirth = "1981.12.11";
 final DatePicker dp = dialogBirth.getView(R.id.dialog_personal_birth_dp);
 dp.setCalendarViewShown(false); // 不要显示Calendar视图
@@ -191,7 +191,7 @@ dp.init(Integer.parseInt(birth[0]),
         null);
 ```
 
-```java
+``` java
 //: Uview.java
 public static void changeTimePickerSepColor(ViewGroup group, int color) {
     for (NumberPicker np : getNumberPickers(group)) {
@@ -248,48 +248,3 @@ public static void changeNumberPickerSepColor(NumberPicker np, int color) {
     }
 }
 ```
-
-
-## DrawerLayout & NavigationView
-- NavigationView隐藏menu：不使用app:menu属性即可；
-- 给NavigationView头部布局组件设置点击事件：可以通过`mNavView.getHeaderView(0)`获取根布局的view引用；
-
-
-## ToolBar
-- 切换fragment时对应显示不同的菜单：
-  通过控制自定义的标志，然后调用`invalidateOptionsMenu();`刷新菜单即可；
-```
-@Override
-protected boolean onPrepareOptionsPanel(View view, Menu menu) {
-    if (mMode == DEVICE_FRAGMENT) {
-        menu.findItem(R.id.action_add).setVisible(true);
-        menu.findItem(R.id.action_ok).setVisible(false);
-    } else if (mMode == SETTING_TIME_FRAGMENT) {
-        menu.findItem(R.id.action_add).setVisible(false);
-        menu.findItem(R.id.action_ok).setVisible(true);
-    }
-    return super.onPrepareOptionsPanel(view, menu);
-}
-```
-- 在Fragment中获取ToolBar对象；
-```
-Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-TextView tvTitle = (TextView) toolbar.findViewById(R.id.tv_nav_title);
-tvTitle.setText("标题1");
-
-// 处理toolbar上的菜单点击事件；
-toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_ok:
-                Usp.init(mContext).putInt(CKeys.KEY_TS, indexInTIMES(mRgSettingTime.getCheckedRadioButtonId()));
-                Utoast.toastOnMain(mContext, mContext.getString(R.string.time_setting_setted));
-                break;
-        }
-        return false;
-    }
-});
-
-```
-

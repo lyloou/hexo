@@ -1,0 +1,165 @@
+---
+title: 【Android】巧用官方自带View —— 导航
+date: 2016.08.04 08:42:57
+toc: true
+categories:
+- 我爱编程
+tags:
+- Android
+---
+
+## 摘要：
+主要内容：
+Android中导航栏的相关内容介绍和使用；
+
+
+任务列表：
+- [x] TabLayout
+- [x] 侧边栏 —— DrawerLayout & NavigationView
+- [x] ToolBar
+
+<!--more-->
+## TabLayout
+- 步骤：
+  1. 布局（TabLayout和ViewPager位置关系）；
+  2. 自定义Adapter（继承自 FragmentPagerAdapter），并配置Fragment和tab标题内容；
+  3. java代码中给ViewPager绑定Adapter；
+
+1. 布局
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/tab_sep"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        style="@style/MyCustomTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/tab_sep"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"/>
+</merge>
+```
+
+2. 自定义Adapter
+``` java
+
+public class ModeListVpAdapter extends FragmentPagerAdapter {
+    private final String mTabTitles[];
+    private final Mode.Position[] mPosition = Mode.Position.values();
+    private final int PAGE_COUNT = mPosition.length;
+    private Context mContext;
+
+    public ModeListVpAdapter(FragmentManager fm, Context context) {
+        super(fm);
+        mContext = context;
+        mTabTitles = context.getResources().getStringArray(R.array.main_tabs);
+    }
+
+    @Override
+    public int getCount() {
+        return PAGE_COUNT;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return ModeListFragment.newInstance(position); // 根据position返回对应的fragment
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTabTitles[position]; // 根据position返回对应的tab标题
+    }
+
+}
+```
+
+3. 绑定
+``` java
+ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+viewPager.setAdapter(new ModeListVpAdapter(getSupportFragmentManager(), mContext));
+
+TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+tabLayout.setupWithViewPager(viewPager);
+viewPager.setCurrentItem(2); // 默认选中第二个tab
+```
+
+- [Google Play Style Tabs using TabLayout](https://guides.codepath.com/android/google-play-style-tabs-using-tablayout)
+
+
+## DrawerLayout & NavigationView
+- NavigationView隐藏menu：不使用app:menu属性即可；
+- 给NavigationView头部布局组件设置点击事件：可以通过`mNavView.getHeaderView(0)`获取根布局的view引用；
+- 禁用滑动
+``` java
+// lock
+mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+// unlock
+mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+```
+
+### 外部链接
+- [disable the swipe gesture that opens the navigation drawer in android](http://stackoverflow.com/questions/17051104/disable-the-swipe-gesture-that-opens-the-navigation-drawer-in-android)
+- [How do I use DrawerLayout to display over the ActionBar/Toolbar and under the status bar?](http://stackoverflow.com/questions/26440879/how-do-i-use-drawerlayout-to-display-over-the-actionbar-toolbar-and-under-the-st)
+
+
+## ToolBar
+- 切换fragment时对应显示不同的菜单：
+  通过控制自定义的标志，然后调用`invalidateOptionsMenu();`刷新菜单即可；
+``` java
+@Override
+protected boolean onPrepareOptionsPanel(View view, Menu menu) {
+    if (mMode == DEVICE_FRAGMENT) {
+        menu.findItem(R.id.action_add).setVisible(true);
+        menu.findItem(R.id.action_ok).setVisible(false);
+    } else if (mMode == SETTING_TIME_FRAGMENT) {
+        menu.findItem(R.id.action_add).setVisible(false);
+        menu.findItem(R.id.action_ok).setVisible(true);
+    }
+    return super.onPrepareOptionsPanel(view, menu);
+}
+```
+
+- 在Fragment中获取ToolBar对象，并监听点击事件；
+``` java
+Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+TextView tvTitle = (TextView) toolbar.findViewById(R.id.tv_nav_title);
+tvTitle.setText("标题1");
+
+// 处理toolbar上的菜单点击事件；
+toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_ok:
+                Usp.init(mContext).putInt(CKeys.KEY_TS, indexInTIMES(mRgSettingTime.getCheckedRadioButtonId()));
+                Utoast.toastOnMain(mContext, mContext.getString(R.string.time_setting_setted));
+                break;
+        }
+        return false;
+    }
+});
+
+```
+
+### 外部链接
+- [ActionBar/Toolbar not showing on Lollipop version of app](http://stackoverflow.com/questions/26813991/actionbar-toolbar-not-showing-on-lollipop-version-of-app)
+- [How do I use DrawerLayout to display over the ActionBar/Toolbar and under the status bar?](http://stackoverflow.com/questions/26440879/how-do-i-use-drawerlayout-to-display-over-the-actionbar-toolbar-and-under-the-st)

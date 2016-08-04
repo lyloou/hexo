@@ -29,7 +29,8 @@ tags:
 `https://www.google.com/search?q=NullPointerException+butterknife`
 
 **AS插件**：Android Butterknife Zelezny
-在使用的时候，注意，把光标放置在`R.layout.layout_other`上面，点击`Alt+Insert`，选择`Generate ButterKnife Injections`；
+- 在使用的时候，注意，把光标放置在`R.layout.layout_other`上面，点击`Alt+Insert`，选择`Generate ButterKnife Injections`；
+- 自定义live template模块：`ButterKnife.findById` --> `fbi`。（即按一下fbi，就显示出来`ButterKnife.findById(, R.id.)`）
 
 
 ## Volley
