@@ -119,7 +119,7 @@ mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 ### 外部链接
 - [disable the swipe gesture that opens the navigation drawer in android](http://stackoverflow.com/questions/17051104/disable-the-swipe-gesture-that-opens-the-navigation-drawer-in-android)
 - [How do I use DrawerLayout to display over the ActionBar/Toolbar and under the status bar?](http://stackoverflow.com/questions/26440879/how-do-i-use-drawerlayout-to-display-over-the-actionbar-toolbar-and-under-the-st)
-
+- [使用 DrawerLayout 实现 Material Design风格的侧滑](http://www.jianshu.com/p/3fe2acac0ddb)
 
 ## ToolBar
 - 切换fragment时对应显示不同的菜单：
@@ -160,6 +160,12 @@ toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 
 ```
 
+## 适配
+> Toolbar 里面有两个属性很关键:
+android:minHeight="?attr/actionBarSize",这个表示引用系统 ActionBar 的高度.
+android:paddingTop="@dimen/tool_bar_top_padding"这个是来引用资源文件里面的tool_bar_top_padding的高度,这个高度主要是为了对5.0做适配,在5.0 上为24dp,其他版本为0dp
+
 ### 外部链接
 - [ActionBar/Toolbar not showing on Lollipop version of app](http://stackoverflow.com/questions/26813991/actionbar-toolbar-not-showing-on-lollipop-version-of-app)
 - [How do I use DrawerLayout to display over the ActionBar/Toolbar and under the status bar?](http://stackoverflow.com/questions/26440879/how-do-i-use-drawerlayout-to-display-over-the-actionbar-toolbar-and-under-the-st)
+- [使用 DrawerLayout 实现 Material Design风格的侧滑](http://www.jianshu.com/p/3fe2acac0ddb)
