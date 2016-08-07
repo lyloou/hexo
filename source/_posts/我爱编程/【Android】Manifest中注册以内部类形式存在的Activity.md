@@ -1,5 +1,5 @@
 ---
-title: 【Android】Mainfest中注册以内部类形式存在的Activity
+title: 【Android】Manifest中注册以内部类形式存在的Activity
 date: 2016-08-05 09:49:16
 toc: true
 categories:
@@ -9,10 +9,10 @@ tags:
 ---
 
 ## 关键字
-`Mainfest` `AndroidMainfest` `Activity`
+`Manifest` `AndroidManifest` `Activity`
 
 ## 摘要：
-> 本文介绍了在Mainfest中注册以内部类形式存在的Activity；
+> 本文介绍了在Manifest中注册以内部类形式存在的Activity；
 
 
 <!--more-->
@@ -20,7 +20,7 @@ tags:
 - 在《Android编程权威指南》P127中，作者建议我们坚持AUF(Always Use Fragments)原则，即“总是使用fragment”；
 另外作者封装了一个很好用的`SingleFragmentActivity`类，但是这个类通常只有一句话，。
 个人觉得，为每一个Activity都建立一个文件有点浪费。
-可是使用Activity（四大组件之一），必须在Mainfest中注册。
+可是使用Activity（四大组件之一），必须在Manifest中注册。
 那么能不能将所有这类Activity放在一个类中进行管理呢？
 通过搜索关键字：`android manifest innerclass` 找到了方法；
 
