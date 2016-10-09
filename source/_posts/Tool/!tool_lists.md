@@ -5,17 +5,12 @@ categories:
 - Tool
 ---
 
-## 摘要
-主要内容：
-本文介绍了我的工具。
+## Windows软件列表
 
-<!--more-->
-## 列表
-- Lou(AHK)
-- Atom
+- Autohotkey
 - Chrome
-- AS
-- TC
+- Android Studio
 - Everything
 - Wiz
 - Diito
+-
