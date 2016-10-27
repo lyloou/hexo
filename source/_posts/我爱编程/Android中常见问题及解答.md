@@ -1,23 +1,10 @@
 ---
-title: 【Android】常见问题及解答
+title: Android中常见问题及解答
 date: 2016-07-18 15:56:32
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
-
-## 关键字
-
-## 摘要：
-> 本文介绍了Android中的一些基本概念、常见问题及解答；
-
-任务列表：
-- [ ] ？？
-
-
-<!--more-->
 ## assets文件夹和raw文件夹的区别
 【解答】
 - 相同点：以原有形式保存到apk中，均不会被编译成二进制文件；

@@ -1,9 +1,7 @@
 ---
-title: 【Android】Manifest中注册以内部类形式存在的Activity
+title: Manifest中注册以内部类形式存在的Activity
 date: 2016-08-05 09:49:16
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---

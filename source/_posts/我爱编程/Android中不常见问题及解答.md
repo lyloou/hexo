@@ -1,20 +1,14 @@
 ---
-title: 【Android】不常见问题及解答
+title: Android中不常见问题及解答
 date: 2016-07-19 09:23:17
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
 
-## 关键字
-
-## 摘要：
 > 本文介绍了Android中的一些不常见的问题及解答；
 
 
-<!--more-->
 ## UnsupportedOperationException at java.util.AbstractList.remove(AbstractList.java:638)
 【问题场景】
 - 在给`RecyclerView.Adapter`传递数据源的时候，

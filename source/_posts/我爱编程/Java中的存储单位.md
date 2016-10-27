@@ -1,10 +1,8 @@
 ---
-title: 【Java】存储单位
+title: Java中的存储单位
 date: 2016/10/9 15:57
 toc: true
 comments: true
-categories:
-- 
 tags:
 - Java
 ---

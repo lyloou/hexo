@@ -1,21 +1,10 @@
 ---
-title: 【Android】Context上下文
+title: Context上下文
 date: 2016-06-02 09:10:02
 toc: true
-categories:
 tags:
+- Android
 ---
-
-## 摘要：
-主要内容：
-
-任务列表：
-- [x] mContext
-- [x] BroadcastReceiver
-
-
-<!--more-->
-
 
 ## 添加`mContext`
 - 在Activity和Fragment中，经常需要用到上下文信息；

@@ -1,9 +1,7 @@
 ---
-title: 【Android】数据持久化 —— 通用的SQLite封装
+title: 数据持久化，通用的SQLite封装
 date: 2016-07-13 2016.07.13
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 - SQLite
@@ -19,7 +17,6 @@ tags:
 只保留必要的定制，重复的代码封装到一个通用类中；
 
 
-<!--more-->
 ## 说明
 - `LouSQLite.java`文件为通用的代码，所有项目中不需要修改即可使用；
 - `MyCallBack.java`文件是自定义的文件，关于项目的数据库配置都在这里进行，例如：数据库名称、数据库版本号、table语句等；

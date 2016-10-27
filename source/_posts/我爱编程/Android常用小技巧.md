@@ -1,18 +1,9 @@
 ---
-title: 【Android】小技巧
+title: Android常用小技巧
 date: 2016-06-14 15:56:55
-categories:
-- 我爱编程
 tags:
 - Android
-- 技巧
 ---
-
-## 摘要：
-主要内容：
-本文介绍，开发过程中的一些使用小技巧。
-
-<!--more-->
 
 ## 按返回键，返回到桌面而不销毁程序
 解决办法：在需要退出的地方，使用`Activity.moveTaskToBack(true)`方法

@@ -1,10 +1,8 @@
 ---
-title: 【Sql】常见操作
+title: Sql常见操作
 date: 2016/10/9 20:29
 toc: true
 comments: true
-categories:
-- 数据库
 tags:
 - Sql
 ---

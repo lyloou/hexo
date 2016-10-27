@@ -1,23 +1,11 @@
 ---
-title: 【Android】Drawable技巧
+title: Drawable常用技巧
 date: 2016-05-30 08:59:00
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
-- Drawable
 ---
 
-## 摘要：
-主要内容：
-本文介绍了我使用Drawable的个人经验总结。
-
-任务列表：
-- [ ]
-
-
-<!--more-->
 ## 动态修改shape中的颜色
 ``` xml
 <!-- drawable/opera_circle.xml -->

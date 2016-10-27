@@ -1,8 +1,6 @@
 ---
-title: 【Tool】Android Studio配置
+title: 我的Android Studio配置
 date: 2016-05-26 17:16:15
-categories:
-- Tool
 tags:
 - AS
 ---
@@ -12,7 +10,6 @@ tags:
 主要内容：
 本文介绍了个人的Android Studio配置，包括主题、插件等；
 
-<!--more-->
 
 ## 用途
 - 编写Android代码；
@@ -53,7 +50,7 @@ tags:
 
 ## 提升Gradle编译速度
 - 设置代理
-``` gradle
+``` js
 # gradle.properties中添加
 # 举例ShadowSocket
 systemProp.http.proxyHost=127.0.0.1
@@ -63,7 +60,7 @@ systemProp.https.proxyPort=1080
 ```
 - 设置中启用离线状态
 - 启用守护进程
-``` gradle
+``` js
 # gradle.properties中添加
 org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
 org.gradle.parallel=true

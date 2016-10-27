@@ -1,25 +1,13 @@
 ---
-title: 【Android】关于资源文件的一些小技巧
-date: 2016-06-?? 08:59:00
-categories:
-- 我爱编程
+title: Android中关于资源文件的一些小技巧
+date: 2016-06-18 08:59:00
 tags:
 - Android
-- string
-
 ---
 
-## 摘要：
-主要内容：
-本文介绍了资源文件中的一些使用技巧。
-
-任务列表：
-- [ ]
-
-
-<!--more-->
 ## 说明
-- 所有的资源文件，都可以放在同一个`<resources>`标签下面，例如：`color`、`declare-styleable`、`dimen`、`integer`、`item`
+- 所有的资源文件，都可以放在同一个`<resources>`标签下面，
+例如：`color`、`declare-styleable`、`dimen`、`integer`、`item`
 、`string`、`style`。
 
 

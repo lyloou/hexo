@@ -1,22 +1,11 @@
 ---
-title: 【Android】Fragment技巧
+title: Fragment常用技巧
 date: 2016-08-04 09:05:40
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
 
-## 摘要：
-主要内容：
-本文介绍了我使用Fragment的一些有用总结。
-
-任务列表：
-- [ ]
-
-
-<!--more-->
 ## Fragment中监听返回键
 ``` java
 //主界面获取焦点,用来监听返回键

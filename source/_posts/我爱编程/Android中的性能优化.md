@@ -1,25 +1,11 @@
 ---
-title: 【Android】性能优化
+title: Android中的性能优化
 date: 2016-07-22 09:49:35
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
-- 性能优化
 ---
 
-## 关键字
-
-摘要：
-------
-> 本文介绍了Android中性能优化的问题。
-
-任务列表：
-- [ ] ？？
-
-
-<!--more-->
 
 外部链接
 ======

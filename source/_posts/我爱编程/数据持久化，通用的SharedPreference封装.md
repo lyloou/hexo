@@ -1,9 +1,7 @@
 ---
-title: 【Android】数据持久化 —— 通用的SharedPreference封装
+title: 数据持久化，通用的SharedPreference封装
 date: 2016-07-13 21:14:09
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
@@ -18,7 +16,6 @@ tags:
 
 
 
-<!--more-->
 ## 说明
 - 具体用法参照`UspDemo.java`文件；
 - 通用源文件为`Usp.java`

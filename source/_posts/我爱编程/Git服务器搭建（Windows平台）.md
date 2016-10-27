@@ -1,8 +1,6 @@
 ---
-title: 【版本工具】Git服务器搭建（Windows平台）
+title: Git服务器搭建（Windows平台）
 date: 2016-07-14 15:40:21
-categories:
-- 我爱编程
 tags:
 - Git
 ---
@@ -14,7 +12,6 @@ tags:
 本文介绍了在Windows上搭建Git服务器的相关内容；
 
 
-<!--more-->
 ## 步骤
 1. 安装Java；
 2. 配置Java的环境变量；

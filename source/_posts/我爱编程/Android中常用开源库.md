@@ -1,24 +1,11 @@
 ---
-title: 【Android】开源库
+title: Android中常用开源库
 date: 2016-07-21 17:09:58
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
+
 ---
-
-## 关键字
-
-## 摘要：
-> 本文介绍了开源库的相关内容；
-
-任务列表：
-- [x] ButterKnife
-- [x] Volley
-
-
-<!--more-->
 ## ButterKnife注解
 
 **网址**： https://github.com/JakeWharton/butterknife

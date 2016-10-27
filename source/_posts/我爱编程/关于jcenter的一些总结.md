@@ -1,15 +1,12 @@
 ---
-title: 【Android】关于jcenter的一些总结
+title: 关于jcenter的一些总结
 date: 2016-07-06 16:18:12
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
 
 ## 摘要：
-主要内容：
 本文介绍了将自己的库发布到jcenter相关的一些总结。
 
 之所以有这篇文章，起源于这样一种原因：
@@ -18,7 +15,6 @@ tags:
 
 
 
-<!--more-->
 ## 初次配置（具体参考外部链接）
 - 配置project的build.gradle文件；
 - 配置lib的build.gradle文件；

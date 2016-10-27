@@ -1,24 +1,11 @@
 ---
-title: 【Android】巧用官方自带View —— 导航
+title: Android中巧用官方自带View —— 导航
 date: 2016.08.04 08:42:57
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
 ---
 
-## 摘要：
-主要内容：
-Android中导航栏的相关内容介绍和使用；
-
-
-任务列表：
-- [x] TabLayout
-- [x] 侧边栏 —— DrawerLayout & NavigationView
-- [x] ToolBar
-
-<!--more-->
 ## TabLayout
 - 步骤：
   1. 布局（TabLayout和ViewPager位置关系）；

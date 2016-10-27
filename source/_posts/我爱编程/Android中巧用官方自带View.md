@@ -1,30 +1,10 @@
 ---
-title: 【Android】巧用官方自带View
+title: Android中巧用官方自带View
 date: 2016-05-27 10:54:32
 toc: true
-categories:
-- 我爱编程
 tags:
 - Android
-- View
 ---
-
-## 摘要：
-主要内容：
-
-
-任务列表：
-- [x] TextView
-- [x] ImageView
-- [x] EditText
-- [x] ListView
-- [x] DatePicker
-
-
-<!--more-->
-
-
-
 
 ## TextView
 ### 字符串资源里的变量替换
