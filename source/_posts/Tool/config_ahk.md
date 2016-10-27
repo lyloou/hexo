@@ -1,8 +1,6 @@
 ---
-title: 【Tool】AutoHotKey配置
+title: 我的AutoHotKey配置
 date: 2016-05-21 18:09:37
-categories:
-- Tool
 tags:
 - AutoHotKey
 ---

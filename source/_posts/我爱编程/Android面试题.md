@@ -27,6 +27,7 @@ tags:
     存储表示：通过数组和链接串列来存储。
     访问二叉树的方法：前序遍历，中序遍历，后序遍历。
 参考资料： [二叉树-维基百科](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%8F%89%E6%A0%91)
+（还是将数据结构和算法恶补下吧，基础太薄弱了）
 
 
 ================================
@@ -52,4 +53,3 @@ tags:
 参考资料：
 - View.java源码的draw(Canvas)方法；
 - [[Android界面] 请教一下 View中的draw和onDraw有什么区别](http://www.eoeandroid.com/thread-98648-1-1.html)
--
