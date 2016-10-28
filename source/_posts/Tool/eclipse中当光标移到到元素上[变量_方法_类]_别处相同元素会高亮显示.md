@@ -1,5 +1,5 @@
 ---
-title: eclipse中当光标移到到元素上[变量_方法_类]_别处相同元素会高亮显示
+title: Eclipse中当光标移到到元素上，别处相同元素会高亮显示
 date: 2016/10/27 7:37
 toc: true
 comments: true

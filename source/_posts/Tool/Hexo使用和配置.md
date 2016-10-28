@@ -1,8 +1,6 @@
 ---
-title: 【Tool】Hexo使用和配置
+title: Hexo使用和配置
 date: 2016-05-25 22:18:18
-categories: 
-- Tool
 tags:
 - Hexo
 ---
@@ -11,21 +9,16 @@ tags:
 本文介绍我在搭建本博客平台时用到的工具、插件，以及遇到的问题；
 
 
-## 任务列表：
-- [] 日历表
-- [] 个人元素
-
 ## 文档管理工具
 名称：AS *(即Android Studio)*
 
 ## 教程、文档、API
 网址：`https://hexo.io`
-安装hexo教程（需要VPN）：`https://hexo.io/zh-cn/docs/`
+安装hexo教程：`https://hexo.io/zh-cn/docs/`
 
 
-## 主题配置
-名称：NexT
-网址：`http://theme-next.iissnan.com/`
+## 主题选择
+网址：`https://hexo.io/themes/`
 
 ## 插入多媒体
 #### 插入图片：

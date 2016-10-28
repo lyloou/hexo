@@ -34,8 +34,9 @@ tags:
 答：
 - `onDraw()`是`draw()`方法的一部分；
 - 自定义View时只需要重写`onDraw()`方法；
-  （通过源码`public void draw(Canvas canvas) `,发现在`draw()`方法中，对`onDraw`进行了调用）
-```
+  （通过源码`public void draw(Canvas canvas) `,
+  发现在`draw()`方法中，对`onDraw`进行了调用）
+ ```
 /*
  * Draw traversal performs several drawing steps which must be executed
  * in the appropriate order:
@@ -47,8 +48,10 @@ tags:
  *      5. If necessary, draw the fading edges and restore layers
  *      6. Draw decorations (scrollbars for instance)
  */
- ```
- When implementing a view, implement onDraw  instead of draw(Canvas)
+```
+When implementing a view, implement onDraw  instead of draw(Canvas)
+
+
 参考资料：
 - View.java源码的draw(Canvas)方法；
 - [[Android界面] 请教一下 View中的draw和onDraw有什么区别](http://www.eoeandroid.com/thread-98648-1-1.html)
