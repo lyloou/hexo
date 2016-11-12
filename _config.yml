@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 木子楼
-## subtitle: —— 想你将做 && 做你所想
-subtitle: —— 爱生活，爱技术
+title: Lou
+subtitle: 想你将做，做你所想
+# subtitle: —— 爱生活 && 爱技术
 description: /* Better than last best */
-author: Lyloou
+author: lyloou
 language: zh-CN
 timezone:
 
@@ -23,7 +23,7 @@ source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-## category_dir: categories
+category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -58,7 +58,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 12
+per_page: 0
 pagination_dir: page
 
 # Extensions
@@ -72,6 +72,7 @@ deploy:
   type: git
   repo: git@github.com:lyloou/lyloou.github.io.git
   branch: master
+  message: Site updated： {{ now('YYYY-MM-DD HH:mm:ss') }}
 
 
 duoshuo_shortname: lyloou
