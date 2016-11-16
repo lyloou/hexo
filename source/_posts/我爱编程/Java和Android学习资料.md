@@ -6,7 +6,6 @@ comments: true
 tags:
 - Android
 ---
->
 
 学习途径
 ========
@@ -15,6 +14,15 @@ tags:
 - Twitter
 - 牛人关注的牛人
 
+电子书
+===========
+### [Android 开发最佳实践](http://www.kancloud.cn/thinkphp/android-best-practices)
+- Gradle 配置(例如：使用 Maven 依赖方案代替使用导入jar包方案、通过`gradle.properties`配置敏感信息)
+- 如何安排包的结构；https://www.kancloud.cn/thinkphp/android-best-practices/42171
+- 资源文件命名推荐；https://www.kancloud.cn/thinkphp/android-best-practices/42175
+
+
+### [Android Studio 使用艺术](https://www.gitbook.com/book/quanke/android-studio/details)
 
 
 代码规范
@@ -34,6 +42,3 @@ tags:
 - [郭霖的专栏](http://blog.csdn.net/guolin_blog)
 - [ImportNew](http://www.importnew.com/)
 - [Trinea](http://www.trinea.cn/)
-
-
-
