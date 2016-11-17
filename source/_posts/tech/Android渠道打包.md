@@ -1,4 +1,11 @@
-Android
+---
+title: Android渠道打包
+date: 2016-11-17 16:31:08
+toc: true
+comments: true
+tags:
+- Android
+---
 
 为什么需要渠道打包
 ================
