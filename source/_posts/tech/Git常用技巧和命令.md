@@ -42,6 +42,8 @@ ssh -T git@github.com
 
 - 移除远程仓库： `git remote remove origin`
 - 添加远程仓库： `git remote add origin git@github.com:lyloou/lou.git`
+- 创建远程origin的dev分支到本地：`git checkout -b dev origin/dev`
+- 指定本地dev分支与远程origin/dev分支的链接：`git branch --set-upstream dev origin/dev`
 - 提交到远程仓库： `git push -u origin master`
   > 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000
 
