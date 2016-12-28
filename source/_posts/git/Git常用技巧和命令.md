@@ -70,6 +70,12 @@ ssh -T git@github.com
 
 - 查看工作区和版本库最新版本的区别： `git diff HEAD -- test.xml`
 
+- 删除远程文件夹或文件（展示要删除的文件，不是真的删除）： `git rm -r -n --cached dir2`
+- 删除远程文件夹或文件： `git rm -r --cached dir2`
+  http://www.zicheng.net/article/982018.htm
+
+
+
 ## 配置别名
 ``` js
 // 显示漂亮的分支日志：git lg

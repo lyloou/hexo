@@ -31,7 +31,7 @@ gradlew clean build bintrayUpload
   -PbintrayUser=「Your Name」
   -PbintrayKey=「API KEY」
   -PdryRun=false
- ```
+```
 
  ### 外部链接
  - [如何使用Android Studio把自己的Android library分发到jCenter和Maven Central](https://github.com/hehonghui/android-tech-frontier/blob/master/issue-17/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Android-Studio%E6%8A%8A%E8%87%AA%E5%B7%B1%E7%9A%84Android-library%E5%88%86%E5%8F%91%E5%88%B0jCenter%E5%92%8CMaven-Central.md)
