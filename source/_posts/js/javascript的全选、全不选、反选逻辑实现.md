@@ -53,15 +53,15 @@ tags:
             });
 
             selectAll.on('change', function(e){
-                console.log('e:' + this.checked);
+
+                langs.get().map(function(x){$(x).prop('checked', this.checked);});
+
                 if(this.checked){
                     selectAllLabel.hide();
                     deselectAllLabel.show();
-                    langs.get().map(function(x){$(x).prop('checked', true);});
                 } else {
                     selectAllLabel.show();
                     deselectAllLabel.hide();
-                    langs.get().map(function(x){$(x).prop('checked', false);});
                 }
             });
 
