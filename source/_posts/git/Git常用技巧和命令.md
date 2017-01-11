@@ -60,8 +60,6 @@ ssh -T git@github.com
 - `git log --pretty=oneline`
 - 查看分支合并情况：`git log --graph --pretty=oneline --abbrev-commit`
 
-- 移除远程仓库中已有的文件： `git rm test.xml`
-- 丢弃工作区的修改： `git checkout -- test.xml`，其中`--`很重要，没有这个`--`，就变成了“切换到另一个分支”。
 
 - 取消添加（git add .）的命令：`git reset HEAD test.xml`
 
@@ -70,7 +68,10 @@ ssh -T git@github.com
 
 - 查看工作区和版本库最新版本的区别： `git diff HEAD -- test.xml`
 
-- 删除远程文件夹或文件（展示要删除的文件，不是真的删除）： `git rm -r -n --cached dir2`
+- 移除工作空间的文件： `git rm test.xml`
+- 丢弃工作区的修改： `git checkout -- test.xml`，其中`--`很重要，没有这个`--`，就变成了“切换到另一个分支”。
+
+- 删除远程文件夹或文件，但是本地还保留着（展示要删除的文件，不是真的删除）： `git rm -r -n --cached dir2`
 - 删除远程文件夹或文件： `git rm -r --cached dir2`
   http://www.zicheng.net/article/982018.htm
 

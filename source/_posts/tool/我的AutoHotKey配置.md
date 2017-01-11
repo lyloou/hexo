@@ -17,7 +17,7 @@ tags:
 ```
 
 **使用Autohotkey带来其他便利：**
-``` 
+```
 * 一次按键，在浏览器中用指定搜索引擎搜索选中的文字（同样可以搜索剪切板的内容）。
 * 一次按键，打开指定的某一个软件或同时打开几个软件。
 * 一次按键，可以输入自定义的模板：例如输入`/mail`，就能达到输入`example@example.com`的效果。
@@ -42,7 +42,7 @@ https://autohotkey.com
 ```
 
 **光标控制2**
-``` 
+```
 * 光标置于行首：Alt+0
 * 光标置于行尾：Alt+4
 * 选中光标位置到行首的文字：Shift+Alt+0
@@ -77,6 +77,11 @@ https://autohotkey.com
 * 按住alt键，左键拖拽窗口任意地方可以移动窗口；（非最大化模式）
 * 按住alt键，右键拖拽窗口，可以调整窗口的对象；（非最大化模式）
 ```
+
+## 小技巧
+通过`#Include, MoveWindows.ahk`，这种方式可以加载配置文件。
+这样就不用将所有文件都写在一个配置文件，而是放在不同的文件中，然后通过`#Include, filename.ahk`来加载。
+模块化管理，更容易变更。
 
 ## 配置代码
 ```
@@ -314,7 +319,7 @@ return
 ;====== Lou BEG ======
 ;时间输入
 ;如：14:19:59
-::jjt:: 
+::jjt::
 d = %A_Hour%:%A_Min%:%A_Sec%
 clipboard = %d%  
 Send ^v  
@@ -366,16 +371,16 @@ return
 
 ;====== Lou BEG ======
 ;搜索功能
-;用百度搜索 
-#!b:: 
-Send ^c 
-Run http://www.baidu.com/s?wd=%clipboard% 
-return 
-;用google搜索 
-#!g:: 
-Send ^c 
-Run http://www.google.com/search?q=%clipboard% 
-return 
+;用百度搜索
+#!b::
+Send ^c
+Run http://www.baidu.com/s?wd=%clipboard%
+return
+;用google搜索
+#!g::
+Send ^c
+Run http://www.google.com/search?q=%clipboard%
+return
 ;====== Lou END ======
 
 
@@ -431,7 +436,7 @@ return
 ;回退
 !-::
 send, !{left}
-return 
+return
 ;====== Lou END ======
 
 
@@ -447,38 +452,38 @@ Shift & enter::send {end}{enter} ;下起一行
 +!l::send,{shiftdown}{right} ;选中右移
 +!4::send,+{end} ;选中当前光标位置到行末
 +!0::send,+{home} ;选中当前光标位置到行首
-;+^k::send,{end}{shiftdown}{home}{ShiftUp}{backspace}{backspace} ;删除当前行 
+;+^k::send,{end}{shiftdown}{home}{ShiftUp}{backspace}{backspace} ;删除当前行
 
-;复制当前行到剪切板 
+;复制当前行到剪切板
 +!v::
 send,{home}{shiftdown}{end}{ShiftUp}
 Send,^c
 Send, {end}
-Return 
+Return
 
-;复制当前行到剪切板 
+;复制当前行到剪切板
 +!c::
 send,{home}{shiftdown}{end}{ShiftUp}
 Send,^c
 Send, {end}
-Return 
+Return
 
-;剪切当前行到剪切板 
+;剪切当前行到剪切板
 +!x::
 send,{home}{shiftdown}{end}{ShiftUp}
 Send,^x
 Send, {backspace}
-Return 
+Return
 
 
 ;删除光标到行末的内容
 +!'::
 send,+{end}{delete}
-return 
+return
 ;删除光标到行首的内容
 +!;::
 send,+{home}{delete}
-return 
+return
 ;====== Lou END ======
 
 
@@ -559,7 +564,7 @@ return
 ;====== Lou BEG ======
 #l::
 ; Lock Screen. 模拟Win+L没有成功，执行后Win似乎一直处于按下状态
-Run, %A_WinDir%\System32\rundll32.exe user32.dll LockWorkStation 
+Run, %A_WinDir%\System32\rundll32.exe user32.dll LockWorkStation
 Sleep, 500
 ; Power off the screen
 SendMessage, 0x112, 0xF170, 2,, Program Manager
@@ -574,7 +579,7 @@ Send {Volume_Mute}
 Return
 ;增加音量
 #!=::
-Send {Volume_Up 1} 
+Send {Volume_Up 1}
 Return
 ;减少音量
 #!-::
@@ -587,11 +592,11 @@ Return
 ;====== Lou BEG ======
 ;具体应用
 ;for 360Chrome
-#IfWinActive ahk_class Chrome_WidgetWin_1 
-!j::Send ^+{Tab} 
-!k::Send ^{Tab} 
-!t::Send ^t 
-+!t::Send ^+t 
+#IfWinActive ahk_class Chrome_WidgetWin_1
+!j::Send ^+{Tab}
+!k::Send ^{Tab}
+!t::Send ^t
++!t::Send ^+t
 return
 
 
