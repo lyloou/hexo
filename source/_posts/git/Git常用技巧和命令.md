@@ -76,6 +76,17 @@ ssh -T git@github.com
   http://www.zicheng.net/article/982018.htm
 
 
+## 分支操作
+- 注意：切换分支之前，最好使当前工作空间处于已经提交状态。
+
+- `git clone`默认会把远程仓库整个克隆下来，但只会创建`master`分支，如果远程还有其他分支，可以通过下面的方式clone分支。
+  * 将远程分支获取至本地仓库：git checkout -b python_mail.skin origin/python_mail.skin
+  * 使用-t参数，它默认会在本地建立一个和远程分支名字一样的分支：git checkout -t origin/python_mail.skin
+  * [git clone 远程分支 - xqs83的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/xqs83/article/details/7382074)
+- 在`git pull`之前，本地分支关联远程分支：`git branch --set-upstream feature-A origin/feature-A`
+  * [git新建本地分支自动与远程分支关联 - xqs83的专栏 - 博客频道 - CSDN.NET](http://blog.csdn.net/xqs83/article/details/17361201)
+- 提交分支：`git push origin feature-A:feature-A`  
+- 删除远程分支：`git push origin :feature-A`
 
 ## 配置别名
 ``` js
