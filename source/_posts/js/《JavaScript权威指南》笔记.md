@@ -12,6 +12,10 @@ tags:
 
 
 
+
+## 第十章：正则表达式
+
+
 | 模块，导出API：
 1. 返回构造函数； --p251
 2. 通过new来直接调用模块函数； --p252
@@ -25,17 +29,33 @@ tags:
 
 | `Object.defineProperty()`和`Object.defineProperties()`可以用来创建新特性，也可以用来修改已有属性的特性。 --p242
 
+| ECMAScript 5给对象的扩展性增加了限制（方法支持：setter、getter、可枚举性、可写性、可配置性），其新特性使类更加健壮。 --p239
+```js
+Object.defineProperty();
+Object.defineProperties();
+Object.seal();
+Object.preventExtensions();
+Object.create();
+Object.freeze();
+Object.getOwnPropertyDescriptor();
+```
+
+
 | `var str = JSON.stringify(o);`将对象转化为json字符串，
 `JSON.parse(str)`，将字符串转化为对象，但是该对象不具有和o对象相同的继承结构。 --p222
+
+| 鸭式辨型不能应用于内置类，比如不能通过`quacks(o, Array)`来检测o是否实现了Array中的所有同名方法。原因是内置类的方法都是不可枚举的（for/in操作无法遍历）。--p217
 
 | 在JavaScript中，类的实现是基于其原型继承机制的。--p201
 
 ## 第九章：类和模块
 
-| 需要给`f()`传入一个参数，所以使用`f()`的`call()`方法；
+| 需要给`f()`传入一个参数，所以使用`f()`的` ()`方法；
   需要给`g()`传入多个参数，所以使用`g()`的`apply()`方法； --p197 --p189
 
 | 可以通过`new Function()`构造方法的方式来定义函数（另外两种定义方式：1.函数定义语句；2. 函数直接量表达式）。`Function`构造函数创建的是一个匿名函数，不需要指定函数名。--p192
+
+| 书写闭包的时候还需要注意一件事，this是JavaScript的关键字，而不是变量。
 
 | 函数的执行依赖于变量作用域，这个作用域是在函数定义时决定的，而不是函数调用时。 --p182
 
