@@ -8,29 +8,34 @@ tags:
 `Git` `GitHub` `版本控制`
 
 ## 摘要：
-本文介绍了版本控制的常用技巧和命令等内容；
+本文介绍了Git版本控制的常用技巧和命令等内容；
 
 
 ## 配置及初始化
-### 【设置用户名和邮箱】
+### 设置用户名和邮箱
 ```
 $ git config --global user.name "Lou"
 $ git config --global user.email "lyloou6@gmail.com"
-```
 
-### 【查看用户的配置信息】
-```
+// 查看用户的配置信息
 $ git config user.name
 $ git config user.email
 ```
 
-### 【生成密钥】
+
+### 网络配置：
+```
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+### 生成密钥
 密钥是上传到远程库的凭证，是本地与远程库的桥梁；
 ```
 $ ssh-keygen -t rsa -C "lyloou6@gmail.com"
 ```
 
-### 【测试连通性】
+### 测试连通性
 ```
 ssh -T git@github.com
 ```
@@ -100,7 +105,7 @@ NOTE: 配置Git的时候，加上--global是针对当前用户起作用的，如
 NOTE: 可以通过配置`~/.gitconfig`文件来删除和修改配置
 
 
-## 外部链接
+## 参考链接
 - [git-ssh 配置和使用](https://segmentfault.com/a/1190000002645623)
 - 《GitHub入门与实践》
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
