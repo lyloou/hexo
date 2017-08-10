@@ -32,7 +32,7 @@ private static String getWebsiteDatetime(String webUrl){
 获取网页时间戳
 ==============
 （如果本地和网页时间相差不多，以后都以本地为主）
-``` Java
+``` java
 public static final String URL_CHECK_TIME = "http://www.taobao.com";
 private static boolean useLocal;// 是否使用本地时间
 private static long deltaTime; // 本机时间-网络时间；
