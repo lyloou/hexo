@@ -26,7 +26,18 @@ tags:
 
 ## App响应外部指定格式的链接（类似：http, https, tel, mailto）
 主要步骤是，配置、使用、获取数据；  
-需要注意的问题是，第三方的浏览器一般不支持自定义的协议scheme响应功能（其内部的WebView拦截了）。
+```html
+在自定义的 webview中点击<a href="renrenyoupin://...">链接，可以跳转到app。
+在系统浏览器中（魅族）打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
+在chrome浏览器中打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
+在qq浏览器中打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
+
+直接通过浏览器的地址栏输入，不可以跳转到app。
+微信对话中点击，不可以跳转app。
+qq对话中点击，不可以跳转app。
+
+app没有安装的时候，点击链接都没有任何反应。
+```
 
 ```xml
 <activity android:name=".MainActivity">
