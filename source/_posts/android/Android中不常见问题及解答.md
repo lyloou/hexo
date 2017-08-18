@@ -27,10 +27,10 @@ tags:
 ## App响应外部指定格式的链接（类似：http, https, tel, mailto）
 主要步骤是，配置、使用、获取数据；  
 ```html
-在自定义的 webview中点击<a href="renrenyoupin://...">链接，可以跳转到app。
-在系统浏览器中（魅族）打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
-在chrome浏览器中打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
-在qq浏览器中打开一个页面，页面中包含<a href="renrenyoupin://...">链接，可以跳转
+在自定义的 webview中点击<a href="lyloou://...">链接，可以跳转到app。
+在系统浏览器中（魅族）打开一个页面，页面中包含<a href="lyloou://...">链接，可以跳转
+在chrome浏览器中打开一个页面，页面中包含<a href="lyloou://...">链接，可以跳转
+在qq浏览器中打开一个页面，页面中包含<a href="lyloou://...">链接，可以跳转
 
 直接通过浏览器的地址栏输入，不可以跳转到app。
 微信对话中点击，不可以跳转app。
