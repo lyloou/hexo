@@ -54,6 +54,17 @@ document.addEventListener('backbutton', function(){
 参考资料：  
 - [javascript - how to check app running in foreground or background in ionic/cordova/phonegap - Stack Overflow](https://stackoverflow.com/questions/29606012/how-to-check-app-running-in-foreground-or-background-in-ionic-cordova-phonegap)
 
+## cordova插件
+社交类：
+QQ：https://github.com/iVanPan/Cordova_QQ
+微信：https://github.com/xu-li/cordova-plugin-wechat
+微博：https://github.com/iVanPan/cordova_weibo
+参考网址：http://blog.csdn.net/jcy472578/article/details/50718951
+
+二维码扫描：https://github.com/phonegap/phonegap-plugin-barcodescanner
+热更新插件：https://github.com/nordnet/cordova-hot-code-push/
+
+
 ## 常用命令
 卸载 cordova: `npm uninstall -g cordova`
 安装 cordova: `npm install -g cordova`
