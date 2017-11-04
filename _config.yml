@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: apollo
+theme: landscape
 archive_generator:
         per_page: 0
         yearly: false
@@ -83,7 +83,7 @@ archive_generator:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:lyloou/lyloou.github.io.git
+  repo: git@github.com:lyloou/lyloou.github.com.git
   branch: master
   message: Site updated： {{ now('YYYY-MM-DD HH:mm:ss') }}
 
