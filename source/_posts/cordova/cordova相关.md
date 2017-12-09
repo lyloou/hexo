@@ -65,6 +65,14 @@ QQ：https://github.com/iVanPan/Cordova_QQ
 热更新插件：https://github.com/nordnet/cordova-hot-code-push/
 
 
+Cordova - 从相册中选择照片并上传，以及拍照上传:
+http://www.hangge.com/blog/cache/detail_1181.html
+```bash
+cordova plugin add cordova-plugin-camera
+cordova plugin add cordova-plugin-file
+cordova plugin add cordova-plugin-file-transfer
+```
+
 ## 常用命令
 卸载 cordova: `npm uninstall -g cordova`
 安装 cordova: `npm install -g cordova`
