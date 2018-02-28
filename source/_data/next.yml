@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 木子楼2
+title: 木子楼
 subtitle:
 description: /* Better than last best */
 author: lyloou
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -452,8 +452,8 @@ han: false
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: lyloou
   count: true
 
 # Hypercomments
