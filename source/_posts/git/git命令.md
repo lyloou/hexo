@@ -51,6 +51,12 @@ tags:
 - 删除远程文件夹或文件，但是本地还保留着： `git rm -r --cached dir2` (`-r`参数，表示递归删除文件夹的内容)
   > https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
 - 删除远程文件夹或文件，但是本地还保留着（展示要删除的文件，不是真的删除）： `git rm -r -n --cached dir2`
+- `pull = fetch + merge`
+  > [git pull 和 git fetch 有什么区别？](https://ruby-china.org/topics/15729)
+  > [git查看远程版本库和本地库的差异 | 星辰](http://blog.kainaodong.com/?p=12)
+- 直接修改远程仓库 url
+  > `git remote set-url orign git:new.url.here`
+  >  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 
 ## 分支
 ## delete a git branch both locally and remotely.
@@ -80,6 +86,10 @@ $ git clean -d -f
 $ git clean --help
 ```
 > [branch - How to remove local (untracked) files from the current Git working tree? - Stack Overflow](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
+
+## git stash
+> Git 还提供了一个 stash 功能，可以把当前工作状态“储藏”起来，等以后恢复现场后继续工作。
+> [Bug分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000)
 
 
 ## 参考链接

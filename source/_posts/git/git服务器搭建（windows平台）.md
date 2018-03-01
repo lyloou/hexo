@@ -1,18 +1,13 @@
 ---
-title: Git服务器搭建（Windows平台）
+title: git服务器搭建（windows平台）
 date: 2016-07-14 15:40:21
+toc: true
+comments: true
 tags:
-- Git
+- git
 ---
-## 关键字
-`Git`  `版本控制` `Git服务器`
 
-## 摘要：
-> 主要内容：
-本文介绍了在Windows上搭建Git服务器的相关内容；
-
-
-## 步骤
+## 以GitBlit来讲解
 1. 安装Java；
 2. 配置Java的环境变量；
 3. 下载并安装[GitBlit](http://www.gitblit.com/)
@@ -35,6 +30,10 @@ tags:
   - 启动gitbit服务；
 7. 再次在浏览器中验证是否安装成功；
 8. 登陆：账号密码默认均为`admin`
+
+## 其它 git 服务
+- [gitlab](https://gitlab.com/)
+- [gogs](https://github.com/gogits/gogs)
 
 ---
 ## 外部链接

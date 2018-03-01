@@ -52,3 +52,4 @@ $ git config --global core.autocrlf false
 
 ## 参考链接
 - [git-ssh 配置和使用](https://segmentfault.com/a/1190000002645623)
+- [Which remote URL should I use?](https://help.github.com/articles/which-remote-url-should-i-use/)
