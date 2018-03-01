@@ -1,8 +1,11 @@
 ---
-title: Chrome浏览器个性化定制
+title: chrome定制
 date: 2016-05-26 19:07:44
+toc: true
+comments: true
 tags:
-- Chrome
+- chrome
+- tool
 ---
 
 ## 书签
@@ -26,3 +29,9 @@ tags:
 - Octotree
 - 夜景模式
 - Proxy SwitchyOmega
+
+## 控制台
+### 快捷键
+- Focus in console: Ctrl + `
+- 清空屏幕: `Ctrl + L`
+- 清除已经声明的变量：`console.clear();`

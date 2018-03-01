@@ -1,5 +1,5 @@
 ---
-title: git配置
+title: github配置
 date: 2016-07-12 08:17:25
 toc: true
 comments: true

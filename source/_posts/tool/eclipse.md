@@ -1,11 +1,14 @@
 ---
-title: Eclipse中当光标移到到元素上，别处相同元素会高亮显示
+title: eclipse配置
 date: 2016/10/27 7:37
 toc: true
 comments: true
 tags:
-- Eclipse
+- eclipse
+- tool
 ---
+
+## 当光标移到到元素上，别处相同元素高亮显示
 该功能默认是打开的，但是有时候莫名奇妙的会被关闭，这时候通过下面的方式可以启用该功能。
 
 具体步骤是：

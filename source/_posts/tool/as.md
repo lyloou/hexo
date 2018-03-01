@@ -1,8 +1,11 @@
 ---
-title: 我的Android Studio配置
+title: Android Studio定制
 date: 2016-05-26 17:16:15
+toc: true
+comments: true
 tags:
-- AS
+- tool
+- editor
 ---
 
 
@@ -20,12 +23,12 @@ tags:
 
 ## 快捷键
 - !j
-> 25. Sublime Text式的多处选择（Sublime Text Multi Selection）
+>  Sublime Text式的多处选择（Sublime Text Multi Selection）
 >  描述：这个功能超级赞！该操作会识别当前选中字符串，选择下一个同样的字符串，并且添加一个光标。这意味着你可以在同一个文件里拥有多个光标，你可以同时在所有光标处输入任何东西。
 >  快捷键：Ctrl + G(OS X)、Alt + Ｊ（Windows、Linux）
 
 - !+insert
-> 29. 列选择/块选择（Column Selection）
+> 列选择/块选择（Column Selection）
 > 描述：正常选择时，当你向下选择时，会直接将当前行到行尾都选中，而块选择模式下，则是根据鼠标选中的矩形区域来选择。
 > 调用：按住Alt，然后拖动鼠标选择。
 > 开启/关闭块选择：Menu → Edit → Column Selection Mode
@@ -40,7 +43,10 @@ tags:
 - ^+delete 移除包裹代码（包裹代码的反操作）；
 - +F4 对当前打开的文件另起一个窗口打开；
 - ^+insert: 选择最近复制的内容进行粘贴；
-
+- ^+f: Find in Path
+- ^+r: [Find and Replace in Path](https://www.jetbrains.com/help/idea/find-and-replace-in-path.html)
+- ![askey](./askey.png)
+- ![askey](./askey2.png)
 
 ## Theme
 - Darcula + Sublime Text 2

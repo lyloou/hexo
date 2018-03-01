@@ -1,10 +1,10 @@
 ---
-title: 制作ubuntu启动u盘
+title: 制作ubuntu系统启动u盘
 date:
 toc: true
 comments: true
 tags:
-- Android
+- linux
 ---
 
 
