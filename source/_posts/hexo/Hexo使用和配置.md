@@ -10,7 +10,20 @@ tags:
 
 
 ## 文档管理工具
-名称：AS *(即Android Studio)*
+Android Studio | IDEA
+
+### 通过template方便创建文档
+`File -> Setting -> Editor -> File and Code Templates` 
+    ```
+    ---
+    title: ${NAME}
+    date: ${DATE} ${TIME}
+    toc: true
+    comments: true
+    tags:
+    - ${Tag}
+    ---
+    ```
 
 ## 教程、文档、API
 网址：`https://hexo.io`
@@ -22,32 +35,32 @@ tags:
 
 ## 插入多媒体
 #### 插入图片：
-```
-// 方式1，加入本地图片：
-// 首先需要在source中加入文件夹images，并放入图片smile01.gif;
-![](/images/smile01.gif)
-
-// 方式2，加入图床中的图片地址：
-![](图片地址)
-
-// 方式3，获取到github的raw图片网址；
-```
+    ```
+    // 方式1，加入本地图片：
+    // 首先需要在source中加入文件夹images，并放入图片smile01.gif;
+    ![](/images/smile01.gif)
+    
+    // 方式2，加入图床中的图片地址：
+    ![](图片地址)
+    
+    // 方式3，获取到github的raw图片网址；
+    ```
 
 #### 插入音乐：
-```
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
-	src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
-</iframe>
-```
+    ```
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+        src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
+    </iframe>
+    ```
 
 #### 插入视频：
-```
-<center>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
-	src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
-</iframe>	
-</center>
-```
+    ```
+    <center>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+        src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66">
+    </iframe>	
+    </center>
+    ```
 
 外部链接：
 * [Hexo博客添加图片、音乐、视频](http://blog.wleyuan.me/2015/07/18/Hexo-AddSoundPicMovie/)
