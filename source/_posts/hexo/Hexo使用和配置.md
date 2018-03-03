@@ -2,7 +2,7 @@
 title: Hexo使用和配置
 date: 2016-05-09 22:18:18
 tags:
-- Hexo
+- hexo
 ---
 ## 摘要：
 主要内容：

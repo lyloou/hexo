@@ -3,7 +3,7 @@ title: Android中巧用官方自带View
 date: 2016-05-27 10:54:32
 toc: true
 tags:
-- Android
+- android
 ---
 
 ## TextView

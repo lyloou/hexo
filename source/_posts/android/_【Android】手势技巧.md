@@ -4,7 +4,7 @@ date: 2016-06-14 14:45:45
 categories:
 - 我爱编程
 tags:
-- Android
+- android
 - 手势
 ---
 

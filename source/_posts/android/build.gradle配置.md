@@ -4,8 +4,8 @@ date: 2016-11-16 15:24:55
 comments: true
 toc: true
 tags:
-- Android
-- Gradle
+- android
+- gradle
 ---
 
 bulid.gradle文件

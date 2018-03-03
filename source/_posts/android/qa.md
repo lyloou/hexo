@@ -3,7 +3,7 @@ title: Android中常见问题及解答
 date: 2016-07-18 15:56:32
 toc: true
 tags:
-- Android
+- android
 ---
 
 ## assets文件夹和raw文件夹的区别
