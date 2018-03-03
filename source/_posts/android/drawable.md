@@ -63,33 +63,33 @@ drawable.setColor(Color.parseColor("#2b3c89"));
 ``` java
 
 public RadioButton getCircleRadioButton(int color) {
-	Context context = getContext();
-	int w = Uscreen.dp2Px(context, 48);
-	RadioButton rbtn = new RadioButton(context);
-	rbtn.setLayoutParams(new RadioGroup.LayoutParams(w, w));
-	rbtn.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
-	rbtn.setBackgroundResource(R.drawable.selector_skin_color);
+    Context context = getContext();
+    int w = Uscreen.dp2Px(context, 48);
+    RadioButton rbtn = new RadioButton(context);
+    rbtn.setLayoutParams(new RadioGroup.LayoutParams(w, w));
+    rbtn.setButtonDrawable(new ColorDrawable(Color.TRANSPARENT));
+    rbtn.setBackgroundResource(R.drawable.selector_skin_color);
 
-	// 动态修改颜色；
-	Drawable drawable = rbtn.getBackground();
-	if(drawable  instanceof StateListDrawable){
-		StateListDrawable gradientDrawable = (StateListDrawable) drawable;
-		ConstantState constantState = gradientDrawable.getConstantState();
-		if(constantState instanceof DrawableContainerState){
-			DrawableContainerState drawableContainerState = (DrawableContainerState)constantState;
-			Drawable[] children = drawableContainerState.getChildren();
-			for (int i = 0; i < children.length; i++) {
-				if (children[i] instanceof LayerDrawable) {
-					LayerDrawable selectedItem = (LayerDrawable) children[i];
-					GradientDrawable selectedDrawable = (GradientDrawable) selectedItem.getDrawable(0);
-					selectedDrawable.mutate();
-					selectedDrawable.setColor(color);
-				}
-			}
-		}
-	}
+    // 动态修改颜色；
+    Drawable drawable = rbtn.getBackground();
+    if(drawable  instanceof StateListDrawable){
+        StateListDrawable gradientDrawable = (StateListDrawable) drawable;
+        ConstantState constantState = gradientDrawable.getConstantState();
+        if(constantState instanceof DrawableContainerState){
+            DrawableContainerState drawableContainerState = (DrawableContainerState)constantState;
+            Drawable[] children = drawableContainerState.getChildren();
+            for (int i = 0; i < children.length; i++) {
+                if (children[i] instanceof LayerDrawable) {
+                    LayerDrawable selectedItem = (LayerDrawable) children[i];
+                    GradientDrawable selectedDrawable = (GradientDrawable) selectedItem.getDrawable(0);
+                    selectedDrawable.mutate();
+                    selectedDrawable.setColor(color);
+                }
+            }
+        }
+    }
 
-	return rbtn;
+    return rbtn;
 }
 ```
 

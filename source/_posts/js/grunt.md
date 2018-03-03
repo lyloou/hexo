@@ -10,7 +10,7 @@ tags:
 | How do I uninstall or remove unwanted plugins?
 - `npm uninstall [GRUNT_PLUGIN] --save-dev`, this will remove the plugin from
   your `package.json` and from `node_module`
-- delete the dependencies in `package.json`	mannually and run `npm prune`
+- delete the dependencies in `package.json` mannually and run `npm prune`
 
 | 异步任务,需要在task body中调用`this.async()`来开启。
 `var done = this.async()`
@@ -59,7 +59,7 @@ grunt.registerMultiTask(taskName, [description, ], taskFunction);
 
 // eg.
 grunt.registerMultiTask('log', 'log stuff.', function(){
-	grunt.log.write(this.target + ":" + this.data);
+    grunt.log.write(this.target + ":" + this.data);
 });
 ```
 
@@ -71,11 +71,11 @@ grunt.registerTask(taskName, [description, ], taskFunction);
 
 // eg.
 grunt.registerTask('foo', 'A sample task that logs stuff.', function(arg1, arg2){
-	if(arguments.length === 0) {
-		grunt.log.write(this.name + ", no args.");
-	} else {
-		grunt.log.write(this.name + ", arg1=" + arg1 + ", arg2=" + arg2);
-	}
+    if(arguments.length === 0) {
+        grunt.log.write(this.name + ", no args.");
+    } else {
+        grunt.log.write(this.name + ", arg1=" + arg1 + ", arg2=" + arg2);
+    }
 });
 ```
 
@@ -85,60 +85,60 @@ grunt.registerTask('foo', 'A sample task that logs stuff.', function(arg1, arg2)
 | eg.
 ```js
 module.exports = function(grunt) {
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
-			},
-			build: {
-				src: 'src/<%= pkg.name %>.js',
-				dest: 'build/<%= pkg.name %>.min.js'
-			}
-		},
-		concat: {
-			options: {
-				separator: ";"
-			},
-			dist: {
-				src: ['src/**/*.js'],
-				dest: 'dist/<%= pkg.name %>.js'
-			}
-		},
-		qunit: {
-			files: ['test/**/*.html']
-		},
-		jshint: {
-			files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-			options: {
-				globals: {
-					jQuery: true,
-					console: true,
-					module: true
-				}
-			}
-		},
-		watch: {
-			files: ['<%= jshint.files %>'],
-			tasks: ['jshint', 'qunit']
-		}
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %>*/\n'
+            },
+            build: {
+                src: 'src/<%= pkg.name %>.js',
+                dest: 'build/<%= pkg.name %>.min.js'
+            }
+        },
+        concat: {
+            options: {
+                separator: ";"
+            },
+            dist: {
+                src: ['src/**/*.js'],
+                dest: 'dist/<%= pkg.name %>.js'
+            }
+        },
+        qunit: {
+            files: ['test/**/*.html']
+        },
+        jshint: {
+            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+            options: {
+                globals: {
+                    jQuery: true,
+                    console: true,
+                    module: true
+                }
+            }
+        },
+        watch: {
+            files: ['<%= jshint.files %>'],
+            tasks: ['jshint', 'qunit']
+        }
 
-	});
+    });
 
-	// grunt.loadNpmTasks('grunt-contrib-uglify');
-	// grunt.loadNpmTasks('grunt-contrib-concat');
-	// grunt.loadNpmTasks('grunt-contrib-qunit');
-	// grunt.loadNpmTasks('grunt-contrib-jshint');
-	// grunt.loadNpmTasks('grunt-contrib-watch');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
+    // grunt.loadNpmTasks('grunt-contrib-concat');
+    // grunt.loadNpmTasks('grunt-contrib-qunit');
+    // grunt.loadNpmTasks('grunt-contrib-jshint');
+    // grunt.loadNpmTasks('grunt-contrib-watch');
 
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('test', ['jshint', 'qunit']);
-	grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
 
-	grunt.registerTask('log', 'log some stuff', function() {
-		grunt.log.write('Logging some stuff ...').error();
-	});
+    grunt.registerTask('log', 'log some stuff', function() {
+        grunt.log.write('Logging some stuff ...').error();
+    });
 };
 
 ```
