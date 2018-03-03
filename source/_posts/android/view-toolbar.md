@@ -1,3 +1,11 @@
+---
+title: toolbar相关
+date: 2017-08-31 17:16:15
+toc: true
+comments: true
+tags:
+- android
+---
 
 ## 设置状态栏透明，并保持住 toolbar 在status之下（支持 API 19 以上）：
 1. 添加到 theme： `<item name="android:windowTranslucentStatus">true</item>`

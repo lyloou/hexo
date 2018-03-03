@@ -1,6 +1,6 @@
 ---
 title: SQLite封装
-date: 2016-07-13 2016.07.13
+date: 2016-07-13
 toc: true
 tags:
 - android

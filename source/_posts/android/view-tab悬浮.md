@@ -8,8 +8,9 @@ tags:
 ---
 
 ## tab悬浮效果实现
-搜索关键字：`Android tab悬浮`
-开源库（如果布局嵌套很复杂，则不一定适合）：https://github.com/carlonzo/StikkyHeader
+
+一种解决方式是使用开源库（如果布局嵌套很复杂，则不一定适合）：https://github.com/carlonzo/StikkyHeader
+
 另一种解决思路：
 - 在布局中，使用一个同tab1完全一样的tab2（并设置显示属性为gone）；
 - 获取 tab1 到外层父视图顶部的距离（通过`tab1.getTop()`获取）；
