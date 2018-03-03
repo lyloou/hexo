@@ -63,6 +63,9 @@ tags:
 
 ## Tips
 - Editor->General->Smart Keys
+- 使用 Refector （style）的正确姿势：
+    将鼠标定位到要 refector 的标签中（不要选中任何代码），
+    然后右键 `Refector --> Extract --> Style...`
 
 ## 提升Gradle编译速度
 - 设置代理

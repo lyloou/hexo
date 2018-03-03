@@ -4,7 +4,7 @@ date: 2016-11-17 16:31:08
 toc: true
 comments: true
 tags:
-- Android
+- android
 ---
 
 通过本地安装的支付宝支付
@@ -39,7 +39,7 @@ if (TextUtils.equals(resultStatus, "9000")) {
 
 
 如果本地没有安装支付宝，就跳转到wap支付
------------------------------------
+======================
 我相信在`PayTask.payV2`中，有对是否安装支付宝做判断，
 我们需要在`Manifest`中注册`H5PayActivity`：
 ``` xml

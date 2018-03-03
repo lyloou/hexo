@@ -10,7 +10,7 @@ tags:
 
 bulid.gradle文件
 ===============
-``` js
+``` groov
 android {
   signingConfigs {
     renrenDebug {
@@ -64,11 +64,11 @@ android {
                 def outputFile = output.outputFile
                 if (outputFile != null && outputFile.name.endsWith('.apk')) {
                     def fileName =
-                            // 输出apk名称为 RRYP_20161101_V0.2.0.apk
-                            "RRYP_${releaseTime()}_V${defaultConfig.versionName}.apk"
+                            // 输出apk名称为 LOU_20161101_V0.2.0.apk
+                            "LOU_${releaseTime()}_V${defaultConfig.versionName}.apk"
 
-                            // 输出apk名称为 RRYP_20161101_V0.2.0_wandoujia.apk
-                            // "RRYP_${releaseTime()}_V${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                            // 输出apk名称为 LOU_20161101_V0.2.0_wandoujia.apk
+                            // "LOU_${releaseTime()}_V${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
 
                     output.outputFile = new File(outputFile.parent, fileName)
                 }
@@ -142,6 +142,21 @@ proguard-rules.pro文件
 - [代码混淆规则配置文件:proguard-rules.pro](https://as.quanke.name/代码混淆规则配置文件proguard-rulespro.html)
 
 
+Avoid Maven dynamic dependency resolution. (such as `2.1.+`)
+======================================
+  this result in different and unstable builds or subtle, untracked difference
+  in behavior between builds.
+
+在配置 `build.gradle` 的时候，避免直接写入敏感信息（例如：密码），而是写入到版本控制工具
+======================================
+忽略的文件`gradle.properties`中。
+> https://github.com/futurice/android-best-practices#gradle-configuration
+
+针对测试版本和发布版本使用不同的 appId, 这样两个版本就可以同时存在在一个设备上了。
+======================================
+可以通过前缀或后缀的方式来区分。
+> https://github.com/futurice/android-best-practices#gradle-configuration
+
 使用 Maven 依赖方案代替使用导入jar包方案
 ======================================
 如果在你的项目中你明确使用率 jar文件，那么它们可能成为永久的版本，如2.1.1.下载jar包更新他们是很繁琐的， 这个问题Maven很好的解决了，这在Android Gradle构建中也是推荐的方法。你可以指定版本的一个范围，如2.1.+,然后Maven会自动升级到制定的最新版本，例如：
@@ -157,6 +172,7 @@ dependencies {
 }
 ```
 
+  
 参考资料
 -------
 - [Gradle 配置](https://www.kancloud.cn/thinkphp/android-best-practices/42169)

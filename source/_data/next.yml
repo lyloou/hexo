@@ -185,17 +185,17 @@ index_with_subtitle: false
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
   home: / || home
-  #about: /about/ || user
-  #tags: /tags/ || tags
-  #categories: /categories/ || th
+  about: /about/ || user
+  tags: /tags/ || tags
+#  categories: /categories/ || th
   archives: /archives/ || archive
-  #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
-  #commonweal: /404/ || heartbeat
+#  schedule: /schedule/ || calendar
+#  sitemap: /sitemap.xml || sitemap
+#  commonweal: /404/ || heartbeat
 
 # Enable/Disable menu icons.
 menu_icons:
-  enable: true
+  enable: false
 
 
 # ---------------------------------------------------------------
@@ -557,7 +557,7 @@ needmoreshare2:
 #google_site_verification:
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-80542932-1
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
