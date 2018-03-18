@@ -16,7 +16,9 @@ tags:
 - Markdown support
 - GO
 
-## 
+## THEME
+http://ethanschoonover.com/solarized
+
 ## 配置
 
 ```xml

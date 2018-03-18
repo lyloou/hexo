@@ -22,13 +22,12 @@ tags:
 - caja
 - 红移（色温调节工具）
 - workrave
-- play on linuxc
-  > PlayOnLinux是一个Wine软件兼容层的图形化前端，可以让Linux的用户安装基于Windows的电子游戏、Microsoft Office、Microsoft Internet Explorer、以及其他许多应用软件，像是Apple iTunes及Safari等。
 - terminal
   [Terminator – Multiple GNOME terminals in one window | Ubuntu Geek](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html)
   [安装 Terminator：一个支持多终端的终端-软件 ◆ 分享|Linux.中国-开源社区](https://linux.cn/article-2978-1.html)
 - tmux
 - zsh
+- catfish 文件搜索
 
 
 ## How to set socks5 proxy in the terminal (在终端中使用代理)
