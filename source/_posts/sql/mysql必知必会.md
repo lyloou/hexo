@@ -76,7 +76,7 @@ SELECT cust_id FROM customers WHERE cust_email IS NULL;
 
 ```
 
-**子句操作符**
+*子句操作符*
 
 | 操作符  | 说明               |
 | ------- | ------------------ |
@@ -89,7 +89,7 @@ SELECT cust_id FROM customers WHERE cust_email IS NULL;
 | >=      | 大于等于           |
 | BETWEEN | 在指定的两个值之间 |
 
-**`AND` & `OR`** 
+*`AND` & `OR`* 
 ```sql
 SELECT prod_id, prod_price, prod_name FROM products WHERE vend_id = 1003 AND prod_price <= 10; # 逻辑与
 SELECT vend_id, prod_id, prod_price, prod_name FROM products WHERE vend_id = 1003 OR vend_id = 1002; # 逻辑或
@@ -101,7 +101,7 @@ SELECT prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 10
 # 使用圆括号没有什么坏处，它能消除歧义
 ```
 
-**`IN`**
+*`IN`*
 ```sql
 SELECT prod_name,prod_price FROM products WHERE vend_id IN (1002, 1003) ORDER BY prod_name;
 ```
@@ -118,7 +118,7 @@ SELECT prod_name, prod_price FROM products WHERE vend_id NOT IN (1002, 1003) ORD
 `NOT`可以和`IN`、`BETWEEN`、`EXISTS`子句结合使用，对结果取反。
 
 
-**通配符**
+### 通配符
 ```sql
 SELECT prod_id, prod_name FROM products WHERE prod_name LIKE 'jet%'; # 检索任意以jet起头的词
 SELECT prod_id, prod_name FROM products WHERE prod_name LIKE '%anvil%'; # 检索任意位置包含文本anvil的值
@@ -131,7 +131,7 @@ SELECT prod_id, prod_name FROM products WHERE prod_name LIKE '_ ton anvil'; # �
     - 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的。
     - 仔细注意通配符的位置。如果放错了地方，可能不会返回想要的数据。
 
-**正则表达式**
+### 正则表达式
 ```sql
 SELECT prod_name FROM products WHERE prod_name REGEXP '1000' ORDER BY prod_name;
 SELECT prod_name FROM products WHERE prod_name REGEXP '.000' ORDER BY prod_name; # `.`匹配任意一个字符
@@ -167,29 +167,76 @@ SELECT prod_name FROM products WHERE prod_name REGEXP '\\([0-9] sticks?\\)'; # s
 
 `^` 有两种用法，在集合中（用`[`和`]`定义），用它来否定该集合，否则，用来指串的开始。
 
-
-
-
-
-## 删除字符串空格
-- RTrim() 删除右边的空格
-- LTrim() 删除左边的空格
-- Trim() 删除左右两边的空格
+简单的正则表达示测试
 ```sql
-SELECT Concat(RTrim(vend_name),' (', RTrim(vend_country), ')') FROM vendors ORDER BY vend_name;
-```
-p83
-
-
-## 验证字符是否符合正则
-```sql
-SELECT 'hello' REGEXP '[0-9]'
+SELECT 'hello' REGEXP '[a-zA-Z]' # 验证字符是否符合正则
 ```
 条件符合时结果为1，条件不符合时结果为0；
 
-## LIKE 操作符
-LIKE
-指示MYSQL，后跟的搜索模式利用通配符匹配而不是直接相等匹配进行比较。
+### 计算字段
+```sql
+SELECT Concat(vend_name, ' (', vend_country, ')') FROM vendors ORDER BY vend_name; # 拼接字段Concatenate, 将值连接到一起构成单个值
+SELECT Concat(vend_name, ' (', vend_country, ')') AS vend_title FROM vendors ORDER BY vend_name; # 别名alias
+SELECT Concat(RTrim(vend_name), ' (', RTrim(vend_country), ')') AS vend_title FROM vendors ORDER BY vend_name; # 去除左边LTrim(), 右边RTrim(), 两边Trim()的空格
+```
+MySQL 算术操作符
+
+| 操作符 | 说明 |
+| ------ | ---- |
+| +      | 加   |
+| -      | 减   |
+| *      | 乘   |
+| /      | 除   |
+
+
+### 数据处理
+```sql
+SELECT vend_name, Upper(vend_name) AS vend_name_upcase FROM vendors ORDER BY vend_name;
+SELECT cust_name, cust_contact FROM customers WHERE Soundex(cust_contact) = Soundex('Y. Lie'); # 比较发音字符
+```
+常用文本处理函数
+
+| 函数        | 说明              |
+| ----------- | ----------------- |
+| Left()      | 返回串左边的字符  |
+| Length()    | 返回串的长度      |
+| Locate()    | 找出串的一个子串  |
+| Lower()     | 将串转换为小写    |
+| LTrim()     | 去除串左边的空格  |
+| Right()     | 返回串右边的字符  |
+| RTrim()     | 去除串右边的空格  |
+| Soundex()   | 返回串的SOUNDEX值 |
+| SubString() | 返回子串的字符    |
+| Upper()     | 将串转换为大写    |
+
+```sql
+SELECT cust_id, order_num FROM orders WHERE Date(order_date) = '2005-09-01';
+SELECT cust_id, order_num FROM orders WHERE Date(order_date) BETWEEN '2005-09-01' AND '2005-09-30';
+SELECT cust_id, order_num FROM orders WHERE Year(order_date) = '2005' AND Month(order_date) = '09';
+```
+常用日期和时间处理函数
+
+| 函数          | 说明                           |
+| ------------- | ------------------------------ |
+| AddDate()     | 增加一个日期（天、周等）       |
+| AddTime()     | 增加一个时间                   |
+| CurDate()     | 返回当前日期                   |
+| CurTime()     | 返回当前日间                   |
+| Date()        | 返回日期时间的日期部分         |
+| DateDiff()    | 计算两个日期之差               |
+| Date_Add()    | 高度灵活的日期运算函数         |
+| Date_Format() | 返回一个格式化的日期或时间串   |
+| Day()         | 返回一个日期的天数部分         |
+| DayOfWeek()   | 对于一个日期，返回对应的星期几 |
+| Hour()        | 返回一个时间的小时部分         |
+| Minute()      | 返回一个时间的分钟部分         |
+| Month()       | 返回一个日期的月数部分         |
+| Now()         | 返回当前日期和时间             |
+| Second()      | 返回一个时间的秒部分           |
+| Time()        | 返回一个日期的时间部分         |
+| Year()        | 返回一个日期的年份部分         |
+
+
 
 ## 何时使用单引号？
 单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。

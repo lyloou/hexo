@@ -17,6 +17,7 @@ tags:
 - idea
 - emacs
 - shadowsocks
+- proxychains
 - fcitx+五笔+english
 - calibre
 - caja
