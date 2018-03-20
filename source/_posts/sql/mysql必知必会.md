@@ -25,7 +25,7 @@ SQL 语句中的空格会被忽略，将 SQL 语句分成多行更容易阅读�
     程序设计语言（如C、C++、Java）等。
 
 ## SHOW
-```sh
+```sql
 SHOW DATABASE;
 SHOW TABLES;
 SHOW COLUMNS FROM customers;
@@ -34,6 +34,18 @@ SHOW CREATE TABLE customers;
 ```
 
 ## 检索
+SELECT 子句及其顺序 p88
+
+| 子句     | 说明               | 是否必须使用             |
+| -------- | ------------------ | ------------------------ |
+| SELECT   | 要返回的列或表达式 | 是                       |
+| FROM     | 从中检索数据的表   | 仅在从表中选择数据时使用 |
+| WHERE    | 行级过滤           | 否                       |
+| GROUP BY | 分组说明           | 仅在按组计算聚集时使用   |
+| HAVING   | 组级过滤           | 否                       |
+| ORDER BY | 输出排序顺序       | 否                       |
+| LIMIT    | 要检索的行数       | 否                       |
+
 ```sql
 SELECT prod_name FROM products;
 SELECT prod_name, prod_price FROM products; # 检索多列
@@ -236,7 +248,45 @@ SELECT cust_id, order_num FROM orders WHERE Year(order_date) = '2005' AND Month(
 | Time()        | 返回一个日期的时间部分         |
 | Year()        | 返回一个日期的年份部分         |
 
+### 汇总数据
+```sql
+SELECT AVG(prod_price) AS avg_price FROM products; # AVG函数只作用于单个列,为了获得多个列的平均值,必须使用多个AVG函数
+SELECT AVG(prod_price) AS avg_price FROM products WHERE vend_id=1003;
+                                                   # AVG 忽略列值为NULL的行
+SELECT COUNT(*) AS num_cust FROM customers; # 对表中的所有行计数, 不论是否为NULL                                                   
+SELECT COUNT(cust_email) AS num_cust FROM customers; # 对特定的列计数,忽略NULL值                                                   
+SELECT MAX(prod_price) AS max_price FROM products; # 找出最大值     ,忽略NULL值                                              
+SELECT MIN(prod_price) AS min_price FROM products; # 找出最小值     ,忽略NULL值
+SELECT SUM(quantity) AS items_ordered FROM orderitems WHERE order_num = 20005; # 指定列求和                                    
+SELECT SUM(quantity*item_price) AS total_price FROM orderitems WHERE order_num = 20005; # 合计计算值
+SELECT AVG(DISTINCT prod_price) AS avg_price FROM products WHERE vend_id = 1003;                                    
+SELECT AVG(ALL prod_price) AS avg_price FROM products WHERE vend_id = 1003; # 默认AVG(ALL)
+SELECT COUNT(*) AS num_items, MIN(prod_price) AS price_min, MAX(prod_price) AS price_max, AVG(prod_price) AS price_avg
+FROM products;
+```
+聚集函数用来汇总数据。MySQL支持一系列聚集函数，可以用多种方法使用它们以返回所需的结果。
+这些函数是高效设计的，它们返回结果一般比你在自己的客户机应用程序中计算要快得多。
 
+### 分组数据
+```sql
+SELECT vend_id, COUNT(*) AS num_prods FROM products GROUP BY vend_id;
+SELECT cust_id, COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(*) >=2;
+SELECT cust_id, COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING orders >=2; # 第三条 
+SELECT vend_id, COUNT(*) AS num_prods FROM products WHERE prod_price >= 10 
+       GROUP BY vend_id HAVING num_prods >=2; # WHERE 和 HAVING 的区别, WHERE在数据分组前进行过滤,HAVING在数据分组后进行过滤,
+                                              # WHERE 排除的行不包括在分组中 
+SELECT order_num, SUM(quantity*item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING ordertotal >=50;                                              
+SELECT order_num, SUM(quantity*item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING ordertotal >=50 ORDER BY ordertotal; # 对总计订单价格排序                                              
+```
+`GROUP BY`重要规定
+    - `GROUP BY` 子句可以包含任意数目。这使得能对分组进行嵌套，为数据分组提供更细致的控制。
+    - 如果在`GROUP BY`子句中嵌套了分组，数据将在最后规定的分组上进行汇总换句话说，在建立分组时，指定的所有列都一起计算
+    （所以不能从个别的列取回数据）。
+    - `GROUP BY` 子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。
+    如果在SELECT中使用表达式，则必须在 GROUP BY 子句中指定相同的表达式。不能使用别名。 // 这个不对吧，譬如上面的第三条语句。版本升级？
+    - 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
+    - 如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值它们将分为一组。
+    - GROUP BY子句必须出现在WHERE子句之后，ORDER BY 子句之前。  
 
 ## 何时使用单引号？
 单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。
