@@ -8,12 +8,9 @@ tags:
 - mysql
 ---
 
-## 表结构和数据文件 
-http://forta.com/books/0672327120/
+> 《MySQL必知必会》——BenForta著 刘晓霞译
+> 表结构和数据源文件 http://forta.com/books/0672327120/
 
-SQL 是不区分大小写的。
-SQL 语句以`;`结束。
-SQL 语句中的空格会被忽略，将 SQL 语句分成多行更容易阅读和调试；
 
 ## 客户机-服务器软件
 - 服务器部分是负责所有数据访问和处理的一个软件。
@@ -26,7 +23,7 @@ SQL 语句中的空格会被忽略，将 SQL 语句分成多行更容易阅读�
 
 ## SHOW
 ```sql
-SHOW DATABASE;
+SHOW DATABASES;
 SHOW TABLES;
 SHOW COLUMNS FROM customers;
 SHOW CREATE DATABASE crashcouse;
@@ -81,8 +78,8 @@ SELECT prod_name, prod_price FROM products ORDER BY prod_price DESC LIMIT 1;    
 
 ### WHERE
 ```sql
-SELECT prod_name, prod_price FROM products WHERE prod_price = 2.50                                                      
-SELECT prod_name, prod_price FROM products WHERE prod_price >= 2.50
+SELECT prod_name, prod_price FROM products WHERE prod_price = 2.50;                                                     
+SELECT prod_name, prod_price FROM products WHERE prod_price >= 2.50;
 SELECT prod_name, prod_price FROM products WHERE prod_price BETWEEN 5 AND 10;
 SELECT cust_id FROM customers WHERE cust_email IS NULL;
 
@@ -147,7 +144,7 @@ SELECT prod_id, prod_name FROM products WHERE prod_name LIKE '_ ton anvil'; # �
 ```sql
 SELECT prod_name FROM products WHERE prod_name REGEXP '1000' ORDER BY prod_name;
 SELECT prod_name FROM products WHERE prod_name REGEXP '.000' ORDER BY prod_name; # `.`匹配任意一个字符
-SELECT prod_name FROM products WHERE prod_name REGEXP BINARY 'JetPack .000' # 默认不匹配大小写, 使用 BINARY 来区分
+SELECT prod_name FROM products WHERE prod_name REGEXP BINARY 'JetPack .000'; # 默认不匹配大小写, 使用 BINARY 来区分
 SELECT prod_name FROM products WHERE prod_name REGEXP '1000|2000|3000'; # 进行OR匹配
 SELECT prod_name FROM products WHERE prod_name REGEXP '[123] ton'; # 匹配任意几个字符, 指定一组用[和]括起来的字符
 SELECT prod_name FROM products WHERE prod_name REGEXP '1|2|3 ton'; # 区别于上面的[123] ton,这里匹配的是1, 2, 3 ton 
@@ -359,6 +356,8 @@ GROUP BY customers.cust_id; # 带聚集函数的联结, 按客户分组；
     - 在一个联结中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，
       分别测试每个联结。这将使故障排除更为简单。
 
-## 何时使用单引号？
-单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。
-用来与数值列进行比较的值不需要引号。
+## 注意
+- 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
+- SQL 是不区分大小写的。
+- SQL 语句以`;`结束。
+- SQL 语句中的空格会被忽略，将 SQL 语句分成多行更容易阅读和调试；
