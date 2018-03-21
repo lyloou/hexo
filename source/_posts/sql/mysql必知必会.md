@@ -288,6 +288,77 @@ SELECT order_num, SUM(quantity*item_price) AS ordertotal FROM orderitems GROUP B
     - 如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值它们将分为一组。
     - GROUP BY子句必须出现在WHERE子句之后，ORDER BY 子句之前。  
 
+### 子查询和联结
+```sql
+SELECT cust_name, cust_contact 
+FROM customers 
+WHERE cust_id IN (SELECT cust_id
+                  FROM orders
+                  WHERE order_num IN (SELECT order_num
+                                      FROM orderitems
+                                      WHERE prod_id = 'TNT2')); # 方法1 子查询 p92
+SELECT cust_name, cust_contact 
+FROM customers
+LEFT JOIN orders ON customers.cust_id = orders.cust_id
+LEFT JOIN orderitems ON orders.order_num = orderitems.order_num
+WHERE orderitems.prod_id = 'TNT2'; # 方法2 外查询 
+
+SELECT cust_name, 
+       cust_state,
+       (SELECT COUNT(*)
+        FROM orders
+        WHERE orders.cust_id = customers.cust_id) AS orders
+FROM customers
+ORDER BY cust_name; # 有必要完全限定列名, 即: table名.filed名
+                                      
+SELECT cust_name, cust_contact 
+FROM customers, orders, orderitems 
+WHERE customers.cust_id = orders.cust_id
+  AND orderitems.order_num = orders.order_num
+  AND prod_id = 'TNT2'; # 方法3 内部查询 p105                                       
+                                      
+SELECT cust_name, cust_contact 
+FROM customers
+INNER JOIN orders ON customers.cust_id = orders.cust_id
+INNER JOIN orderitems ON orders.order_num = orderitems.order_num
+WHERE orderitems.prod_id = 'TNT2'; # 方法4 内部查询 INNER JOIN p104
+                                 # ANSI SQL 规范首选INNER JOIN 语法.对比WHERE子句,明确要使用联结条件, 性能更佳
+
+SELECT p1.prod_id, p1.prod_name
+FROM products AS p1, products AS p2
+WHERE p1.vend_id = p2.vend_id
+  AND p2.prod_id = 'DTNTR'; # 自联结  对比子查询, 有时候处理自联结远比处理子查询快的多
+
+SELECT c.*, o.order_num, o.order_date, 
+       oi.prod_id, oi.quantity, oi.item_price
+FROM customers AS c, orders AS o, orderitems AS oi
+WHERE c.cust_id = o.cust_id
+  AND oi.order_num = o.order_num
+  AND prod_id = 'FB';  # 自然联结 排除多次出现, 全每个列只返回一次
+                       # 系统不完成这项工作, 由你自己完成它
+                       # 一般是对表使用通配符 (SELECT *), 对所有其他表的列使用明确的子集来完成
+
+SELECT customers.cust_id, orders.order_num
+FROM customers LEFT OUTER JOIN orders
+ ON customers.cust_id = orders.cust_id; # 外部联结 和内部联结不同的是，外部联结还包括没有关联行的行。
+                                        # 相对的还有 RIGHT OUT JOIN ，究竟使用哪一种纯粹是根据方便而定
+                                        # 注意：LEFT JOIN 等同于 LEFT OUTER JOIN  —— https://stackoverflow.com/questions/406294/left-join-vs-left-outer-join-in-sql-server
+
+SELECT customers.cust_name,
+       customers.cust_id,
+       COUNT(orders.order_num) AS num_ord
+FROM customers INNER JOIN orders
+ON customers.cust_id = orders.cust_id
+GROUP BY customers.cust_id; # 带聚集函数的联结, 按客户分组；
+                            # 其中 INNER JOIN 可以换成 LEFT JOIN，查找到订单为0的客户                                         
+```
+使用联结的要点：
+    - 注意所使用的联结类型。一般我们使用内部联结，但使用外部联结也是有效的。
+    - 保证使用正确的联结条件，否则将返回不正确的数据。
+    - 应该总是提供联结条件，否则会得出笛卡尔积。
+    - 在一个联结中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，
+      分别测试每个联结。这将使故障排除更为简单。
+
 ## 何时使用单引号？
 单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。
 用来与数值列进行比较的值不需要引号。
