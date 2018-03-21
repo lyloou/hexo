@@ -115,10 +115,10 @@ SELECT prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 10
 SELECT prod_name,prod_price FROM products WHERE vend_id IN (1002, 1003) ORDER BY prod_name;
 ```
 `IN`的功能与`OR`相当，且有更多的优点：
-    - 在使用长的合法选项清单时，`IN`操作符的语法更清楚且更直观。
-    - 在使用`IN`时，计算的次序更容易管理（因为使用的操作符更少）
-    - `IN`操作符一般比`OR`操作符清单执行的更快。
-    - `IN`的最大优点是可以包含其他`SELECT`语句，使得能够更容易动态地建立`WHERE`子句。
+- 在使用长的合法选项清单时，`IN`操作符的语法更清楚且更直观。
+- 在使用`IN`时，计算的次序更容易管理（因为使用的操作符更少）
+- `IN`操作符一般比`OR`操作符清单执行的更快。
+- `IN`的最大优点是可以包含其他`SELECT`语句，使得能够更容易动态地建立`WHERE`子句。
 
 `NOT`，在`WHERE`子句中用来否定后跟条件的关键字
 ```sql
@@ -136,9 +136,9 @@ SELECT prod_id, prod_name FROM products WHERE prod_name LIKE '_ ton anvil'; # �
 ```
 `%`通配符不能匹配值为`NULL`的行。
 使用通配符的技巧：
-    - 不要过度使用通配符。如果其他操作符能达到相同的目的，应该使用其他操作符。
-    - 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的。
-    - 仔细注意通配符的位置。如果放错了地方，可能不会返回想要的数据。
+- 不要过度使用通配符。如果其他操作符能达到相同的目的，应该使用其他操作符。
+- 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的。
+- 仔细注意通配符的位置。如果放错了地方，可能不会返回想要的数据。
 
 ### 正则表达式
 ```sql
@@ -276,14 +276,14 @@ SELECT order_num, SUM(quantity*item_price) AS ordertotal FROM orderitems GROUP B
 SELECT order_num, SUM(quantity*item_price) AS ordertotal FROM orderitems GROUP BY order_num HAVING ordertotal >=50 ORDER BY ordertotal; # 对总计订单价格排序                                              
 ```
 `GROUP BY`重要规定
-    - `GROUP BY` 子句可以包含任意数目。这使得能对分组进行嵌套，为数据分组提供更细致的控制。
-    - 如果在`GROUP BY`子句中嵌套了分组，数据将在最后规定的分组上进行汇总换句话说，在建立分组时，指定的所有列都一起计算
+- `GROUP BY` 子句可以包含任意数目。这使得能对分组进行嵌套，为数据分组提供更细致的控制。
+- 如果在`GROUP BY`子句中嵌套了分组，数据将在最后规定的分组上进行汇总换句话说，在建立分组时，指定的所有列都一起计算
     （所以不能从个别的列取回数据）。
-    - `GROUP BY` 子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。
+- `GROUP BY` 子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。
     如果在SELECT中使用表达式，则必须在 GROUP BY 子句中指定相同的表达式。不能使用别名。 // 这个不对吧，譬如上面的第三条语句。版本升级？
-    - 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
-    - 如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值它们将分为一组。
-    - GROUP BY子句必须出现在WHERE子句之后，ORDER BY 子句之前。  
+- 除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。
+- 如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值它们将分为一组。
+- GROUP BY子句必须出现在WHERE子句之后，ORDER BY 子句之前。  
 
 ### 子查询和联结
 ```sql
@@ -350,11 +350,79 @@ GROUP BY customers.cust_id; # 带聚集函数的联结, 按客户分组；
                             # 其中 INNER JOIN 可以换成 LEFT JOIN，查找到订单为0的客户                                         
 ```
 使用联结的要点：
-    - 注意所使用的联结类型。一般我们使用内部联结，但使用外部联结也是有效的。
-    - 保证使用正确的联结条件，否则将返回不正确的数据。
-    - 应该总是提供联结条件，否则会得出笛卡尔积。
-    - 在一个联结中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，
-      分别测试每个联结。这将使故障排除更为简单。
+- 注意所使用的联结类型。一般我们使用内部联结，但使用外部联结也是有效的。
+- 保证使用正确的联结条件，否则将返回不正确的数据。
+- 应该总是提供联结条件，否则会得出笛卡尔积。
+- 在一个联结中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，分别测试每个联结。这将使故障排除更为简单。
+
+### 组合查询
+```sql
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE prod_price <= 5
+UNION
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE vend_id IN (1001, 1002);
+
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE prod_price <= 5
+UNION ALL
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE vend_id IN (1001, 1002); # 使用 UNION ALL 不排除重复的行
+
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE prod_price <= 5
+UNION 
+SELECT vend_id, prod_id, prod_price
+FROM products
+WHERE vend_id IN (1001, 1002)
+ORDER BY vend_id, prod_price; # 使用 UNION查询，只能使用一条ORDER BY 子句，必须出现在最后一条SELECT语句之后。但实际上是对所有结果排序。
+```
+`UNION`规则
+- UNION必须由两条或两条以上的SELECT语句组成，语句之间用关键字UNION分隔（因此，如果组合4条SELECT语句，将要使用3个UNION关键字）
+- UNION中的每个查询必须包含相同的列、表达式或聚集函数（不过各个列不需要以相同的次序列出）。
+- 列数据类型必须兼容：类型不必完全相同，但必须是DBMS可以隐含地转换的类型（例如，不同的数值类型或不同的日期类型）。
+
+### 全文本搜索 
+```sql
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('rabbit');
+
+SELECT note_text, Match(note_text) Against('rabbit') AS rank 
+FROM productnotes; # 演示排序如何工作（等级越高，越靠前）
+
+SELECT note_text FROM productnotes 
+WHERE Match(note_text) Against('anvils' WITH QUERY EXPANSION);
+
+SELECT note_text
+FROM productnotes
+WHERE Match(note_text) Against('heavy -rope*' IN BOOLEAN MODE);
+
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('+rabbit +bait' IN BOOLEAN MODE);
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('rabbit bait' IN BOOLEAN MODE);
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('"rabbit bait"' IN BOOLEAN MODE);
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('>rabbit <carrot' IN BOOLEAN MODE);
+SELECT note_text FROM productnotes WHERE Match(note_text) Against('+safe +(<combination)' IN BOOLEAN MODE);
+
+```
+MySQL中，最常用的两个引擎为MyISAM和InnoDB，MyISAM引擎支持全文本搜索。
+不要在导入数据时使用FULLTEXT，应该首先导入数据，然后再修改表，定义FULLTEXT。
+
+全文本布尔操作符
+
+| 布尔操作符 | 说明                                                                       |
+| ---------- | -------------------------------------------------------------------------- |
+| +          | 包含，词必须存在                                                           |
+| -          | 排除，词必须不出现                                                         |
+| >          | 包含，而且增加等级值                                                       |
+| <          | 包含，且减少等级值                                                         |
+| ()         | 把词组成子表达式（允许这些子表达式作为一个组实包含、排除、排列等）         |
+| ~          | 取消一个词的排序值                                                         |
+| *          | 词尾的通配符                                                               |
+| ""         | 定义一个短语（与单个词的列表不一样，它匹配整个短语以便包含或排除这个短语） |
 
 ## 注意
 - 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
