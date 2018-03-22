@@ -424,6 +424,155 @@ MySQL中，最常用的两个引擎为MyISAM和InnoDB，MyISAM引擎支持全文
 | *          | 词尾的通配符                                                               |
 | ""         | 定义一个短语（与单个词的列表不一样，它匹配整个短语以便包含或排除这个短语） |
 
+## 插入 & 更新 & 删除
+### INSERT
+```sql
+INSERT INTO customers(cust_name,
+  cust_contact,
+  cust_email,
+  cust_address,
+  cust_city,
+  cust_state,
+  cust_zip,
+  cust_country)
+VALUES('Pep E.LaPew',
+  NULL,
+  NULL,
+  '100 Main Street',
+  'Los Angeles',
+  'CA',
+  '90046',
+  'USA');
+
+INSERT INTO customers(cust_name,
+  cust_address,
+  cust_city,
+  cust_state,
+  cust_zip,
+  cust_country)
+VALUES('Pep E. Lapwe',
+'100 Main Street',
+'Los Angeles',
+'CA',
+'90046',
+'USA'),
+('M. Martian',
+'42 Galaxy Way',
+'New York',
+'NY',
+'11213',
+'USA'); # 一次插入多条数据：单条INSERT语句处理多个插入比使用多条INSERT语句快。
+
+INSERT INTO customers(cust_name,
+  cust_address,
+  cust_city,
+  cust_state,
+  cust_zip,
+  cust_country)
+SELECT cust_name,
+       cust_address,
+       cust_city,
+       cust_state,
+       cust_zip,
+       cust_country
+FROM custnew; # 插入检索出的数据；
+              # 不一定要求一列名匹配，但是列要互相对应：第一列对第一列，第二列对第二列。         
+        
+```
+总是使用列的列表：即便表的结构改变，INSERT语句仍能正确工作。
+省略列，须满足以下某个条件：
+- 该列定义为允许NULL值（无值或空值）
+- 在表定义中给出默认值。这表示如果不给出值，将使用默认值。
+
+如果系统的数据检索是最重要的，可以降低INSERT、UPDATE、DELETE的优先级来提高整体性能。
+`INSERT LOW PRIORITY INTO`
+
+### UPDATE
+```sql
+UPDATE customers
+SET cust_email = 'elmer@fudd.com'
+WHERE cust_id = 10005; # 务必指定 WHERE子句，否则更新所有行。
+
+UPDATE customers SET cust_email = NULL WHERE cust_id = 10005; # 删除某个列的值，可设置它为NULL(前提是可以为NULL)
+```
+### DELETE 
+```sql
+DELETE FROM customers
+WHERE cust_id = 10006; # 务必指定 WHERE子句，否则删除所有行。
+
+DELETE FROM customers; # 删除所有用户（逐行删除）
+TRUNCATE TABLE customers; # 删除所有用户，更快的删除（删除表并重新创建表）
+```
+
+更新和删除的指导原则
+- 除非确实打算更新和删除每一行，否则绝对不要使用不带WHERE子句的UPDATE或DELETE语句；
+- 保证每个表都有主键，尽可能像WHERE子句那样使用它（可以指定各主键、多个值或值的范围）；
+- 在对UPDATE或DELETE使用WHERE 子句前，应该先用SELECT进行测试，保证它过滤的是正确的记录，以防编写的WHERE子句不正确。
+- 使用强制实施引用完整性的数据库，这样MySQL将不允许删除具有与其他表相关联的数据的行。
+
+## 创建和操纵表
+```sql
+CREATE TABLE customers
+(
+  cust_id       int       NOT NULL AUTO_INCREMENT,
+  cust_name     char(50)  NOT NULL,
+  cust_address  char(50)  NULL,
+  cust_city     char(50)  NULL,
+  cust_state    char(5)   NULL,
+  cust_zip      char(10)  NULL,
+  cust_country  char(50)  NULL,
+  cust_contact  char(50)  NULL,
+  cust_email    char(50)  NULL,
+  PRIMARY KEY (cust_id)
+) ENGINE = InnoDB; # 适当的格式缩进以便阅读和编辑
+                   # 试图给NOT NULL的列插入NULL（该列无值），将返回错误，插入失败
+                   # 每个表只允许一个AUTO_INCREMENT列，而且它必须被索引（如，使它成为主键）
+                   # `SELECT last_insert_id()`来获取最后一个AUTO_INCREMENT值。
+
+CREATE TABLE IF NOT EXISTS customers
+(cust_id       int       NOT NULL AUTO_INCREMENT); # 仅在表名不存在时创建
+
+CREATE TABLE IF NOT EXISTS orderitems
+(
+  order_num   int       NOT NULL , 
+  order_item  int       NOT NULL ,
+  prod_id     char(10)  NOT NULL ,
+  quantity    int       NOT NULL DEFAULT 1,
+  item_price  DECIMAL(8,2) NOT NULL ,
+  PRIMARY KEY (order_num, order_item)
+) ENGINE = InnoDB; # 由多个列组成的主键，以逗号分隔。
+                   # 默认值不可为函数，只支持常量
+```
+引擎：
+- InnoDB是一个可靠的事务处理引擎，它不支持全文本搜索。
+- MEMORY在功能等同于MyISAM，但由于数据存储在内在（不是磁盘）中，速度很快（特别适合于临时表）
+- MyISAM是一个性能极高的引擎，它支持全文本搜索，但不支持事务处理。
+
+外键不能跨引擎，即使用一个引擎的表不能引用具有使用不同引擎的表的外键。
+使用哪个引擎，依赖于需要什么样的特性；
+
+```sql
+ALTER TABLE vendors
+ADD vend_phone CHAR(20); # 添加一个列
+
+ALTER TABLE vendors
+DROP COLUMN vend_phone; # 删除列
+
+ALTER TABLE orderitems
+ADD CONSTRAINT fk_orderitems_orders
+FOREIGN KEY (order_num) REFERENCES orders (order_num); # ALTER TABLE常见的用途是定义外键。
+
+
+DROP TABLE customers2; # 删除表
+
+RENAME TABLE customers2 TO customers; # 重命名表
+
+RENAME TABLE backup_customers TO customers,
+             backup_vendors TO vendors,
+             backup_products TO products; # 对多个表重命名
+```
+
+
 ## 注意
 - 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
 - SQL 是不区分大小写的。
