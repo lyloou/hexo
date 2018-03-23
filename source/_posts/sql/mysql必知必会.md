@@ -572,6 +572,75 @@ RENAME TABLE backup_customers TO customers,
              backup_products TO products; # 对多个表重命名
 ```
 
+## 使用视图
+*常见视图应用*
+- 重用SQL语句
+- 简化复杂SQL操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节。
+- 使用表的组成部分而不是整个表。
+- 保护数据。可以给用户授予表的特定部分的访问权限而不是整个表的访问权限。
+- 更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。
+
+*视图的规则和限制*
+- 与表一样，视图必须唯一命名（视图名不能重复或与表名相同）
+- 对于可以创建的视图数目没有限制。
+- 为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予。
+- 视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图
+- ORDER BY可以用在视图中，但如果从该视图检索数据的SELECT语句中也含有ORDER BY， 那么该视图中的ORDER BY将被覆盖。
+- 视图不能索引，也不能有关联的触发器或默认值。
+- 视图可以和表一起使用。例如，编写一条联结表和视图的SELECT语句。
+
+*视图的创建*
+- 视图用CREATE VIEW语句来创建。
+- 使用`SHOW CREATE VIEW viewname;` 来查看创建视图的语句。
+- 用DROP删除视图，其语法为`DROP VIEW viewname;`
+- 更新视图时，可以先用DROP再用CREATE，也可以直接用`CREATE OR REPLACE VIEW`。如果更新的视图不存在，则第1条语句会创建一个视图；
+  如果要更新的视图存在，则第2条更新的语句会替换原有视图。
+
+```sql
+CREATE VIEW productcustomers AS 
+SELECT cust_name, cust_contact, prod_id
+FROM customers, orders, orderitems
+WHERE customers.cust_id = orders.cust_id
+    AND orderitems.order_num = orders.order_num; # 创建视图
+    
+SELECT cust_name, cust_contact
+FROM productcustomers
+WHERE prod_id = 'TNT2';    # 查询视图
+
+CREATE VIEW vendorlocations AS 
+SELECT Concat(RTrim(vend_name), ' (', RTrim(vend_country), ')')
+    AS vend_title
+FROM vendors
+ORDER BY vend_name; # 创建重新格式化的视图
+
+SELECT * FROM vendorlocations;
+
+CREATE VIEW customeremaillist AS
+SELECT cust_id, cust_name, cust_email
+FROM customers
+WHERE cust_email IS NOT NULL; # 创建过滤条件的视图
+
+SELECT * FROM customeremaillist;
+
+CREATE VIEW orderitemsexpanded AS 
+SELECT order_num,
+       prod_id,
+       quantity,
+       item_price,
+       quantity*item_price AS expanded_price
+FROM orderitems;
+SELECT * FROM orderitemsexpanded WHERE order_num = 20005; 
+```  
+*视图定义在以下操作不可更新*
+- 分组（使用GROUPING和HAVING）
+- 联结
+- 子查询
+- 并
+- 聚集函数（Min(), Cust(), Sum()等）
+- DISTINCT
+- 导出（计算）列
+
+视图的主要作用在于数据检索，而不用于更新（INSERT、UPDATE和DELETE）
 
 ## 注意
 - 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
