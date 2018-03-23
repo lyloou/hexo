@@ -9,15 +9,22 @@ tags:
 
 
 获取最大值/最小值
-```
-// 最小值
+```sql
+# 最小值
 select min(column_name) from table_name;
-select top 1 num from table_name order by num;
+select num from table_name order by num;
 
-// 最大值
+# 最大值
 select max(column_name) from table_name;
-select top 1 num from table_name order by num desc;
+select num from table_name order by num desc;
+
+# 获取最大值所在行
+SELECT * 
+FROM orders
+WHERE final_amount = (SELECT MAX(final_amount)
+					   FROM orders);
 ```
+
 
 参考资料
 =======
