@@ -32,37 +32,37 @@ qs = qs.Limit(pageSize, pageNo*pageSize) // 请注意和MySQL语法的区别：L
 ## 解析`[]orm.Params`
 ```go
 func analyseParams(params *[]orm.Params) {
-	keyImage := "image"
-	keyStatus := "status"
-	keyEndAt := "end_at"
-	for _, param := range *params {
-		// replace image
-		if vv, ok := param[keyImage]; ok {
-			r := reflect.ValueOf(vv)
-			if r.Kind() == reflect.String {
-				temp_arr := strings.Split(r.String(), ",")
-				param[keyImage] = commons.ImagePath(temp_arr[0])
-			}
-		}
+    keyImage := "image"
+    keyStatus := "status"
+    keyEndAt := "end_at"
+    for _, param := range *params {
+        // replace image
+        if vv, ok := param[keyImage]; ok {
+            r := reflect.ValueOf(vv)
+            if r.Kind() == reflect.String {
+                temp_arr := strings.Split(r.String(), ",")
+                param[keyImage] = commons.ImagePath(temp_arr[0])
+            }
+        }
 
-		// add status
-		if vv, ok := param[keyEndAt]; ok {
-			r := reflect.ValueOf(vv)
-			if r.Kind() == reflect.String {
-				now := time.Now().UnixNano()
-				startTime, err := time.Parse("2006-01-02 15:04:05", r.String())
-				if err != nil {
-					logs.Error("转换时间错误：", err)
-					continue
-				}
-				if startTime.UnixNano() > now {
-					param[keyStatus] = "notbegin"
-				}
-			}
-    	}
-    	
-    	// delete marketable_at
-    	delete(params, "marketable_at")
-	}
+        // add status
+        if vv, ok := param[keyEndAt]; ok {
+            r := reflect.ValueOf(vv)
+            if r.Kind() == reflect.String {
+                now := time.Now().UnixNano()
+                startTime, err := time.Parse("2006-01-02 15:04:05", r.String())
+                if err != nil {
+                    logs.Error("转换时间错误：", err)
+                    continue
+                }
+                if startTime.UnixNano() > now {
+                    param[keyStatus] = "notbegin"
+                }
+            }
+        }
+        
+        // delete marketable_at
+        delete(params, "marketable_at")
+    }
 }
 ```
