@@ -28,6 +28,15 @@ cdt=cd /d d:/t
 cdw=cd /d d:/w
 ```
 
+## Settings -> Startup/Environment
+```sh
+set PATH=%ConEmuBaseDir%\Scripts;%PATH%
+set LANG=zh_CN.UTF8
+set HOME=D:\w\cmder
+set http_proxy=http://127.0.0.1:1080
+set https_proxy=http://127.0.0.1:1080
+```
+
 ## 快捷键
 模仿terminal终端的快捷键，
 +^O: 水平分割

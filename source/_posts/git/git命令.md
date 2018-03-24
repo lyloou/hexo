@@ -92,6 +92,35 @@ $ git clean --help
 > [Bug分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000)
 
 
+## 添加注释的技巧
+参考`golang.org/x/net`的提交日志：
+```sh
+* 92b859f - ipv6: update icmp parameters (4 days ago) <Mikio Hara>
+* 344b2e3 - ipv4: update icmp parameters (4 days ago) <Mikio Hara>
+* 08b7f81 - internal/iana: add address family number constants (4 days ago) <Mikio Hara>
+* a4c73ec - icmp: use subtests (4 days ago) <Mikio Hara>
+* 24dd378 - dns/dnsmessage: reject compressed SRV resource records (6 days ago) <Ian Gudger>
+* e0c57d8 - CONTRIBUTING.md: remove note about not accepting Pull Requests (9 days ago) <Andrew Bonventre>
+* 892bf7b - dns/dnsmessage: correctly handle multiple and >255 byte TXT records (10 days ago) <Ian Gudger>
+* 803fdb9 - ipv4, ipv6, icmp, internal/socket: fix build on netbsd/arm (10 days ago) <Mikio Hara>
+* ae89d30 - route: avoid unnecessary type conversions (12 days ago) <namusyaka>
+* d0aafc7 - trace: fix races on concurrent Trace method calls (2 weeks ago) <David Howden>
+```
+名称最好简洁、准确，
+可以总结：`模块: 动词 + 名词；`
+动词：
+```
+- add 
+- update
+- fix
+- remove
+- simply 
+- enable
+- disable
+- rename
+
+```
+
 ## 参考链接
 - 《GitHub入门与实践》
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
