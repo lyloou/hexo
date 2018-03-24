@@ -642,6 +642,113 @@ SELECT * FROM orderitemsexpanded WHERE order_num = 20005;
 
 视图的主要作用在于数据检索，而不用于更新（INSERT、UPDATE和DELETE）
 
+## 存储过程
+*为什么使用存储过程*
+- 通过把处理封装在容易使用的单元中，简化复杂的操作。
+- 由于不要求反复建立一系列处理步骤，这保证了数据的完整性。
+  如果所有开发人员和应用程序都使用同一存储过程，则所使用的代码都是相同的。防止错误，保证了数据的一致性。
+- 简化对变动的管理。如果表名、列名、或业务逻辑有变化，只需要更改存储过程的代码。使用这的人员甚至不需要知道这些变化。
+  这一点的延伸就是安全性。通过存储过程限制对基础数据的访问减少了数据讹误的机会。
+- 提高性能。因为使用在座过程比使用单独的SQL语句要快。
+- 存在一些只能用在单个请求中的MySQL元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码。
+
+换句话说，使用存储过程有3个主要好处：简单、安全、高性能。
+
+另外也有一些缺陷：
+- 存储过程的编写比SQL语句复杂，编写存储过程概要更高的技能，更丰富的经验。
+- 由于数据库管理员限制，可能只有使用的权限，没有创建的权限。
+
+```sql
+CREATE PROCEDURE productpricing(
+  OUT pl DECIMAL(8,2),
+  OUT ph DECIMAL(8,2),
+  OUT pa DECIMAL(8,2)
+)
+BEGIN
+  SELECT Min(prod_price)
+  INTO pl
+  FROM products;
+  SELECT MAX(prod_price)
+  INTO ph
+  FROM products;
+  SELECT AVG(prod_price)
+  INTO pa
+  FROM products;      
+END; # 存储过程的创建
+     # 参数中的IN：传递数据给存储过程
+     # 参数中的OUT：从存储过程传出
+     # 参数中的INOUT：对存储过程传入传出
+
+CALL productpricing(@pricelow, @pricehigh, @priceaverage); # 调用存储过程
+
+SELECT @pricelow; # 检索结果 
+SELECT @pricehigh;
+SELECT @priceaverage;
+
+DROP PROCEDURE productpricing; # 删除存储过程，如果不存在会产生错误
+DROP PROCEDURE IF EXISTS productpricing; # 删除存储过程 
+
+SHOW CREATE PROCEDURE productpricing; # 检查存储过程
+SHOW PROCEDURE STATUS LIKE 'productpricing'; # 限制过程状态结果
+```
+
+> mysql命令行客户机的分隔符：
+> mysql命令行实用程序使用`;`作为分隔符   
+> 默认mysql语句也使用`;`作为分隔符
+> 解决冲突的办法是临时更改命令行实用程序的语句分隔符
+```sql
+DELIMITER //
+CREATE PROCEDURE productpricing()
+BEGIN
+    SELECT Avg(prod_price) AS priceaverage
+    FROM products;
+END //
+DELIMITER ;
+```
+考虑这个场景。你需要获得与以前一样的订单合计，但需要对合计增加营业税，不过只针对某些顾客。
+那么，你需要做下面几件事情：
+- 获得合计（与以前一样）；
+- 把营业税有条件地添加到合计；
+- 返回合计（带或不带税）
+```sql
+-- Name: order total
+-- Parameters: onumber = order number
+--             taxable = 0 if not taxable, 1 if taxable
+--             ototal = order total variable
+
+CREATE PROCEDURE ordertotal(
+  IN onumber INT,
+  IN taxable BOOLEAN, 
+  OUT ototal DECIMAL(8, 2)
+) COMMENT 'Obtain order total, optionally adding tax'
+BEGIN 
+  -- Declare variable for total
+  DECLARE total DECIMAL(8, 2);
+  -- Decliare tax percentage
+  DECLARE taxrate INT DEFAULT 6;
+  
+  -- Get the order total
+  SELECT Sum(item_price*quantity)
+  FROM orderitems
+  WHERE order_num = onumber
+  INTO total;
+  
+  -- Is this taxable?
+  IF taxable THEN   # 不可使用 ELSEIF THEN、ELSE子句
+  SELECT total+(total/100*taxrate) INTO total;
+  END IF;
+  
+  -- And finally, save to out variable
+  SELECT total INTO ototal; 
+END;
+
+CALL ordertotal(20005, 0, @total);
+SELECT @total;
+CALL ordertotal(20005, 1, @total);
+SELECT @total;
+               
+```    
+
 ## 注意
 - 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
 - SQL 是不区分大小写的。
