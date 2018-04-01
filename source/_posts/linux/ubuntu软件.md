@@ -1,5 +1,6 @@
 ---
 title: ubuntu软件
+sticky: 10
 date: 2016-09-26 17:16:15
 toc: true
 comments: true
