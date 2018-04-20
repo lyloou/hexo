@@ -642,6 +642,321 @@ SELECT * FROM orderitemsexpanded WHERE order_num = 20005;
 
 视图的主要作用在于数据检索，而不用于更新（INSERT、UPDATE和DELETE）
 
+## 存储过程
+*为什么使用存储过程*
+- 通过把处理封装在容易使用的单元中，简化复杂的操作。
+- 由于不要求反复建立一系列处理步骤，这保证了数据的完整性。
+  如果所有开发人员和应用程序都使用同一存储过程，则所使用的代码都是相同的。防止错误，保证了数据的一致性。
+- 简化对变动的管理。如果表名、列名、或业务逻辑有变化，只需要更改存储过程的代码。使用这的人员甚至不需要知道这些变化。
+  这一点的延伸就是安全性。通过存储过程限制对基础数据的访问减少了数据讹误的机会。
+- 提高性能。因为使用在座过程比使用单独的SQL语句要快。
+- 存在一些只能用在单个请求中的MySQL元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码。
+
+换句话说，使用存储过程有3个主要好处：简单、安全、高性能。
+
+另外也有一些缺陷：
+- 存储过程的编写比SQL语句复杂，编写存储过程概要更高的技能，更丰富的经验。
+- 由于数据库管理员限制，可能只有使用的权限，没有创建的权限。
+
+```sql
+CREATE PROCEDURE productpricing(
+  OUT pl DECIMAL(8,2),
+  OUT ph DECIMAL(8,2),
+  OUT pa DECIMAL(8,2)
+)
+BEGIN
+  SELECT Min(prod_price)
+  INTO pl
+  FROM products;
+  SELECT MAX(prod_price)
+  INTO ph
+  FROM products;
+  SELECT AVG(prod_price)
+  INTO pa
+  FROM products;      
+END; # 存储过程的创建
+     # 参数中的IN：传递数据给存储过程
+     # 参数中的OUT：从存储过程传出
+     # 参数中的INOUT：对存储过程传入传出
+
+CALL productpricing(@pricelow, @pricehigh, @priceaverage); # 调用存储过程
+
+SELECT @pricelow; # 检索结果 
+SELECT @pricehigh;
+SELECT @priceaverage;
+
+DROP PROCEDURE productpricing; # 删除存储过程，如果不存在会产生错误
+DROP PROCEDURE IF EXISTS productpricing; # 删除存储过程 
+
+SHOW CREATE PROCEDURE productpricing; # 检查存储过程
+SHOW PROCEDURE STATUS LIKE 'productpricing'; # 限制过程状态结果
+```
+
+> mysql命令行客户机的分隔符：
+> mysql命令行实用程序使用`;`作为分隔符   
+> 默认mysql语句也使用`;`作为分隔符
+> 解决冲突的办法是临时更改命令行实用程序的语句分隔符
+```sql
+DELIMITER //
+CREATE PROCEDURE productpricing()
+BEGIN
+    SELECT Avg(prod_price) AS priceaverage
+    FROM products;
+END //
+DELIMITER ;
+```
+考虑这个场景。你需要获得与以前一样的订单合计，但需要对合计增加营业税，不过只针对某些顾客。
+那么，你需要做下面几件事情：
+- 获得合计（与以前一样）；
+- 把营业税有条件地添加到合计；
+- 返回合计（带或不带税）
+```sql
+-- Name: order total
+-- Parameters: onumber = order number
+--             taxable = 0 if not taxable, 1 if taxable
+--             ototal = order total variable
+
+CREATE PROCEDURE ordertotal(
+  IN onumber INT,
+  IN taxable BOOLEAN, 
+  OUT ototal DECIMAL(8, 2)
+) COMMENT 'Obtain order total, optionally adding tax'
+BEGIN 
+  -- Declare variable for total
+  DECLARE total DECIMAL(8, 2);
+  -- Decliare tax percentage
+  DECLARE taxrate INT DEFAULT 6;
+  
+  -- Get the order total
+  SELECT Sum(item_price*quantity)
+  FROM orderitems
+  WHERE order_num = onumber
+  INTO total;
+  
+  -- Is this taxable?
+  IF taxable THEN   # 不可使用 ELSEIF THEN、ELSE子句
+  SELECT total+(total/100*taxrate) INTO total;
+  END IF;
+  
+  -- And finally, save to out variable
+  SELECT total INTO ototal; 
+END;
+
+CALL ordertotal(20005, 0, @total);
+SELECT @total;
+CALL ordertotal(20005, 1, @total);
+SELECT @total;
+               
+```    
+
+## 游标
+MySQL游标只能用于存储过程。
+
+使用游标的步骤：
+- 在能够使用游标前，必须声明（定义）它。这个过程实际上没有检索数据，它只是定义要使用的SELECT语句。
+- 一旦声明后，必须打开游标以供使用。这个过程用前面定义的SELECT语句把数据实际检索出来。
+- 对于填有数据的游标，根据需要取出（检索）各行。
+- 在结束游标使用时，必须关闭游标。
+
+```sql
+CREATE PROCEDURE processorders()
+BEGIN
+  -- Declare local variables
+  DECLARE done BOOLEAN DEFAULT 0;
+  DECLARE o INT;
+  DECLARE t DECIMAL(8, 2);
+  
+  -- Declare the cursor
+  DECLARE ordernumbers CURSOR
+  FOR 
+  SELECT order_num FROM orders;
+  -- Declare continue handler
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done=1; # SQLSTATE '02000'是一个未找到条件。
+  
+  -- Create a table to store the results
+  CREATE TABLE IF NOT EXISTS ordertotals(order_num INT, total DECIMAL(8, 2));
+  
+  -- Open the cursor
+  OPEN ordernumbers;
+  
+  -- Loop through all rows
+  REPEAT
+    -- Get order number
+    FETCH ordernumbers INTO o;
+    
+    -- Get the total for this order
+    CALL ordertotal(o, 1, t);
+    
+    -- Insert order and total into ordertotals
+    INSERT INTO ordertotals(order_num, total) VALUES(o, t);
+    
+    -- End of loop
+  UNTIL done  END REPEAT;
+  
+  -- Close the cursor
+  CLOSE ordernumbers;
+END;  # 使用游标将Fetch的数据存储到表中
+
+CALL processorders(); # 调用
+SELECT * FROM ordertotals;
+```
+
+## 触发器
+触发器，在表发生一些更改时，自动处理一些事情。
+MySQL触发器只支持`UPDATE`、`DELETE`、`INSERT`。
+创建触发器，需要给出4条信息：
+- 唯一的触发器名；
+- 触发器关联的表；
+- 触发器应该响应的活动（DELETE、INSERT或UPDATE）
+- 触发器何时执行（处理之前或之后）
+```sql
+# http://www.cnblogs.com/duhuo/p/4655957.html
+CREATE TRIGGER newproduct AFTER INSERT ON products
+FOR EACH ROW SELECT 'Product added' INTO @msg; # 创建触发器
+INSERT INTO products (prod_id, vend_id, prod_name, prod_price, prod_desc) VALUES ('Lou', 1002, 'TNT 5', 20, 'TNT 5, yellow, pack of 100 sticks');
+SELECT @msg;
+
+DROP TRIGGER newproduct; # 删除触发器
+
+CREATE TRIGGER deleteorder BEFORE DELETE ON orders
+FOR EACH ROW 
+BEGIN 
+    INSERT INTO archive_orders(order_num, order_date, cust_id)
+    VALUES(OLD.order_num, OLD.order_date, OLD.cust_id); # 删除前先存档
+END;
+
+CREATE TRIGGER updatevendor BEFORE UPDATE ON vendors
+FOR EACH ROW SET NEW.vend_state = Upper(New.vend_state); # 更新前先转换为大写（数据净化）
+```
+
+> 只有表支持触发器，视图不支持
+
+> 每个表支持6个触发器（每条INSERT、UPDATE、DELETE的之前和之后）
+
+> 如果BEFORE触发器失败，则MySQL将不执行请求的操作。
+此外，如果BEFORE触发器或语句本身失败，MySQL将不执行AFTER触发器（如是有的话）
+
+> 触发器一个非常有意义的使用是创建审计跟踪。使用触发器，把更改记录到另外一个表非常容易。
+
+## 管理事务
+事务处理（transaction processing） 可以用来维护数据库的完整性，它保证成批的MySQL操作要么完全执行，要么完全不执行。
+
+MyISAM引擎不支持事务，InnoDB支持事务。
+
+```sql
+SELECT * FROM ordertotals;
+START TRANSACTION WITH CONSISTENT SNAPSHOT ;  # 标识事务开始
+DELETE FROM ordertotals;
+ROLLBACK ; # 只能在一个事务处理内使用（在执行一条START TANASACTION之后）
+SELECT * FROM ordertotals;
+
+START TRANSACTION WITH CONSISTENT SNAPSHOT ;  # 标识事务开始
+DELETE FROM orderitems WHERE order_num = 20007; 
+DELETE FROM orders WHERE order_num = 20007; 
+COMMIT; # 提交事务
+
+SAVEPOINT delete1; # 保留点
+ROLLBACK TO delete1; # 回滚到保留点
+
+SET AUTOCOMMIT = 0; # 设置不自动提交
+```
+
+## 全球化和本地化
+```sql
+SHOW CHARACTER SET ; # 查看字符集
+SHOW COLLATION ; # 查看校对, 以latin1为例，许多校对出现两次，一次区分大小写（由_cs表示）， 一次不区分（由_ci表示）
+
+SHOW VARIABLES LIKE 'character%';
+SHOW VARIABLES LIKE 'collation%';
+
+CREATE TABLE mytable
+(
+  columnn1 INT, 
+  columnn2 VARCHAR(10) 
+) DEFAULT CHARACTER SET hebrew
+  COLLATE hebrew_general_ci; # 给表指定字符集和校对
+
+CREATE TABLE mytable
+(
+  columnn1 INT, 
+  columnn2 VARCHAR(10), 
+  columnn3 VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_general_ci # 给特定的列指定字符集和校对
+) DEFAULT CHARACTER SET hebrew
+  COLLATE hebrew_general_ci;
+
+SELECT * FROM customers
+ORDER BY lastname, firstname COLLATE latin1_general_cs;  
+   # 校对在对用`ORDER BY`子句检索出来的数据排序时起重要的作用（如是否忽略大小写）。
+```
+
+## 安全管理
+MySQL的用户账号和信息存储在名为mysql的MySQL数据库中。
+```sql
+USE mysql;
+SELECT user FROM user;
+
+CREATE USER name_lou IDENTIFIED BY 'password_lou'; # 创建用户
+RENAME USER name_lou TO lou; # 更改名
+
+DROP USER lou; # 删除账号
+
+SHOW GRANTS FOR lou; # 查看已经有的权限
+GRANT SELECT ON goods.* TO lou; # 授予goods数据库的所有表的SELECT权限
+REVOKE SELECT ON goods.* FROM lou; # 撤销权限
+
+GRANT SELECT, INSERT ON goods.* TO lou; # 简化多次授权，使用逗号分隔
+
+SET PASSWORD FOR lou = Password('new_password'); # 更改口令； 
+SET PASSWORD = Password('new_password'); # 更改自己的口令； 
+```
+*GRANT和REVOKE可在几个层次上控制访问权限*
+- 整个服务器，使用GRANT ALL和REVOKE ALL；
+- 整个数据库，使用ON database.*;
+- 特定的表，使用ON database.table;
+- 特定的列；
+- 特定的存储过程；
+- 详细看p202
+
+## 数据库维护
+从以下几个角度考虑
+- 备份数据
+备份前使用`FLUSH TABLE`
+
+- 表问题分析和检查
+```sql
+ANALYZE TABLE orders;
+CHECK TABLE orders, orderitems;
+```
+- 诊断启动问题
+使用命令行选项，`--help`、`--safe-mode`、`--verbose`
+
+- 查看日志文件
+https://stackoverflow.com/questions/5441972/how-to-see-log-files-in-mysql
+
+## 改善性能
+- 一般来说，关键的生产DBMS应该运行在自己的专用服务器上。
+- MySQL是用一系列默认设置预先配置的，这些设置开始通常是很好的。但过一段时间后你可能需要调整内在分配、缓冲区大小等。
+  （为查看当前设置，可使用SHOW VARIABLES; 和SHOW STATUS;）
+- MySQL是一个多用户多线程的DBMS，换言之，它经常同时执行多个任务。
+  如果这些任务中的某个执行缓慢，则所有请求都会执行缓慢。
+  如果你遇到显著的性能不良，可使用`SHOW PROCESSLIST`显示所有活动进程（以及它们的线程ID和执行时间）。
+  你还可以用KILL命令终结某个特定的进程（使用这个命令需要作为管理员登录）。
+- 总是有不止一种方法编写同一条SELECT语句。应该试验联结、并、子查询等，找出最佳的方法。
+- 使用EXPANIN语句让MySQL解释它将如何执行一条SELECT语句。
+- 一般来说，存储过程执行得比一条一条地执行其中的各条MySQL语句快。
+- 应该总是使用正确的数据类型。
+- 决不要检索比需求还要多的数据。换言之，不要用`SELECT *`（除非你真正需要每个列）。
+- 有的操作（包括INSERT）支持一个可靠的DELAYED关键字，如果使用它，将把控制立即返回给调用程序，并且一旦有可能就实际执行该操作。
+- 在导入数据时，应该关闭自动提交。你可能还想删除索引（包括FULLTEXT索引），然后在导入完成后再重建它们。
+- 必须索引数据库以改善数据检索的性能确定索引什么不是一件微不足道的任务，需要分析使用的SELECT语句以找出重复的WHERE和ORDER BY子句。
+  如果一个简单的WHERE子句返回结果所花的时间太长，则可以断定其中使用的列（或几个列）就是需要索引的对象。
+- 你的SELECT语句中有一系列复杂的OR条件吗？通过使用多条SELECT语句和连接它们的UNION语句，你能看到极大的性能改进。
+- 索引改善数据的性能，但损害数据插入、删除和更新的性能。
+  如果你有一些表，它们收集数据且不经常被搜索，则在有必要之前不要索引它们。（索引可根据需要添加和删除）
+- LIKE很慢。一般来说，最好是使用FULLTEXT而不是LIKE。
+- 数据库是不断变化的实体。一组优化良好的表一会儿后可能就面目全非了。由于表的使用和内容的更改，理想的优化和配置也会改变。
+- 最重要的规则就是，每条规则在某些条件下都会被打破。       
+
 ## 注意
 - 何时使用单引号？单引号用来限定字符串。如果将值与串类型的列进行比较，则需要限定引号。用来与数值列进行比较的值不需要引号。
 - SQL 是不区分大小写的。

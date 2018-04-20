@@ -9,3 +9,4 @@ date: 2016-05-25 17:43:10
 | 博客   | [木子楼的专栏](http://blog.csdn.net/ly1414725328) |
 | 微博   | [weibo.com/lyloou](https://weibo.com/lyloou) |
 | 音乐   | [lyloou.com/music](http://lyloou.com/music) |
+| 邮件   | [lilou@lyloou.com](mailto:lilou@lyloou.com) |

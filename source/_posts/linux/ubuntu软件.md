@@ -1,5 +1,6 @@
 ---
 title: ubuntu软件
+sticky: 10
 date: 2016-09-26 17:16:15
 toc: true
 comments: true
@@ -29,6 +30,7 @@ tags:
 - tmux
 - zsh
 - catfish 文件搜索
+- bingwallpaper
 
 
 ## How to set socks5 proxy in the terminal (在终端中使用代理)

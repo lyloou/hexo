@@ -1,5 +1,6 @@
 ---
 title: autohotkey定制
+sticky: 10
 date: 2016-05-21 18:09:37
 toc: true
 comments: true
