@@ -26,4 +26,6 @@ tags:
 ## 实现换行
 在一段文字的后面添加两个空格  
 自动就换行了。
-i
+
+## 外部链接
+- [Markdown语法整理](https://guo365.github.io/study/Markdown.html#41)

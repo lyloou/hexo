@@ -17,6 +17,8 @@ tags:
 - 查看单行log：`git log --pretty=oneline`
 - 查看分支合并情况：`git log --graph --pretty=oneline --abbrev-commit`
 - 查看工作区和版本库最新版本的区别： `git diff HEAD -- test.xml`
+- [列出每个人的最近commit记录：`git shortlog`](#shortlog)
+- 列出每个人的commit次数：`git shortlog -sne`
 
 ### U
 - 修改提交信息：`git commit --amend`
@@ -41,6 +43,7 @@ tags:
 ## 远程仓库
 - 移除远程仓库： `git remote remove origin`
 - 添加远程仓库： `git remote add origin git@github.com:lyloou/lou.git`
+- [添加多个远程仓库： `git remote add jquery https://github.com/jquery/jquery.git`](https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/25.md#註冊遠端儲存庫)
 - 远程主机改名： `git remote rename <原主机名> <新主机名>`
 - 删除远程主机： `git remote rm <主机名>`
 - 显示远程主机详细信息： `git remote show <主机名>`
@@ -48,6 +51,7 @@ tags:
   > 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的
   master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
   （`git push origin master`）。http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000
+- [拉取并且合并远程分支：`git pull origin master --allow-unrelated-histories`](https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/24.md#直接將現有的本地-git-儲存庫上傳到指定的-github-專案)  
 - 删除远程文件夹或文件，但是本地还保留着： `git rm -r --cached dir2` (`-r`参数，表示递归删除文件夹的内容)
   > https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
 - 删除远程文件夹或文件，但是本地还保留着（展示要删除的文件，不是真的删除）： `git rm -r -n --cached dir2`
@@ -55,7 +59,7 @@ tags:
   > [git pull 和 git fetch 有什么区别？](https://ruby-china.org/topics/15729)
   > [git查看远程版本库和本地库的差异 | 星辰](http://blog.kainaodong.com/?p=12)
 - 直接修改远程仓库 url
-  > `git remote set-url orign git:new.url.here`
+  > `git remote set-url origin git:new.url.here`
   >  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 
 ## 分支
@@ -126,3 +130,6 @@ $ git clean --help
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
 - [Git教程-廖雪峰](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 - [Git远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
+<div id="shortlog">
+- [第 30 天：分享工作中幾個好用的 Git 操作技巧](https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/30.md)
+</div>
