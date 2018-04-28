@@ -6,8 +6,23 @@ comments: true
 tags:
 - js
 ---
+## 学习资源
+- 官网：[快速上手 | Weex](https://weex.incubator.apache.org/cn/guide/)
+- 示例：[weex-vue-examples](https://hanks10100.github.io/weex-vue-examples/)
+- 源码：[incubator-weex](https://github.com/apache/incubator-weex)
+- [Weex Ui](https://alibaba.github.io/weex-ui/#/?id=weex-ui)
 
-## [WEEX 使用navigator跳转Android系统出现ActivityNotFoundException报错](https://blog.csdn.net/violetjack0808/article/details/74390249)
+
+## 案例
+- [weex-start-kit](https://github.com/w11p3333/weex-start-kit)
+- [GSYGithubAppWeex](https://github.com/CarGuo/GSYGithubAppWeex)
+
+
+## 问题
+
+### [可能是史上最全的weex踩坑攻略](https://www.jianshu.com/p/497f1a9ff33f)
+
+### [WEEX 使用navigator跳转Android系统出现ActivityNotFoundException报错](https://blog.csdn.net/violetjack0808/article/details/74390249)
 ```xml
 <activity
   android:name=".WXPageActivity"
