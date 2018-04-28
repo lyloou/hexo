@@ -1,25 +1,39 @@
+---
+title: weex
+date: 2018.03.28 20:12
+toc: true
+comments: true
+tags:
+- js
+---
+
 ## [WEEX 使用navigator跳转Android系统出现ActivityNotFoundException报错](https://blog.csdn.net/violetjack0808/article/details/74390249)
 ```xml
-<intent-filter>
-    <action android:name="com.taobao.android.intent.action.WEEX"/>
-
-    <category android:name="android.intent.category.DEFAULT"/>
-    <category android:name="com.taobao.android.intent.category.WEEX"/>
-    <action android:name="android.intent.action.VIEW"/>
-
-    <data android:scheme="http"/>
-    <data android:scheme="https"/>
-    <data android:scheme="file"/>
-    <data android:scheme="wxpage" />
-</intent-filter>
+<activity
+  android:name=".WXPageActivity"
+  android:label="@string/app_name"
+  android:screenOrientation="portrait"
+  android:theme="@style/AppTheme.NoActionBar">
+    <intent-filter>
+        <action android:name="com.taobao.android.intent.action.WEEX"/>
+    
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="com.taobao.android.intent.category.WEEX"/>
+        <action android:name="android.intent.action.VIEW"/>
+    
+        <data android:scheme="http"/>
+        <data android:scheme="https"/>
+        <data android:scheme="file"/>
+        <data android:scheme="wxpage" />
+    </intent-filter>
+</activity>
 ```
 ```java
  String navUrl = getIntent().getData().toString();
 ```
 
-## 需要一个`mContainer`来容纳已经过渲染的`wxview`
-
-读源码啊: 源码是通过`weex platform add android`来获得的。
+分析模板代码（如下面所示）：
+我们需要一个`mContainer`来容纳已经渲染过的`wxview`
 
 ```xml
 <!-- activity_wxpage.xml -->
@@ -33,7 +47,6 @@
 ```
 
 ```java
-
 // AbsWeexActivity.java
 @Override
 public void onViewCreated(WXSDKInstance wxsdkInstance, View view) {
@@ -42,6 +55,4 @@ public void onViewCreated(WXSDKInstance wxsdkInstance, View view) {
         mContainer.addView(view); // mContainer是用来容纳wxview的viewgroup
     }
 }
-
-
 ```
