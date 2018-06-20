@@ -8,3 +8,17 @@ Optional.orElseThrow
 
 不需要返回值时
 Optional.ifPresent
+
+
+## [LocalDate to TimeStamp](https://stackoverflow.com/questions/8992282/convert-localdate-to-localdatetime-or-java-sql-timestamp)
+```java
+ZoneId zoneId = ZoneId.of("Asia/Shanghai");
+LocalDate date = LocalDate.parse(time, DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(zoneId));
+Timestamp.valueOf(date.atStartOfDay());
+```
+
+## String to TimeStamp
+```java
+String time = "2018-12-12" 
+Timestamp.valueOf(time + " 00:00:00")
+```

@@ -30,6 +30,13 @@ git config --global https.proxy 'socks5://127.0.0.1:1080'
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
+## 解除上传文件大小限制
+```js
+git config http.postBuffer 524288000  
+```
+https://blog.csdn.net/zhiyuan_x/article/details/72954729
+
+
 ## 行尾结束符自动转换问题
 `warning: LF will be replaced by CRLF in xx.txt`
 如果项目的文件是依照文件的md5来作为标识，那么提交代码到远程仓库，文件的行尾结束符会自动发生改变，那么之前的md5标识就发挥不到作用

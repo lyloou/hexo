@@ -38,7 +38,10 @@ tags:
     git reset --hard 0301382 # 回退到0301382
     git push --force # 强制推送到服务器端
     ```
-    
+- Git撤销git commit 但是未git push的修改
+  `git reset commit_id `
+  > [Git撤销git commit 但是未git push的修改](https://blog.csdn.net/winceos/article/details/22797437)
+
 
 ## 远程仓库
 - 移除远程仓库： `git remote remove origin`
@@ -92,8 +95,14 @@ $ git clean --help
 > [branch - How to remove local (untracked) files from the current Git working tree? - Stack Overflow](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
 
 ## git stash
-> Git 还提供了一个 stash 功能，可以把当前工作状态“储藏”起来，等以后恢复现场后继续工作。
-> [Bug分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000)
+- Git 还提供了一个 stash 功能，可以把当前工作状态“储藏”起来，等以后恢复现场后继续工作。
+- 查看stash的列表：`git stash list`
+- 恢复：`git stash pop` 或者 `git stash apply`
+  > 一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+  > 另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+
+- 参考资料：
+ [Bug分支](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000)
 
 
 ## 添加注释的技巧
