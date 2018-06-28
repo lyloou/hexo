@@ -41,6 +41,10 @@ tags:
 - Git撤销git commit 但是未git push的修改
   `git reset commit_id `
   > [Git撤销git commit 但是未git push的修改](https://blog.csdn.net/winceos/article/details/22797437)
+- [撤销一次分支的合并Merge](https://blog.csdn.net/a478555/article/details/50970930)
+  ```
+  git reset --hard HEAD~
+  ```
 
 
 ## 远程仓库
