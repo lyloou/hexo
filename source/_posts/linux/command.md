@@ -7,6 +7,12 @@ tags:
 - linux
 ---
 
+## 设置管理员密码
+首次使用管理员登录需要先设置密码
+```sh
+sudo passwd
+```
+
 ## 定时关机
 http://os.51cto.com/art/201108/287974.htm
 ```sh
