@@ -52,7 +52,32 @@ $ git config --global core.autocrlf false
 - 前者是所有目录中的 `package.json`文件都被忽略；
 - 后者是只有当前目录的 `package.json`文件被忽略；
 
-  
+
+## [Prevent commits in master or develop branch](https://stackoverflow.com/questions/40462111/git-prevent-commits-in-master-branch)
+1. Go to your repository.
+2. Create file .git/hooks/pre-commit with following content:
+```sh
+#!/bin/sh
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "develop" -o "$branch" = "master" ]; then
+  echo "You can't commit directly to master or develop branch"
+  exit 1
+fi
+```
+3. Make it executable (not required on Windows):
+```
+$ chmod +x .git/hooks/pre-commit
+```
+
+To disable fast-forwad merges you must also add following option to your .git/config file:
+```
+[branch "master"]
+    mergeoptions = --no-ff
+```
+If you want also protect master branch on your remote, check this answer: [How to restrict access to master branch on git](https://stackoverflow.com/questions/38864405/how-to-restrict-access-to-master-branch-on-git)
+
+
 ## NOTE
 - 配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。
 - 可以通过配置`~/.gitconfig`文件来删除和修改配置
