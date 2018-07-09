@@ -62,3 +62,15 @@ grep -rl '' tmpdir\ | xargs sed -i "1 i hi 你好吗\n 你知道我是谁吗\n �
 ## 通过域名查看ip
 - ping的方式：`ping lyloou.com`
 - nslookup方式： `nslookup lyloou.com`
+
+## 拉取远程文件
+```
+scp root@138.128.208.16:/root/go/src/github.com/inconshreveable/ngrok/bin/ngrok D:/dd/ngrok
+```
+如果出现这个错误：`connect to xxxxxxx port 22: Connection refused`
+```sh
+yum -y install openssh-server
+service sshd start
+# 首先使用命令：ss -lnt查询22号端口是否开启，如下图所示为正常开启，否则要开启22号端口。 如果要修改端口，查看或编辑SSH服务配置文件，使用命令 vi /etc/ssh/sshd.config，进入后把 port 后面默认的22端口改成别的端口即可.
+# https://www.linuxidc.com/Linux/2017-11/148586.htm
+```

@@ -10,7 +10,7 @@ tags:
 ### 生成密钥
 密钥是上传到远程库的凭证，是本地与远程库的桥梁；
 ```
-$ ssh-keygen -t rsa -C "lilou@lyloou.com"
+$ ssh-keygen -t rsa -C "lyloou@qq.com"
 ```
 
 ### 添加密钥

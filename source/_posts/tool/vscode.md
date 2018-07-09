@@ -7,6 +7,11 @@ tags:
 - tool
 - editor
 ---
+## 快捷键
+- 同时选中所有匹配的Ctrl+Shift+L
+- 回退上一个光标操作Ctrl+U
+- 移动到定义处：F12  （或者：win+alt+left click）
+- 找到所有的引用：Shift+F12
 
 ## 配置编辑器的显示语言（菜单、控制台等）
 1. Ctrl+Shift+P

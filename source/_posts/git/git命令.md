@@ -90,6 +90,7 @@ tags:
 - 提交分支：`git push origin feature-A:feature-A`  
 - 删除远程分支：`git push origin :feature-A`
 - 删除远程分支：`git push --delete {the_remote_branch}` 
+- 克隆指定分支：`git clone -b rryp https://github.com/bmfe/eros-nexus.git "nexus" --depth=1`
   
 ## remove untracked files
 ```bash
