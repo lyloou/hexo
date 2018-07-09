@@ -44,6 +44,9 @@ tail --help
 ```
 ## sed
 https://coolshell.cn/articles/9104.html
+```
+sed -i "s/'proxy.*/'proxy': 'http://proxy.lyloou.com'/g" eros.dev.js
+```
 
 ## nohub
 用途：不挂断地运行命令。

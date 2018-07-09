@@ -31,6 +31,7 @@ tags:
 - zsh
 - catfish 文件搜索
 - bingwallpaper
+- variety 壁纸
 
 
 ## How to set socks5 proxy in the terminal (在终端中使用代理)
