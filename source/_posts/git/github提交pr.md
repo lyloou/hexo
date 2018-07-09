@@ -1,3 +1,12 @@
+---
+title: 在github提交pr
+date: 2018-07-9 21:38:25
+toc: true
+comments: true
+tags:
+- git
+---
+
 # 在github提交pr
 
 - fork 一份到自己的仓库
