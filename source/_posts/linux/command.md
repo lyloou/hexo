@@ -77,3 +77,10 @@ service sshd start
 # 首先使用命令：ss -lnt查询22号端口是否开启，如下图所示为正常开启，否则要开启22号端口。 如果要修改端口，查看或编辑SSH服务配置文件，使用命令 vi /etc/ssh/sshd.config，进入后把 port 后面默认的22端口改成别的端口即可.
 # https://www.linuxidc.com/Linux/2017-11/148586.htm
 ```
+
+## zip
+```
+https://unix.stackexchange.com/questions/46969/compress-a-folder-with-tar
+To tar and gzip a folder, the syntax is:
+tar czf name_of_archive_file.tar.gz name_of_directory_to_tar
+```
