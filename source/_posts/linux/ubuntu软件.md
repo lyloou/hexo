@@ -33,6 +33,8 @@ tags:
 - bingwallpaper
 - variety 壁纸
 
+## [How do you run Ubuntu Server with a GUI?](https://askubuntu.com/questions/53822/how-do-you-run-ubuntu-server-with-a-gui)
+## [Can I access Ubuntu from Windows remotely?](https://askubuntu.com/questions/592537/can-i-access-ubuntu-from-windows-remotely)
 
 ## How to set socks5 proxy in the terminal (在终端中使用代理)
 ```sh
