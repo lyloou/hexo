@@ -1,3 +1,4 @@
+- [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
 
 ```conf
 bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
@@ -23,3 +24,6 @@ bind l selectp -R
 
 set-option -g default-shell /bin/zsh
 ```
+
+- [How do I rename a session in tmux? - Super User](https://superuser.com/questions/428016/how-do-i-rename-a-session-in-tmux)
+`Ctrl` + `B`, `$`

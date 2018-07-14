@@ -139,6 +139,16 @@ $ git clean --help
 
 ```
 
+## [delete all tags](https://stackoverflow.com/questions/19542301/delete-all-tags-from-a-git-repository)
+To delete remote tags (before deleting local tags) simply do:
+```
+git tag -l | xargs -n 1 git push --delete origin
+```
+and then delete the local copies:
+```
+git tag | xargs git tag -d
+```
+
 ## 参考链接
 - 《GitHub入门与实践》
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
