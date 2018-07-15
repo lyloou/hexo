@@ -10,7 +10,7 @@ sudo apt install --no-install-recommends lightdm-gtk-greeter
 sudo apt install --no-install-recommends lightdm
 sudo apt install --no-install-recommends openbox
 
-#A more functional minimal desktop environment (the one I use):
+# A more functional minimal desktop environment (the one I use):
 sudo apt install xorg
 sudo apt install --no-install-recommends lightdm-gtk-greeter
 sudo apt install --no-install-recommends lightdm
@@ -21,8 +21,10 @@ sudo apt install --no-install-recommends policykit-1 lxpolkit
 sudo apt install --no-install-recommends lxsession-logout
 sudo apt install --no-install-recommends gvfs-backends
 
-#
+# A full lightweight desktop environment:
 sudo apt install xorg
-sudo apt install xubuntu-core
+sudo apt install --no-install-recommends xubuntu-core
+# or
+sudo apt install --no-install-recommends ubuntu-mate-core
 ```
 ## [Can I access Ubuntu from Windows remotely?](https://askubuntu.com/questions/592537/can-i-access-ubuntu-from-windows-remotely)
