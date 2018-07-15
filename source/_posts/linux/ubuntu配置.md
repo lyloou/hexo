@@ -33,3 +33,17 @@ iface ens33 inet static
  gateway 192.168.1.1
  dns-nameservers 8.8.8.8 8.8.4.4
  ```
+
+## Changing ubuntu server's language to english
+```sh
+sudo apt-get install language-pack-en language-pack-en-base manpages
+```
+
+```sh
+# /etc/default/locale
+LANG="en_US.UTF-8"
+```
+```sh
+## OR
+sudo update-locale LANG=en_US.UTF-8
+```

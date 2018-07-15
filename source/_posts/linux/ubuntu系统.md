@@ -28,3 +28,4 @@ sudo apt install --no-install-recommends xubuntu-core
 sudo apt install --no-install-recommends ubuntu-mate-core
 ```
 ## [Can I access Ubuntu from Windows remotely?](https://askubuntu.com/questions/592537/can-i-access-ubuntu-from-windows-remotely)
+https://www.tweaking4all.com/software/linux-software/use-xrdp-remote-access-ubuntu-14-04/

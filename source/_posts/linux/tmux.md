@@ -12,8 +12,10 @@ bind-key -Tcopy-mode-vi 'y' send -X copy-selection
 unbind p
 bind p pasteb
 setw -g mode-keys vi      # Vi风格选择文本
+# set-window-option -g mode-keys vi
 
-set -g mouse on # 启用鼠标
+# https://stackoverflow.com/questions/17445100/getting-back-old-copy-paste-behaviour-in-tmux-with-mouse
+set -g mouse off # 不启用鼠标（启用鼠标会导致无法复制到系统）
 
 ########### myself ##########
 # select panel

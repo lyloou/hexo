@@ -84,3 +84,8 @@ https://unix.stackexchange.com/questions/46969/compress-a-folder-with-tar
 To tar and gzip a folder, the syntax is:
 tar czf name_of_archive_file.tar.gz name_of_directory_to_tar
 ```
+
+## df查看硬盘容量 
+```sh
+df -h
+```
