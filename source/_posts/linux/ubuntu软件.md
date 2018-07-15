@@ -10,8 +10,8 @@ tags:
 ---
 
 
-- synpase
-- vlc
+- synpase（快速启动）
+- vlc（多媒体播放器）
 - wiz
 - chrome
 - vscode
@@ -19,22 +19,37 @@ tags:
 - emacs
 - shadowsocks
 - proxychains
+- privoxy
+```sh
+# vim /etc/privoxy/config
+# 添加下面这一行
+forward-socks5 / 0.0.0.0:1080 .
+
+#启动
+/etc/init.d/privoxy restart
+
+# 测试
+curl  -x 127.0.0.1:8118 http://www.google.com
+```
 - fcitx+五笔+english
-- calibre
-- caja
+- calibre（电子书阅读器）
+- caja（文件管理器）
 - 红移（色温调节工具）
-- workrave
+- workrave（定时提醒）
 - terminal
   [Terminator – Multiple GNOME terminals in one window | Ubuntu Geek](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html)
   [安装 Terminator：一个支持多终端的终端-软件 ◆ 分享|Linux.中国-开源社区](https://linux.cn/article-2978-1.html)
 - tmux
 - zsh
+- oh my zsh
+```sh
+# https://github.com/robbyrussell/oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 - catfish 文件搜索
-- bingwallpaper
-- variety 壁纸
+- variety 壁纸切换
+- git-cola
 
-## [How do you run Ubuntu Server with a GUI?](https://askubuntu.com/questions/53822/how-do-you-run-ubuntu-server-with-a-gui)
-## [Can I access Ubuntu from Windows remotely?](https://askubuntu.com/questions/592537/can-i-access-ubuntu-from-windows-remotely)
 
 ## How to set socks5 proxy in the terminal (在终端中使用代理)
 ```sh
@@ -66,7 +81,7 @@ $ sudo dpkg -i netease*.dbg
 $ sudo apt -f install
 ```
 
-## 去除 输入密码以解锁密码环
+## 去除chrome的`输入密码以解锁密码环`提示
 - 终端输入`seahorse`
 - 右键删除 `登录`
 - 退出 chrome
