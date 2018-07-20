@@ -24,3 +24,12 @@ sudo docker tag 5db5f8471261 lyloou/sinatra:devel
 sudo docker push lyloou/sinatra
 sudo docker rmi lyloou/sinatra
 ```
+
+```sh
+# http://wiki.jikexueyuan.com/project/docker/examples/nodejs_web_app.html
+# run in background
+sudo docker run -p 49161:8080 -d lyloou/centos-node-hello:latest
+
+# https://askubuntu.com/questions/505506/how-to-get-bash-or-ssh-into-a-running-container-in-background-mode
+sudo docker exec -it f3b /bin/bash 
+```
