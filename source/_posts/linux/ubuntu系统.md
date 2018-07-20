@@ -1,3 +1,14 @@
+## [如何找到Linux的版本号](https://linux.cn/article-9760-1.html)
+``` sh
+uname -srm
+# uname --kernel-name --kernel-release --machine
+# Linux 4.13.0-46-generic x86_64
+```
+
+```sh
+cat /etc/os-release
+```
+
 ## [How do you run Ubuntu Server with a GUI?](https://askubuntu.com/questions/53822/how-do-you-run-ubuntu-server-with-a-gui)
 ```sh
 # Minimal GUI:
