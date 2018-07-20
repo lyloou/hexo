@@ -4,6 +4,8 @@
 ### .gitlab-ci.yml
 - [Readme · Quick start · Ci · Help · GitLab](http://gitlab.renrenyoupin.com/help/ci/quick_start/README)
 - [Configuration of your jobs with .gitlab-ci.yml](http://gitlab.renrenyoupin.com/help/ci/yaml/README.md)
+- [Gitlab CI yaml官方配置文件翻译](https://segmentfault.com/a/1190000010442764)
+- [用 GitLab CI 进行持续集成 | Scarletsky](https://scarletsky.github.io/2016/07/29/use-gitlab-ci-for-continuous-integration/)
 
 ### Runner
 - [Install GitLab Runner using the official GitLab repositories | GitLab](https://docs.gitlab.com/runner/install/linux-repository.html)
