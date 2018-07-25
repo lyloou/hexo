@@ -70,11 +70,15 @@ tags:
   >  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 
 ## 分支
-## delete a git branch both locally and remotely.
+### delete a git branch both locally and remotely.
+```sh
+$ git push --delete <remote_name> <branch_name>
+$ git branch -d <branch_name>
+# (https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely)
+```
 
 ### 本地分支
 - 删除本地分支：`git branch -d {the_local_branch}`
-  > (https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely)
 
 ### 远程分支
 - 添加本地分支到远程分支，并关联：`git push -u origin develop`
@@ -91,7 +95,33 @@ tags:
 - 删除远程分支：`git push origin :feature-A`
 - 删除远程分支：`git push --delete {the_remote_branch}` 
 - 克隆指定分支：`git clone -b rryp https://github.com/bmfe/eros-nexus.git "nexus" --depth=1`
-  
+
+### 合并 merge & rebase
+- [Git - git-merge Documentation](https://git-scm.com/docs/git-merge)
+  > If there were uncommitted worktree changes present when the merge started, 
+  > `git merge --abort` will in some cases be unable to reconstruct these changes
+  > It is therefore recommended to always commit or stash your changes before running git merge.
+
+- [Git merge 時使用 fast-forward 的差別](http://lemonup.logdown.com/posts/166352-git-merge-fast-forward-difference)
+```sh
+# 我要新增一個功能，所以在master上開一個branch叫feature1。
+# 我在新增功能時，加了3個commit在feature1中。
+# 當功能開發完成時，checkout回master，要將 feature1合併回master，這時可以有兩個選擇：
+
+# 选择1：master會將feature1上的3個commit全視為master的commit，並將HEAD移到跟feature1的HEAD相同的commit上。
+git merge --ff feature1
+
+# 选择2：master會新增一個commit，內容為feature1上的改變，並將HEAD移到新的commit上。
+git merge --no-ff feature1
+
+# 至於該使用哪種方式，就要看個人需求了，如果是新增功能的branch，個人認為使用non-fast-forward的方式比較好。
+# 這樣可以很清楚的看出哪些是新增功能用的commit，哪些是原本master的commit。master才不會有太多不相干的commit交錯在一起。
+# 而且master要移除功能時，也只要處理一個commit就可以了。
+```
+
+- [分支的合并【分支】| 猴子都能懂的GIT入门 | 贝格乐（Backlog）](https://backlog.com/git-tutorial/cn/stepup/stepup1_4.html)
+
+
 ## remove untracked files
 ```bash
 $ git clean -d -f
