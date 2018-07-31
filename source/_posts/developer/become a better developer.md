@@ -21,8 +21,10 @@ tags:
 > 其三，这些理论知识的思维方式可以让你有触类旁通，一通百通的感觉。虽然知识比较难啃，但啃过以后，你将获益终生。
 
 ## become a better developer
+------------------------
 - [程序员的谎谬之言还是至理名言？ | | 酷 壳 - CoolShell](https://coolshell.cn/articles/4235.html)
 
+------------------------
 - All Developers Should Know How They Learn Best (this post)
 https://www.skorks.com/2009/08/all-developers-should-know-how-they-learn-best/
 
@@ -37,7 +39,10 @@ https://www.skorks.com/2009/09/become-a-better-developer-by-indexing-your-brain/
 - Learn More – Faster By Using The World-Wide Community
 - What Playing Cards Can Teach Us About Ramping-Up And Transferring Knowledge
 
+------------------------
 - Why Developers Never Use State Machines
 https://www.skorks.com/2011/09/why-developers-never-use-state-machines/
+- Manufacturing Authority And Trust
+https://www.skorks.com/2009/09/manufacturing-authority-and-trust/
 
 ## [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
