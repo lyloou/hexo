@@ -68,3 +68,34 @@ javah -d jni -classpath MyProject/app/build/intermediates/classes/debug/com.lylo
 - [Android 密钥保护 - 简书](http://www.jianshu.com/p/2a27ad45e023)
 - [android开发如何保障本地加密密钥的安全？ - 知乎](https://www.zhihu.com/question/35136485)
 
+- [Android NDK 运行错误：java.lang.UnsatisfiedLinkError: Couldn't load XXX indLibrary returned null](https://blog.csdn.net/yy1300326388/article/details/46291417)
+  ### 方法1
+  ```java
+  //目录结构一定要改成这个样子
+|---src
+     |---main
+           |---jniLibs
+                  |---arm64-v8a
+                         |---libhello-jni.so
+                  |---armeabi
+                         |---libhello-jni.so
+                  |---armeabi-v7a
+                         |---libhello-jni.so
+                  |---x86
+                         |---libhello-jni.so
+                  |---x86_64
+                         |---libhello-jni.so
+                  |---mips
+                         |---libhello-jni.so
+                  |---mips64
+                         |---libhello-jni.so
+  ```
+  ### 方法2［推荐］
+  ```java
+  android {
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+}
+  ```
