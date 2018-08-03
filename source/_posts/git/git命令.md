@@ -187,3 +187,10 @@ git tag | xargs git tag -d
 <div id="shortlog">
 - [第 30 天：分享工作中幾個好用的 Git 操作技巧](https://github.com/doggy8088/Learn-Git-in-30-days/blob/master/zh-tw/30.md)
 </div>
+- [^和~的区别](http://www.cnblogs.com/hutaoer/archive/2013/05/14/3078191.html)
+
+  ```sh
+  - `^`代表父提交,当一个提交有多个父提交时，可以通过在`^`后面跟上一个数字，表示第几个父提交，`^`相当于`^1`
+  - `~`<n>相当于连续的<n>个`^`.
+  - checkout只会移动HEAD指针，reset会改变HEAD的引用值
+  ```
