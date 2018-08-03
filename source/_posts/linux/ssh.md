@@ -7,6 +7,11 @@ tags:
 - linux
 ---
 
+##  将 ssh keys 复制到 user@host 以启用无密码 SSH 登录。
+```sh
+$ssh-copy-id user@host
+```
+
 ## 将本地的文本文件保存到远程服务端中
 ```sh
 cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"

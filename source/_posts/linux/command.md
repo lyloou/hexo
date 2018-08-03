@@ -54,6 +54,18 @@ sed -i "s/'proxy.*/'proxy': 'http://proxy.lyloou.com'/g" eros.dev.js
 描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示”and”的符号）到命令的尾部。
 http://www.cnblogs.com/allenblogs/archive/2011/05/19/2051136.html
 
+### nohup 不生成 nohup.out的方法
+```sh
+nohup java -jar /xxx/xxx/xxx.jar >/dev/null 2>&1 &
+```
+关键在于最后的 >/dev/null 2>&1 部分，/dev/null是一个虚拟的空设备（类似物理中的黑洞），任何输出信息被重定向到该设备后，将会石沉大海
+>/dev/null 表示将标准输出信息重定向到"黑洞"
+2>&1 表示将标准错误重定向到标准输出(由于标准输出已经定向到“黑洞”了，即：标准输出此时也是"黑洞"，再将标准错误输出定向到标准输出，相当于错误输出也被定向至“黑洞”)
+http://www.cnblogs.com/yjmyzz/p/4831182.html
+
+
+
+
 ## 在某目录及其子目录下所有文件的最前面添加几行文字
 ```sh
 grep -rl '' tmpdir\ | xargs sed -i "1 i hi 你好吗\n 你知道我是谁吗\n 是的，是我\n"
@@ -78,14 +90,52 @@ service sshd start
 # https://www.linuxidc.com/Linux/2017-11/148586.htm
 ```
 
+```sh
+# http://wiki.ubuntu.org.cn/UbuntuSkills#.E9.80.9A.E8.BF.87ssh.E4.BC.A0.E8.BE.93.E6.96.87.E4.BB.B6
+scp -rp /path/filename username@remoteIP:/path #将本地文件拷贝到服务器上
+scp -rp username@remoteIP:/path/filename /path #将远程文件从服务器下载到本地
+```
+
 ## zip
 ```
 https://unix.stackexchange.com/questions/46969/compress-a-folder-with-tar
 To tar and gzip a folder, the syntax is:
 tar czf name_of_archive_file.tar.gz name_of_directory_to_tar
+
+tar -zcvf xxx.tar.gz aaa bbb
+tar -jcvf xxx.tar.bz2 aaa bbb
+tar -Jcvf xxx.tar.xz aaa bbb
+```
+## unzip
+```sh
+tar -xf xxx.tar.gz
+tar -xf xxx.tar.bz2
+tar -Jxf xxx.tar.xz
 ```
 
 ## df查看硬盘容量 
 ```sh
 df -h
+```
+
+## [how-to-automount-ntfs-partitions](https://askubuntu.com/questions/46588/how-to-automount-ntfs-partitions)
+- `vi /etc/fstab` & add below line
+```sh
+#Windows-Partition
+UUID=<xxxxx> /media/win ntfs rw,auto,users,exec,nls=utf8,umask=003,gid=46,uid=1000    0   0
+```
+
+- Finding which disk you will set
+```sh
+sudo fdisk -l
+```
+
+- Finding the UUID
+```sh
+sudo blkid
+```
+
+- Check it
+```
+sudo mount -a
 ```
