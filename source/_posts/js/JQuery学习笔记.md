@@ -128,19 +128,19 @@ http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb30
 将绑定事件的过程放在document的ready中执行
 ```js
 <script>
-	$(document).on('ready', function(){
-		$('#testForm').on('submit', function(){
-			alert('Submit');
-		});
-	})
+    $(document).on('ready', function(){
+        $('#testForm').on('submit', function(){
+            alert('Submit');
+        });
+    })
 </script>
 ```
 另一种简单处理方式（上面的代码简写）：
 ```js
 $(function(){
-	$('#testForm').on('submit', function(){
-		alert('Submit');
-	});
+    $('#testForm').on('submit', function(){
+        alert('Submit');
+    });
 })
 ```
 
@@ -151,7 +151,7 @@ $(function(){
 ``` js
 var input = $('#test-input');
 input.change(function () {
-	console.log('changed...');
+    console.log('changed...');
 });
 ```
 
@@ -169,20 +169,20 @@ input.change();
 ``` js
 // 无法弹出新窗口，将被浏览器屏蔽
 $(function(){
-	window.open('/');
+    window.open('/');
 })
 
 // 正常执行
 var button1 = $('#testPopupButton1');
 function popupTestWindow() {
-	window.open('/');
+    window.open('/');
 }
 button1.click(function () {
-	// 正常执行
-	popupTestWindow();
+    // 正常执行
+    popupTestWindow();
 
-	// 延迟执行的`window.open()`方法会被浏览器限制；
-	setTimeout(popupTestWindow, 100);
+    // 延迟执行的`window.open()`方法会被浏览器限制；
+    setTimeout(popupTestWindow, 100);
 });
 ```
 
@@ -206,9 +206,9 @@ jQuery动画
 --------
 ``` js
 div.animate({
-		// 最后的状态
-	}, 300, function(){
-		// 动画结束后的操作
+        // 最后的状态
+    }, 300, function(){
+        // 动画结束后的操作
 });
 ```
 
@@ -228,24 +228,24 @@ jQuery扩展
 一旦错误发生，就不再向后进行，但是前面已经执行成功的，则保持住了，如下代码；
 ``` js
 <script type="text/javascript">
-	var r1=0;
-	var r2=null;
-	var r3=0;
-	var r4=0;
-	try{
-		r1 = 1;
-		r2.kk;
-		r3 = 3;
-	} catch (e) {
-		console.log(e);
-	} finally {
-		r4 = 4;
-	}
+    var r1=0;
+    var r2=null;
+    var r3=0;
+    var r4=0;
+    try{
+        r1 = 1;
+        r2.kk;
+        r3 = 3;
+    } catch (e) {
+        console.log(e);
+    } finally {
+        r4 = 4;
+    }
 
-	console.log('r1=' + r1);
-	console.log('r2=' + r2);
-	console.log('r3=' + r3);
-	console.log('r4=' + r4);
+    console.log('r1=' + r1);
+    console.log('r2=' + r2);
+    console.log('r3=' + r3);
+    console.log('r4=' + r4);
 </script>>
 ```
 输出结果是：

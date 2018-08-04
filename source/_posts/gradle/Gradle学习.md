@@ -4,8 +4,8 @@ date: 2016-11-11 11:43:52
 comments: true
 toc: true
 tags:
-- Android
-- Gradle
+- android
+- gradle
 ---
 
 简介

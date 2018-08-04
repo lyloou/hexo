@@ -1,21 +1,12 @@
 ---
-title: About Lou
+title: About Me
 date: 2016-05-25 17:43:10
 ---
 
-
-|KEY|VALUE|
-|:-:|:-:|
-|昵称|木子楼|
-|姓名|李楼|
-|性别|男|
-
-
-
-## Explorer
-- [音乐](http://lyloou.com/music)
-- [Music](http://music.163.com/#/user/home?id=35153121)
-- [GitHub](https://github.com/lyloou)
-- [博客园](http://www.cnblogs.com/lyloou/)
-- [新浪微博](http://weibo.com/u/2474804317)
-
+| 木子楼    | [<img src="https://projecteuler.net/profile/lyloou.png" style="display:block;margin:0 auto;width: 160px;">](https://github.com/lyloou/goer/tree/master/cmd/project-euler)|
+| :---: | :---: |
+| github | [github.com/lyloou](https://github.com/lyloou) |
+| 博客   | [木子楼的专栏](http://blog.csdn.net/ly1414725328) |
+| 微博   | [weibo.com/lyloou](https://weibo.com/lyloou) |
+| 音乐   | [lyloou music](http://lyloou.com/life/music) |
+| 邮件   | [lilou@lyloou.com](mailto:lilou@lyloou.com) |

@@ -4,7 +4,7 @@ date: 2016-05-08 17:09:10
 toc: true
 comments: true
 tags:
-- Hexo
+- hexo
 ---
 
 ## 步骤
