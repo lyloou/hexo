@@ -112,3 +112,6 @@ Priority=80
 `fcitx -r`
 
 - [linux 安装与配置 fcitx 五笔输入法](https://zhuanlan.zhihu.com/p/28586200)
+
+## supervisor
+- [Supervisor安装与配置（Linux/Unix进程管理工具） - CSDN博客](https://blog.csdn.net/xyang81/article/details/51555473)

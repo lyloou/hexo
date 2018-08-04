@@ -1,3 +1,13 @@
+---
+title: ubuntu系统
+date: 2018-07-26 17:16:15
+toc: true
+comments: true
+tags:
+- linux
+- ubuntu
+---
+
 ## [如何找到Linux的版本号](https://linux.cn/article-9760-1.html)
 ``` sh
 uname -srm
@@ -40,3 +50,6 @@ sudo apt install --no-install-recommends ubuntu-mate-core
 ```
 ## [Can I access Ubuntu from Windows remotely?](https://askubuntu.com/questions/592537/can-i-access-ubuntu-from-windows-remotely)
 https://www.tweaking4all.com/software/linux-software/use-xrdp-remote-access-ubuntu-14-04/
+
+
+## vmware esxi

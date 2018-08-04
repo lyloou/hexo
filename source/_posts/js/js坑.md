@@ -1,3 +1,13 @@
+---
+title: js坑
+date: 2018.07.18 17:12
+toc: true
+comments: true
+tags:
+- js
+---
+
+
 ## 使用for in 循环Object会有个问题，会loop来自prototype的属性，使用的时候要小心；
 ```javascript
 for (var key in validation_messages) {

@@ -1,3 +1,14 @@
+---
+title: ubuntu配置
+date: 2018-07-27 17:16:15
+toc: true
+comments: true
+tags:
+- linux
+- ubuntu
+---
+
+
 ## [Linux Basics - Set a Static IP on Ubuntu](https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu)
 
 Here is an example for an older Ubuntu Release:

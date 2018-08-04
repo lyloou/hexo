@@ -1,3 +1,11 @@
+---
+title: linux用户管理和权限设置
+date: 2018-07-27 17:16:15
+toc: true
+comments: true
+tags:
+- linux
+---
 
 - 修改文件的所有者和所属组：
 ```

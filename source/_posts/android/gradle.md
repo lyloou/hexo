@@ -1,3 +1,11 @@
+---
+title: gradle
+date: 2018-07-10 19:16:17
+toc: true
+tags:
+- android
+---
+
 - [[Tips] Auto-increment versionCode using Gradle – Supitsara Prathan – Medium](https://medium.com/@prathanbomb/tips-auto-increment-versioncode-of-android-using-gradle-dba0425af97c)
 - [深入理解Android（一）：Gradle详解](http://www.infoq.com/cn/articles/android-in-depth-gradle)
 - [【Android】使用Gradle进行配置 · 诸隆隆](https://zllbird.github.io/2016/01/14/android%E4%BD%BF%E7%94%A8gradle%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE/)

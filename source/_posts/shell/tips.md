@@ -1,3 +1,13 @@
+---
+title: shell tips
+date: 2016-12-20 10:30:13
+toc: true
+comments: true
+tags:
+- shell
+- linux
+---
+
 ## help tips
 ```sh
 #!/bin/bash
@@ -11,12 +21,12 @@ exit 0
 }
 
 if [[ $1 == "" || $1 == "-h" ]]; then
-	echo 'what?'
-	help
+    echo 'what?'
+    help
 fi
 
 if [[ $1 != "" ]]; then
-	echo $1
+    echo $1
 fi
 
 echo -e "\033]0;$1\007"

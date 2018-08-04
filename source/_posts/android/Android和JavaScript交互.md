@@ -1,3 +1,10 @@
+---
+title: Android和JavaScript交互
+date: 2018-07-10 19:16:17
+toc: true
+tags:
+- android
+---
 
 - [Android：这是一份全面 & 详细的Webview使用攻略 - 简书](https://www.jianshu.com/p/3c94ae673e2a)
 - [最全面总结 Android WebView与 JS 的交互方式 - 简书](https://www.jianshu.com/p/345f4d8a5cfa)

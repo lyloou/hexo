@@ -1,3 +1,14 @@
+---
+title: tmux
+date: 2018-07-26 17:16:15
+toc: true
+comments: true
+tags:
+- linux
+- tool
+---
+
+
 - [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
 
 ```conf

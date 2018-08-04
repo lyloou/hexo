@@ -1,3 +1,11 @@
+---
+title: gitlab
+date: 2018-07-12 08:17:25
+toc: true
+comments: true
+tags:
+- git
+---
 
 ## CI & CD
 
@@ -36,7 +44,6 @@ gitlab-runner unregister --url http://gitlab.example.com/ --token t0k3n
 gitlab-runner unregister --name test-runner
 gitlab-runner unregister --all-runners
 ```
-
-## 注意
+# !!#ff0000
 Runner的大版本号要和gitlab的在版本号保持一致。
 如：Runner 10.8.0 ~ gitlab 10.2.4

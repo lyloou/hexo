@@ -1,3 +1,11 @@
+---
+title: jenkins
+date: 2018-07-14 17:16:15
+toc: true
+comments: true
+tags:
+- devops
+---
 
 - [Installing Jenkins](https://jenkins.io/doc/book/installing/#debian-ubuntu)
 
