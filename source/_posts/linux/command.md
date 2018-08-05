@@ -48,7 +48,7 @@ https://coolshell.cn/articles/9104.html
 sed -i "s/'proxy.*/'proxy': 'http://proxy.lyloou.com'/g" eros.dev.js
 ```
 
-## nohub
+## nohup
 用途：不挂断地运行命令。
 语法：nohup Command [ Arg … ] [　& ]
 描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 & （ 表示”and”的符号）到命令的尾部。
@@ -96,22 +96,6 @@ scp -rp /path/filename username@remoteIP:/path #将本地文件拷贝到服务�
 scp -rp username@remoteIP:/path/filename /path #将远程文件从服务器下载到本地
 ```
 
-## zip
-```
-https://unix.stackexchange.com/questions/46969/compress-a-folder-with-tar
-To tar and gzip a folder, the syntax is:
-tar czf name_of_archive_file.tar.gz name_of_directory_to_tar
-
-tar -zcvf xxx.tar.gz aaa bbb
-tar -jcvf xxx.tar.bz2 aaa bbb
-tar -Jcvf xxx.tar.xz aaa bbb
-```
-## unzip
-```sh
-tar -xf xxx.tar.gz
-tar -xf xxx.tar.bz2
-tar -Jxf xxx.tar.xz
-```
 
 ## df查看硬盘容量 
 ```sh

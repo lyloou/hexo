@@ -1,7 +1,7 @@
 ---
 title: ubuntu软件
 sticky: 10
-date: 2016-09-26 17:16:15
+date: 2018-08-05 17:16:15
 toc: true
 comments: true
 tags:
@@ -10,17 +10,176 @@ tags:
 ---
 
 
-- synpase（快速启动）
-- vlc（多媒体播放器）
-- wiz
-- chrome
-- vscode
-- idea
-- emacs
-- shadowsocks
-- proxychains
-- privoxy
+## synpase（快速启动）
 ```sh
+sudo add-apt-repository ppa:synapse-core/ppa
+sudo apt-get update
+sudo apt-get install synapse
+```
+
+## fcitx 五笔输入法
+- 安装
+`sudo apt-get install fcitx fcitx-table-wubi fcitx-tools -y`
+
+- 启用自动调频
+修改配置文件 /usr/share/fcitx/table/wbx.conf
+```
+AdjustOrder=AdjustFreq
+```
+
+- 不能正常打出中文标点
+修改配置文件 
+/usr/share/fcitx/addon/fcitx-fullwidth-char.conf
+```
+Priority=80
+```
+
+- 重启输入法
+`fcitx -r`
+
+- [linux 安装与配置 fcitx 五笔输入法](https://zhuanlan.zhihu.com/p/28586200)
+
+## git
+```sh
+sudo apt-get update
+sudo apt-get install git
+```
+
+## vlc（多媒体播放器）
+```sh
+sudo apt-get update
+sudo apt install vlc
+```
+
+## wiz
+```
+http://www.wiz.cn/wiznote-linux.html
+```
+
+## firefox
+```sh
+# 
+# https://www.computernetworkingnotes.com/ubuntu-linux-tutorials/how-to-update-firefox-in-ubuntu-linux.html
+# install
+sudo apt-get update
+sudo apt-get install firefox
+
+# update
+sudo apt-get update
+sudo apt-get install --only-upgrade firefox
+```
+
+## chrome
+- install
+```sh
+# https://askubuntu.com/questions/510056/how-to-install-google-chrome
+
+# 1. add key
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# 2. set repository
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+# 3. install package
+sudo apt-get update 
+sudo apt-get install google-chrome-stable
+```
+- config
+```sh
+https://github.com/FelisCatus/SwitchyOmega/releases/
+
+https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+```
+
+## vscode
+```sh
+# https://code.visualstudio.com/docs/setup/linux
+
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get update
+sudo apt-get install code # or code-insiders
+```
+
+## idea
+```sh
+# https://www.jetbrains.com/help/idea/install-and-set-up-product.html
+sudo snap install intellij-idea-ultimate --classic
+```
+
+## emacs
+```sh
+sudo apt-get install emacs
+```
+
+## [shadowsocks](https://blog.huihut.com/2017/08/25/LinuxInstallConfigShadowsocksClient/)
+- install
+```sh
+# ubuntu
+apt-get install python-pip
+pip install shadowsocks
+
+# centos
+sudo yum install python-setuptools && easy_install pip
+sudo pip install shadowsocks
+```
+- config
+`sudo vi $HOME/p/shadowsocks.json`
+```json
+// 在shadowsocks.json中加入以下内容：
+{
+  "server":"my_server_ip",
+  "local_address": "127.0.0.1",
+  "local_port":1080,
+  "server_port":my_server_port,
+  "password":"my_password",
+  "timeout":300,
+  "method":"aes-256-cfb"
+}
+```
+`sudo ln -s $HOME/p/shadowsocks.json /etc/shadowsocks.json`
+
+- start
+```sh
+- 前端启动： sudo sslocal -c /etc/shadowsocks.json
+- 后端启动： sudo sslocal -c /etc/shadowsocks.json -d start
+- 后端停止： sudo sslocal -c /etc/shadowsocks.json -d stop
+- 重启(修改配置要重启才生效)： sudo sslocal -c /etc/shadowsocks.json -d restart
+```
+- boot up
+`sudo vim /etc/systemd/system/shadowsocks.service`
+```ini
+[Unit]
+Description=Shadowsocks Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/sslocal -c /etc/shadowsocks.json
+
+[Install]
+WantedBy=multi-user.target
+```
+`systemctl enable /etc/systemd/system/shadowsocks.service`
+- now you can reboot to check it~
+
+## proxychains
+```sh
+# https://askubuntu.com/questions/610333/how-to-set-socks5-proxy-in-the-terminal
+# install proxychains
+sudo apt install proxychains
+sudo proxychains apt-get update
+
+# now you can config your proxy in /etc/proxychains.conf
+socks5 127.0.0.1 1080
+```
+
+## privoxy
+```sh
+# https://linoxide.com/linux-how-to/install-use-privoxy-ubuntu-16-04/
+# install
+sudo apt-get install privoxy
+
 # vim /etc/privoxy/config
 # 添加下面这一行
 forward-socks5 / 0.0.0.0:1080 .
@@ -31,35 +190,87 @@ forward-socks5 / 0.0.0.0:1080 .
 # 测试
 curl  -x 127.0.0.1:8118 http://www.google.com
 ```
-- fcitx+五笔+english
-- calibre（电子书阅读器）
-- caja（文件管理器）
-- 红移（色温调节工具）
-- workrave（定时提醒）
-- terminal
-  [Terminator – Multiple GNOME terminals in one window | Ubuntu Geek](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html)
-  [安装 Terminator：一个支持多终端的终端-软件 ◆ 分享|Linux.中国-开源社区](https://linux.cn/article-2978-1.html)
-- tmux
-- zsh
+
+
+## caja（文件管理器）
+```sh
+# https://www.devmanuals.net/install/ubuntu/ubuntu-16-04-LTS-Xenial-Xerus/how-to-install-caja.html
+sudo apt-get update
+sudo apt-get install caja
+```
+
+## terminal
+```sh
+# http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html
+# https://linux.cn/article-2978-1.html
+sudo apt-get install terminator
+```
+
+## tmux
+```sh
+sudo apt-get install tmux
+```
+
+## zsh
+- https://www.cnblogs.com/EasonJim/p/7863099.html
+
+```sh
+# install
+sudo apt-get install zsh
+
+# change default shell to zsh
+chsh -s /bin/zsh
+```
+
 - oh my zsh
 ```sh
 # https://github.com/robbyrussell/oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
-- catfish 文件搜索
-- variety 壁纸切换
-- git-cola
 
-
-## How to set socks5 proxy in the terminal (在终端中使用代理)
+- autojump
 ```sh
-# install proxychains
-sudo apt install proxychains
-sudo proxychains apt-get update
+sudo apt-get install autojump
 
-# now you can config your proxy in /etc/proxychains.conf
-socks5 127.0.0.1 1080
+vim .zshrc
+#在最后一行加入，注意点后面是一个空格
+plugins=( [plugins...] autojump)
 ```
+
+- zsh-syntax-highlighting
+```sh
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+# 1. Clone this repository in oh-my-zsh's plugins directory:
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# 2. Activate the plugin in ~/.zshrc:
+plugins=( [plugins...] zsh-syntax-highlighting)
+# 3. Source ~/.zshrc to take changes into account:
+source ~/.zshrc
+```
+
+- zsh-autosuggestions
+```sh
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+plugins=( [plugins...] autosuggestions)
+```
+
+
+## git-cola
+```sh
+apt-get install git-cola
+```
+
+## variety 壁纸切换
+```sh
+sudo apt-get update
+sudo apt-get install variety
+```
+
+## catfish 文件搜索
+## calibre（电子书阅读器）
+## 红移（色温调节工具）
+## workrave（定时提醒）
+
 
 ## 截图软件 shutter
 1. `sudo add-apt-repository ppa:shutter/ppa1`
@@ -93,25 +304,11 @@ $ sudo apt -f install
 2. install: dpkg -i wqy-zenhei-0.9.45.deb
 
 
-## fcitx 五笔输入法
-### 安装 fcitx
-`sudo apt-get install fcitx fcitx-table-wubi fcitx-tools -y`
-
-### 启用自动调频
-修改配置文件 /usr/share/fcitx/table/wbx.conf
-```
-AdjustOrder=AdjustFreq
-```
-
-### 不能正常打出中文标点
-修改配置文件 /usr/share/fcitx/addon/fcitx-fullwidth-char.conf
-```
-Priority=80
-```
-### 重启输入法
-`fcitx -r`
-
-- [linux 安装与配置 fcitx 五笔输入法](https://zhuanlan.zhihu.com/p/28586200)
-
 ## supervisor
 - [Supervisor安装与配置（Linux/Unix进程管理工具） - CSDN博客](https://blog.csdn.net/xyang81/article/details/51555473)
+
+## [sleep](https://medium.com/@jerilkuriakose/keyboard-shortcuts-for-custom-terminal-commands-in-ubuntu-17-10-aeb902f71869)
+```sh
+#!/bin/bash
+dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
+```
