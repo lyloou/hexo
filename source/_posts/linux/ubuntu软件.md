@@ -272,6 +272,7 @@ sudo apt-get install variety
 ## workrave（定时提醒）
 ## LibreOffice
 ## Transmission (downloader)
+## diodon
 
 ## 截图软件 shutter
 1. `sudo add-apt-repository ppa:shutter/ppa1`
