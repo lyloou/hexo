@@ -270,7 +270,8 @@ sudo apt-get install variety
 ## calibre（电子书阅读器）
 ## 红移（色温调节工具）
 ## workrave（定时提醒）
-
+## LibreOffice
+## Transmission (downloader)
 
 ## 截图软件 shutter
 1. `sudo add-apt-repository ppa:shutter/ppa1`

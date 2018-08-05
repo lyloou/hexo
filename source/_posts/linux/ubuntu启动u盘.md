@@ -13,6 +13,12 @@ tags:
 
 ## ubuntu
 - Startup Disk Creator(启动盘创建器)
+```sh
+# install
+sudo apt-get install usb-creator-gtk
+# run
+usb-creator-gtk
+```
 - https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu
 
 ## mac
