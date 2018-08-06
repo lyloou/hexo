@@ -24,19 +24,10 @@ sudo blkid
 sudo mount -a
 ```
 
-## 软件
 设置image:
 ```
 http://mirros.aliyun.com/ubuntu
 ```
 
-```
-sudo apt-get update
-sudo apt-get install terminator
-
-sudo add-apt-repository ppa:synapse-core/ppa
-sudo apt-get update
-sudo apt-get install synapse
-
-sudo apt install vlc
-```
+## 软件
+- [ubuntu系统](./ubuntu系统.md)
