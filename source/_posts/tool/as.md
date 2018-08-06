@@ -18,9 +18,6 @@ tags:
 - 编写Android代码；
 - 写hexo上的文章；
 
-## 我的AS配置
-- [setting.jar](https://github.com/lyloou/lou/tree/master/tools)
-
 ## 快捷键
 - !j
 >  Sublime Text式的多处选择（Sublime Text Multi Selection）
@@ -49,17 +46,24 @@ tags:
 - ![askey](./askey2.png)
 
 ## Theme
-- Darcula + Sublime Text 2
+- Theme: Darcula
+- Font: Fira Code (Enable font ligatures), (14, 1.1)
 
 ## Plugin
+```sh
+# basic
 - .ignore
-- Markdown support
-- Android ButtkerKnife Zelenzy
-- BashSupport
+- CamelCase
 - GsonFormat
+- Markdown support
+- BashSupport
+
+# other
+- Android ButtkerKnife Zelenzy
 - Markdown Navigator
 - MultiTypeTemplates
 - Smalidea
+```
 
 ## Tips
 - Editor->General->Smart Keys
@@ -74,9 +78,9 @@ tags:
 # gradle.properties中添加
 # 举例ShadowSocket
 systemProp.http.proxyHost=127.0.0.1
-systemProp.http.proxyPort=1080
+systemProp.http.proxyPort=8118
 systemProp.https.proxyHost=127.0.0.1
-systemProp.https.proxyPort=1080
+systemProp.https.proxyPort=8118
 ```
 - 设置中启用离线状态
 - 启用守护进程
@@ -92,3 +96,13 @@ org.gradle.daemon=true
 - [知道Android 中Gradle 的这些技巧，提升编译构建速度](http://tikitoo.github.io/2016/05/26/android-studio-gradle-build-run-faster/)
 - [Android Studio 小技巧合集](http://jaeger.itscoder.com/android/2016/02/14/android-studio-tips.html)
 - [Android Studio 实用小技巧](https://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&mid=2247485764&idx=1&sn=f816c73c1bc0d024d877f5f5371488b7&chksm=96cda809a1ba211faf50e83386c40d74bc71a24bd420f22cffda6a3d62a64ded6b5695a20d59&mpshare=1&scene=23&srcid=0717PkrJrg2LIqVFH25udp60&utm_medium=email&utm_source=gank.io#rd)
+
+## logcat color
+search: Logcat
+```ini
+Assert: 9C27B0
+Debug: 2196F3
+Error: F44336
+Info: 4CAF50
+Warning: FFC107
+```
