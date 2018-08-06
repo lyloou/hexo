@@ -254,6 +254,13 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 plugins=( [plugins...] autosuggestions)
 ```
 
+- theme: 
+```sh
+$ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+vi ~/.vimrc
+ZSH_THEME="powerlevel9k/powerlevel9k"
+```
 
 ## git-cola
 ```sh
