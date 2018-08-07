@@ -1,3 +1,13 @@
+---
+title: ubuntu-mine
+date: 2018-08-05 17:16:15
+toc: true
+comments: true
+tags:
+- linux
+- ubuntu
+---
+
 ## 设置管理员密码
 首次使用管理员登录需要先设置密码
 ```sh
@@ -30,4 +40,4 @@ http://mirros.aliyun.com/ubuntu
 ```
 
 ## 软件
-- [ubuntu系统](./ubuntu系统.md)
+- [ubuntu软件](../ubuntu软件/)
