@@ -1,11 +1,12 @@
 ---
-title: Android启动屏和引导页
+title: Android启动模式
 date: 2018-08-06 20:04:15
 toc: true
 comments: true
 tags:
 - android
 ---
+## [Android: Understanding Activity launch mode](https://www.mobomo.com/2011/06/android-understanding-activity-launchmode/)
 
 ## the weird launch mode
 ```
