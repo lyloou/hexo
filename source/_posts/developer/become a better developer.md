@@ -46,3 +46,18 @@ https://www.skorks.com/2011/09/why-developers-never-use-state-machines/
 https://www.skorks.com/2009/09/manufacturing-authority-and-trust/
 
 ## [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html)
+
+## If you want to improve your self-confidence, improve your skills
+> https://medium.com/darius-foroux/i-have-15-ideas-to-change-your-life-do-you-have-5-minutes-f84c3f99b3c5
+If you don’t believe in yourself, don’t try to search for it in motivational posts, talks, or books.
+
+[You only improve your self-confidence by becoming good at something](http://dariusforoux.com/build-self-confidence-need-win-life/). How do you get good? By learning, doing, seeing results, and repeating that process for years. Your confidence will grow slowly every day.
+
+## [How To Build The Self-Confidence You Need To Win At Life](https://dariusforoux.com/build-self-confidence-need-win-life/)
+```
+- Improve your competencies
+- Put them into practice
+- See results
+- Grow more confident
+- Repeat
+```

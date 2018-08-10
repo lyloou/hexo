@@ -210,6 +210,8 @@ sudo apt-get install terminator
 ```sh
 sudo apt-get install tmux
 ```
+- [Update your tmux to latest version](http://witkowskibartosz.com/blog/update-your-tmux-to-latest-version.html#.W2wMk87-iCo)
+
 
 ## zsh
 - https://www.cnblogs.com/EasonJim/p/7863099.html
@@ -251,7 +253,7 @@ source ~/.zshrc
 - zsh-autosuggestions
 ```sh
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-plugins=( [plugins...] autosuggestions)
+plugins=( [plugins...] zsh-autosuggestions)
 ```
 
 - theme: 
