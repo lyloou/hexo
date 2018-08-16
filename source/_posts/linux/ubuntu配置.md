@@ -58,3 +58,8 @@ LANG="en_US.UTF-8"
 ## OR
 sudo update-locale LANG=en_US.UTF-8
 ```
+
+## build-essential 
+```sh
+apt-get install build-essential
+```
