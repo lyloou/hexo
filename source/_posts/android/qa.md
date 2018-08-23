@@ -24,3 +24,26 @@ tags:
 
 【外部链接】
 - [Android笔记：invalidate()和postInvalidate() 的区别及使用](http://blog.csdn.net/mars2639/article/details/6650876)
+
+## java.lang.RuntimeException: Performing stop of activity that is not resumed
+- http://www.aichengxu.com/java/6992563.htm
+- https://stackoverflow.com/questions/21947675/android-4-4-2-java-lang-runtimeexception-performing-stop-of-activity-that-is/23246159#23246159
+```java
+// 方案1：
+Handler handler = new Handler(new Handler.Callback() {
+   @Override
+   public boolean handleMessage(Message msg) {
+       switch (msg.what) {
+           case 1:
+             //Start another Activity Here
+           default:
+           break;
+        }
+        return false;
+    }
+});
+handler.sendEmptyMessageDelayed(1, 1000);
+
+// 方案2：
+new Handler().postDelay(()->{doSomething()}, 100);
+```
