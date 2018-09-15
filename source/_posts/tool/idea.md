@@ -15,6 +15,7 @@ tags:
 - GsonFormat
 - Markdown support
 - GO
+- lombok plugin
 
 ## THEME
 http://ethanschoonover.com/solarized

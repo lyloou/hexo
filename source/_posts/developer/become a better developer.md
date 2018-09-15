@@ -61,3 +61,20 @@ If you don’t believe in yourself, don’t try to search for it in motivational
 - Grow more confident
 - Repeat
 ```
+
+
+## [The Most Important Skill Nobody Taught You – Personal Growth – Medium](https://medium.com/personal-growth/the-most-important-skill-nobody-taught-you-9b162377ab77)
+```
+Fortunately, there is a solution. The only way to avoid being ruined by this fear — like any fear — is to face it. It’s to let the boredom take you where it wants so you can deal with whatever it is that is really going on with your sense of self. That’s when you’ll hear yourself think, and that’s when you’ll learn to engage the parts of you that are masked by distraction.
+
+The beauty of this is that, once you cross that initial barrier, you realize that being alone isn’t so bad. Boredom can provide its own stimulation.
+
+...
+
+The oldest philosophical wisdom in the world has one piece of advice for us: 
+know yourself. And there is a good reason why that is.
+
+Without knowing ourselves, it’s almost impossible to find a healthy way to interact with the world around us. 
+Without taking time to figure it out, we don’t have a foundation to built the rest of our lives on.
+
+```
