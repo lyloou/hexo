@@ -22,3 +22,45 @@ https://help.sonatype.com/repomanager2/installing-and-running/running
 快照 vs 版本
 对于版本，Maven 一旦下载了指定的版本（例如 data-service:1.0），它将不会尝试从仓库里再次下载一个新的 1.0 版本。想要下载新的代码，数据服务版本需要被升级到 1.1。
 对于快照，每次用户接口团队构建他们的项目时，Maven 将自动获取最新的快照（data-service:1.0-SNAPSHOT）。
+
+
+## 设置deploy的地址
+```xml
+<!-- pom.xml中加入 -->
+<distributionManagement>
+    <repository>
+        <id>remote-nexus</id> <!-- 注意id要和.m2文件夹中的setting.xml server标签下的id一样 -->
+        <name>Releases</name>
+        <url>http://localhost:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>remote-nexus</id>
+        <name>Snapshot</name>
+        <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+
+<!-- .m2/setting.xml -->
+<!-- [maven设置-setting.xml文件学习](https://blog.csdn.net/tomato__/article/details/13025187) -->
+<!-- [Maven – Settings Reference](https://maven.apache.org/settings.html) -->
+  <servers>
+    <server>
+      <id>local-nexus</id>
+      <username>admin</username>
+      <password>admin123</password>
+    </server>
+    <server>
+      <id>remote-nexus</id>
+      <username>name</username>
+      <password>password</password>
+    </server>
+  </servers>
+
+```
+
+
+## [有一些与 Maven 生命周期相关的重要概念需要说明](http://wiki.jikexueyuan.com/project/maven/build-life-cycle.html)
+
+当一个阶段通过 Maven 命令调用时，例如 mvn compile，只有该阶段之前以及包括该阶段在内的所有阶段会被执行。
+
+不同的 maven 目标将根据打包的类型（JAR / WAR / EAR），被绑定到不同的 Maven 生命周期阶段。
