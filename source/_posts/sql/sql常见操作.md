@@ -49,3 +49,17 @@ INSERT INTO clients (clients.`client_id`, clients.`client_name`, clients.`client
 https://dev.mysql.com/doc/refman/8.0/en/insert-on-duplicate.html
 
 
+
+## 插入或更新时的NULL字段处理
+想法来自【小白】
+```sql
+# 如果待插入的数据不为NULL，则改变原来的为新值
+SET @title = '新标题234';
+INSERT INTO goods (goods_id,title) VALUES (9934,IFNULL(@title,'')) ON DUPLICATE KEY UPDATE title=IF(VALUES(title)='',title,VALUES(title));
+SELECT * FROM goods WHERE goods_id  =9934;
+
+# 如果待插入的数据为NULL，则不改变原来的
+SET @title = NULL;
+INSERT INTO goods (goods_id,title) VALUES (9934,IFNULL(@title,'')) ON DUPLICATE KEY UPDATE title=IF(VALUES(title)='',title,VALUES(title));
+SELECT * FROM goods WHERE goods_id  =9934;
+```
