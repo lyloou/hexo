@@ -35,6 +35,12 @@ shutdown -h 30 #30分钟后关机
 > $ps -aux | grep [应用名]  # 抓取指定应用的进程信息，几下 应用的pid
 > $kill -9 [应用的pid]
 
+## cat
+10行的上下文
+```sh
+cat file.txt | grep -C 10 key_word
+```
+
 ## tail
 查看实时日志： tail -fn 100 log_file_name.out
 ```sh
