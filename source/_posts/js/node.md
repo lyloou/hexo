@@ -113,9 +113,3 @@ node --use_strict myFile.js
 
 http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000
 
-
-## package.json：The difference between devDependencies and dependencies
-> If someone is planning on downloading and using your module in their program,
- then they probably don't want or need to download and build the external test
- or documentation framework that you use. In this case,
- it's best to list these additional items in a devDependencies hash.

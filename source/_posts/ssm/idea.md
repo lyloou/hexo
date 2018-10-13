@@ -1,2 +1,0 @@
-- [ ] 新建 spring mvc项目；
-- [ ] 新建 spring boot 项目； 
