@@ -17,12 +17,26 @@ $ git config user.name
 $ git config user.email
 ```
 
+## 保存push时的用户名和密码
+针对http协议的也可以不用总是输入用户名密码那么麻烦，如：`https://github.com/lyloou/hexo.git`，
+可以通过设置`credential.help`来保存。
+```
+git config credential.helper store
+```
+
 ## 网络配置：
 ```
 git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
 - [git 设置和取消代理](https://gist.github.com/laispace/666dd7b27e9116faece6)
+
+或：
+```
+git config --global http.proxy http://127.0.0.1:8118
+git config --global https.proxy https://127.0.0.1:8118
+```
+[Windows下使用Privoxy转换socks5代理为Http代理 | 小田的blog](https://tzrgaga.github.io/2017/04/12/forward-socks-by-privoxy/)
 
 ## 配置别名
 ``` js
