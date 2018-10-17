@@ -68,6 +68,8 @@ tags:
 - 直接修改远程仓库 url
   > `git remote set-url origin git:new.url.here`
   >  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
+-  clone repo with its submodule (use the --recursive argument)
+  > git clone --recursive git@github.com:rbind/yihui.git
 
 ## 分支
 ### delete a git branch both locally and remotely.
