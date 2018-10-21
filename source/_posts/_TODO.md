@@ -16,3 +16,5 @@
 
 - [ ] [经验：如何正确的使用开源项目](http://www.infoq.com/cn/articles/how-to-correctly-use-the-open-source-project)
 - [ ] 开源项目推荐
+
+坑：日志文件太大（34G）导致系统运行异常（页面加载异常）。
