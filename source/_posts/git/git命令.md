@@ -70,6 +70,16 @@ tags:
   >  See this question: [Change the URI (URL) for a remote Git repository - Stack Overflow](http://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo/16330439)
 -  clone repo with its submodule (use the --recursive argument)
   > git clone --recursive git@github.com:rbind/yihui.git
+  https://yihui.name/cn/2017/03/git-submodule/
+    - 如果克隆库的时候要初始化子模块，请加上 --recursive 参数，如：
+    git clone --recursive git@github.com:rbind/yihui.git
+    - 如果已经克隆了主库但没初始化子模块，则用：
+    git submodule update --init --recursive
+    - 如果已经克隆并初始化子模块，而需要从子模块的源更新这个子模块，则：
+    git submodule update --recursive --remote
+    - 如果要向一个库中添加一个新的子模块，可以用 git submodule add
+    git submodule add https://github.com/yihui/hugo-lithium-theme.git themes/hugo-lithium-theme
+
 
 ## 分支
 ### delete a git branch both locally and remotely.
