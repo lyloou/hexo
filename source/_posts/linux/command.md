@@ -129,3 +129,10 @@ sudo blkid
 ```
 sudo mount -a
 ```
+
+## 查看使用最多的10条命令
+```sh
+history | awk '{print $2}' | sort | uniq -c | sort -k1,1nr | head -10
+```
+https://coolshell.cn/articles/8619.html
+http://blog.51cto.com/huanglianfeng/1381267

@@ -93,3 +93,52 @@ select user;
 ```sql
 select current_database();
 ```
+
+## pgcli
+https://www.pgcli.com/config
+
+
+## 注意
+在修改某个字段类型之前，最好删除这个字段的约束，
+修改完后再把合适的约束添加上去。《PostgreSQL修炼之道》p166
+
+
+
+## 插入或更新
+``` sql
+INSERT INTO contacts VALUES (1,'n1', '{15200000000, 15200000001}', 'shenzhen') on conflict (id) do UPDATE set phone = excluded.phone;
+```
+- https://stackoverflow.com/questions/1109061/insert-on-duplicate-update-in-postgresql
+- https://stackoverflow.com/questions/39663280/how-to-do-insert-into-select-and-on-duplicate-update-in-postgresql-9-5
+
+
+## 插入数组
+```sql
+create TABLE contacts(
+        id int primary key,
+        name varchar(40),
+        phone varchar(32)[],
+        address text);
+
+ INSERT INTO contacts VALUES (1,'n1', '{15200000000, 15200000001}', 'shenzhen') 
+```
+https://stackoverflow.com/questions/33335338/inserting-array-values
+
+
+## 批量插入数据
+```sql
+create table student(student_no int, student_name varchar(20), age int, class_no int);
+
+INSERT INTO student select generate_series(1,23), concat('s',generate_series(1,23)),18,  1 
+on conflict (student_no) do update 
+set student_name=excluded.student_name, 
+    age=excluded.age, 
+    class_no=excluded.class_no;
+```
+
+
+## 修改默认的`schema`
+https://stackoverflow.com/questions/2875610/permanently-set-postgresql-schema-path
+```sql
+ ALTER DATABASE lou SET search_path TO lou, osdba,postgres,public
+```
