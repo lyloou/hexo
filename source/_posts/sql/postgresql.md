@@ -1,3 +1,12 @@
+---
+title: postgresql
+date: 2018/10/28 18:17
+toc: true
+comments: true
+tags:
+- sql
+---
+
 ## 基本用法
 ```sh
 # 1 创建数据库

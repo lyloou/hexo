@@ -1,3 +1,12 @@
+---
+title: nginx
+date: 2018-09-19 16:58:15
+toc: true
+comments: true
+tags:
+- linux
+---
+
 # install nginx
 ```sh
 sudo apt install nginx

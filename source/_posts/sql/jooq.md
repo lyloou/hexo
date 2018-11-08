@@ -2,6 +2,7 @@
 title: jooq相关
 date: 2018-08-03 18:17:54
 toc: true
+comments: true
 tags:
 - sql
 ---

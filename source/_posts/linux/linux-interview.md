@@ -1,4 +1,11 @@
-
+---
+title: linux-interview
+date: 2018-08-23 16:53:15
+toc: true
+comments: true
+tags:
+- linux
+---
 
 ## [(3) Top 10 Linux Job Interview Questions - YouTube](https://www.youtube.com/watch?v=l0QGLMwR-lY)
 Can you answer the 10 most popular Linux tech job interview questions?

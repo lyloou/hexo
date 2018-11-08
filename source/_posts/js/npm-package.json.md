@@ -1,3 +1,11 @@
+---
+title: npm-package
+date: 2018.10.11 13:02:00
+toc: true
+comments: true
+tags:
+- js
+---
 
 ## package.json：The difference between devDependencies and dependencies
 > If someone is planning on downloading and using your module in their program,

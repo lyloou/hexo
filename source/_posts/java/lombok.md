@@ -1,3 +1,9 @@
+---
+title: lombok
+date: 2018-11-07 15:31:02
+tags:
+- java
+---
 
 - [常用的 lombok 注解](https://blog.csdn.net/mccand1234/article/details/53456411)
 @EqualsAndHashCode：实现equals()方法和hashCode()方法 @ToString：实现toString()方法

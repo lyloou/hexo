@@ -1,6 +1,11 @@
-2018-11-07 14:31
+---
+title: Log4j配置
+date: 2018-11-07 14:31:02
+tags:
+- java
+---
 
-有颜色的log4j
+## 有颜色的log4j
 ```ini
 log4j.debug=false
 #
@@ -122,3 +127,5 @@ log4j.appender.MAIL.To=yyflyons@126.com
 log4j.appender.MAIL.layout=org.apache.log4j.PatternLayout  
 log4j.appender.MAIL.layout.ConversionPattern=[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n 
 ```
+
+## [Spring MVC + Log4j example](https://www.mkyong.com/spring-mvc/spring-mvc-log4j-integration-example/)

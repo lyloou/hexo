@@ -1,3 +1,12 @@
+---
+title: spring-mvc
+date: 2018-09-10 18:28:02
+toc: true
+comments: true
+tags:
+- spring
+- java
+---
 
 ## 参考资料
 - [Configure a Spring MVC Project with Intellij IDEA | In My Own Write](https://iamsaurabh.wordpress.com/2017/02/11/configure-a-spring-mvc-project-with-intellij-idea/)

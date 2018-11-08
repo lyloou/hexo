@@ -82,6 +82,10 @@ tags:
 
 
 ## 分支
+### [创建空白分支](https://blog.csdn.net/playboyanta123/article/details/48975175)
+```sh
+git checkout --orphan gh-pages
+```
 ### delete a git branch both locally and remotely.
 ```sh
 $ git push --delete <remote_name> <branch_name>
