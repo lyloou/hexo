@@ -76,3 +76,13 @@ nexus.exe /uninstall <optional-service-name> #卸载
 当一个阶段通过 Maven 命令调用时，例如 mvn compile，只有该阶段之前以及包括该阶段在内的所有阶段会被执行。
 
 不同的 maven 目标将根据打包的类型（JAR / WAR / EAR），被绑定到不同的 Maven 生命周期阶段。
+
+
+## [maven dependency中scope=compile 和 provided区别](https://blog.csdn.net/mccand1234/article/details/60962283)
+maven中三种classpath
+编译，测试，运行
+1.compile：默认范围，编译测试运行都有效
+2.provided：在编译和测试时有效
+3.runtime：在测试和运行时有效
+4.test:只在测试时有效
+5.system:在编译和测试时有效，与本机系统关联，可移植性差 
