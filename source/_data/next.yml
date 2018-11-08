@@ -7,7 +7,11 @@ title: 木子楼
 subtitle:
 description: /* Better than last best */
 author: lyloou
-language: zh-Hans
+language: 
+- zh-CN
+- zh-HK
+- zh-TW
+- en
 timezone:
 
 # URL
@@ -759,7 +763,7 @@ leancloud_visitors:
 firestore:
   enable: true
   collection: articles #required, a string collection name to access firestore database
-  apiKey:  AIzaSyDMoSoiXNnJt-PMgM_v31rHQuXxkfP7na8 #required
+  apiKey: AIzaSyDMoSoiXNnJt-PMgM_v31rHQuXxkfP7na8 #required
   projectId: lyloou-counter #required
   bluebird: false #enable this if you want to include bluebird 3.5.1(core version) Promise polyfill
 
