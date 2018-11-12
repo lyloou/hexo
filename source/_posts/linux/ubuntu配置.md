@@ -8,6 +8,11 @@ tags:
 - ubuntu
 ---
 
+## 修改hostname
+```sh
+vi /etc/hostname
+reboot
+```
 
 ## [Linux Basics - Set a Static IP on Ubuntu](https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu)
 

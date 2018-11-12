@@ -14,3 +14,10 @@ tags:
 - [Gradle DSL Version 4.8](https://docs.gradle.org/current/dsl/)
 - [配置构建  |  Android Developers](https://developer.android.com/studio/build/)
 - [从命令行构建您的应用  |  Android Developers](https://developer.android.com/studio/build/building-cmdline)
+
+
+## 了解在构建生命周期的各个阶段所花费的时间
+通过 `--profile` 来生成报告
+```sh
+./gradlew assembleDebug --profile
+```
