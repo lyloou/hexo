@@ -68,3 +68,36 @@ sudo update-locale LANG=en_US.UTF-8
 ```sh
 apt-get install build-essential
 ```
+
+## switch between gdm,lightdm
+http://www.webupd8.org/2011/07/how-to-switch-between-gdm-lightdm-or.html
+```sh
+sudo dpkg-reconfigure lightdm
+```
+
+## [How can I define startup applications with the Awesome Window Manager? - Ask Ubuntu](
+https://askubuntu.com/questions/57264/how-can-i-define-startup-applications-with-the-awesome-window-manager)
+
+Starting from a template
+First you'll need to copy the template rc.lua file into your home folder
+```sh
+mkdir ~/.config/awesome
+cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+```
+Defining applications to start
+Now using awesome - edit config copy the following code at the bottom of your new rc.lua file
+```lua
+do
+  local cmds =
+  {
+    "firefox",
+    "xedit"
+  }
+
+  for _,i in pairs(cmds) do
+    awful.util.spawn(i)
+  end
+end
+```
+In this example - firefox and xedit are run on startup.
+An excellent wiki page describing this and much more can be found on [ArchLinux](https://wiki.archlinux.org/index.php/Awesome3#Autorun_programs)
