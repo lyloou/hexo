@@ -195,6 +195,16 @@ and then delete the local copies:
 git tag | xargs git tag -d
 ```
 
+## [How do you rename a Git tag?](https://stackoverflow.com/questions/1028649/how-do-you-rename-a-git-tag)
+```sh
+git tag new old
+git tag -d old
+git push origin :refs/tags/old
+git push --tags
+
+git pull --prune --tags # Finally, make sure that the other users remove the deleted tag. Please tell them (co-workers) to run the following command
+```
+
 ## 参考链接
 - 《GitHub入门与实践》
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
