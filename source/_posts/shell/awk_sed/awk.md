@@ -9,6 +9,7 @@ tags:
 - awk
 ---
 
+$(whereis go | awk -F: '{print $2}')
 
 - [为什么我特别喜欢Awk | 赖明星](http://mingxinglai.com/cn/2012/12/Why-I-like-AWK/)
 
