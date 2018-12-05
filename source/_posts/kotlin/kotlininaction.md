@@ -153,6 +153,7 @@ compiled with an invocation of the Ant task.
 p84
 
 kotlin visibility modifiers (p85)
+
 |Modifier | Class Member | Top-level declaration
 |:---|:---|:---
 | public(default) | Visible everywhere | Visible everywhere
