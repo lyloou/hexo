@@ -41,15 +41,20 @@ export PATH=$GOROOT/bin:${GOPATH}/bin:$PATH
 创建文件`build_ngrok.sh`加入以下内容
 ```sh
 #!/bin/sh
-DOMAIN_NAME=ngrok.lyloou.com  # 修改为你自己的域名
+read -p "Input your domain name:" DOMAIN
+if [ "$DOMAIN" = "" ];then
+    echo Please input your domain name.
+    exit 0
+fi
 
+currentPwd=$(pwd)
+echo current path: $currentPwd
 go get github.com/inconshreveable/ngrok
 cd $GOPATH/src/github.com/inconshreveable/ngrok
-cd ngrok
 openssl genrsa -out rootCA.key 2048
-openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$DOMAIN_NAME" -days 5000 -out rootCA.pem
+openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$DOMAIN" -days 5000 -out rootCA.pem
 openssl genrsa -out device.key 2048
-openssl req -new -key device.key -subj "/CN=$DOMAIN_NAME" -out device.csr
+openssl req -new -key device.key -subj "/CN=$DOMAIN" -out device.csr
 openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000
 
 cp rootCA.pem assets/client/tls/ngrokroot.crt
@@ -60,7 +65,23 @@ make release-server
 GOOS=linux GOARCH=amd64 make release-client
 GOOS=windows GOARCH=amd64 make release-client
 GOOS=linux GOARCH=arm make release-client
-tar -zcvf ngrok_bin.tar.gz $GOPATH/src/github.com/inconshreveable/ngrok/bin
+
+mkdir -p bin/tls
+mkdir out
+cp device.crt bin/tls/snakeoil.crt
+cp device.key bin/tls/snakeoil.key
+echo 'nohup ./ngrokd -tlsKey="tls/snakeoil.key" -tlsCrt="tls/snakeoil.crt" -domain='"$DOMAIN"' -httpAddr=":80" -httpsAddr=":443" > out/nohupd.out 2>&1 &' > ./bin/start.sh
+chmod +x ./bin/start.sh
+echo "server_addr: $DOMAIN:4443" > ./bin/ngrok.cfg
+echo "trust_host_root_certs: false" >> ./bin/ngrok.cfg
+echo 'nohup ./ngrok -config=./ngrok.cfg -subdomain=blog -proto=http 8078 > out/nohup_blog.out 2>&1 &' > ./bin/ngrok_blog.sh
+chmod +x ./bin/ngrok_blog.sh
+
+tar -zcvf ngrok_bin.tar.gz bin
+mv ngrok_bin.tar.gz $currentPwd/ngrok_bin.tar.gz
+git clean -df
+git checkout -- .
+echo ok! result: ngrok_bin.tar.gz
 ```
 运行 `sh build_ngrok.sh`
 
