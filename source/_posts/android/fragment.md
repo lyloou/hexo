@@ -37,3 +37,37 @@ private void getFocus() {
 ## 通过调用 fragment 的 `isAdded()` 方法，来判断当前的 fragment 是否阵亡。
 - 具体用法参考：`com.example.android.architecture.blueprints.todoapp.tasks.TasksContract.isActive();`
 - `isAdded()`文档：Return true if the fragment is currently added to its activity.
+
+## [How to implement onBackPressed() in Fragments?](https://stackoverflow.com/questions/5448653/how-to-implement-onbackpressed-in-fragments)
+```java
+public interface OnBackPressedListener {
+    public void doBack();
+}
+
+// create method to set listener in CustomActivity
+public void setOnBackPressedListener(OnBackPressedListener onBackPressedListener) {
+    this.onBackPressedListener = onBackPressedListener;
+}
+
+// in override onBackPressed implement something like that
+@Override
+public void onBackPressed() {
+    if (onBackPressedListener != null)
+        onBackPressedListener.doBack();
+    else
+        super.onBackPressed();
+}
+
+// in your fragment in onCreateView you should add our listener
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    activity = getActivity();
+    ((CustomActivity)activity).setOnBackPressedListener(new OnBackPressedListener(){
+        @override
+        public void doBack(){
+            // do your logic
+        }
+    });
+    return view;
+}
+```

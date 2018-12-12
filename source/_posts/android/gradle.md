@@ -21,3 +21,18 @@ tags:
 ```sh
 ./gradlew assembleDebug --profile
 ```
+
+## [android studio error- mixing versions can lead to run-time crashes](https://stackoverflow.com/questions/42960731/android-studio-error-mixing-versions-can-lead-to-run-time-crashes)
+```groovy
+// Add these lines of code in your build.gradle (Module:app) file at end:
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.1.1'
+            }
+        }
+    }
+}
+```
