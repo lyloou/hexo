@@ -115,8 +115,16 @@ sudo apt-get install emacs
 - install
 ```sh
 # ubuntu
-apt-get install python-pip
-pip install shadowsocks
+sudo apt-get install python-pip
+pip install --upgrade pip
+```python
+// edit /usr/bin/pip
+from pip import __main__
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+```
+
+sudo pip install shadowsocks
 
 # centos
 sudo yum install python-setuptools && easy_install pip
@@ -210,8 +218,24 @@ sudo apt-get install terminator
 ```sh
 sudo apt-get install tmux
 ```
-- [Update your tmux to latest version](http://witkowskibartosz.com/blog/update-your-tmux-to-latest-version.html#.W2wMk87-iCo)
 
+- [Update your tmux to latest version](http://witkowskibartosz.com/blog/update-your-tmux-to-latest-version.html#.W2wMk87-iCo)
+```sh
+VERSION=2.8
+wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
+tar xf tmux-${VERSION}.tar.gz
+rm -f tmux-${VERSION}.tar.gz
+cd tmux-${VERSION}
+
+sudo apt-get install libevent-dev
+sudo apt-get install ncurses-dev
+./configure
+make
+sudo make install
+cd -
+sudo rm -rf /usr/local/src/tmux-\*
+sudo mv tmux-${VERSION} /usr/local/src
+```
 
 ## zsh
 - https://www.cnblogs.com/EasonJim/p/7863099.html

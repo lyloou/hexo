@@ -8,6 +8,12 @@ tags:
 - vim
 ---
 
+## Vim-Plug
+https://github.com/junegunn/vim-plug
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 
 ## 用vim编辑上一次输入的命令
 ```sh
