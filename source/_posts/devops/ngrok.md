@@ -47,10 +47,15 @@ if [ "$DOMAIN" = "" ];then
     exit 0
 fi
 
+resultFileName=ngrok_`echo ${DOMAIN} | sed 's/\./_/g'`
+
 currentPwd=$(pwd)
 echo current path: $currentPwd
 go get github.com/inconshreveable/ngrok
 cd $GOPATH/src/github.com/inconshreveable/ngrok
+git clean -df
+git checkout -- .
+
 openssl genrsa -out rootCA.key 2048
 openssl req -x509 -new -nodes -key rootCA.key -subj "/CN=$DOMAIN" -days 5000 -out rootCA.pem
 openssl genrsa -out device.key 2048
@@ -77,19 +82,20 @@ echo "trust_host_root_certs: false" >> ./bin/ngrok.cfg
 echo 'nohup ./ngrok -config=./ngrok.cfg -subdomain=blog -proto=http 8078 > out/nohup_blog.out 2>&1 &' > ./bin/ngrok_blog.sh
 chmod +x ./bin/ngrok_blog.sh
 
-tar -zcvf ngrok_bin.tar.gz bin
-mv ngrok_bin.tar.gz $currentPwd/ngrok_bin.tar.gz
+mv bin ${resultFileName}
+tar -zcvf ${resultFileName}.tar.gz ${resultFileName}
+mv ${resultFileName}.tar.gz $currentPwd/${resultFileName}.tar.gz
 git clean -df
 git checkout -- .
-echo ok! result: ngrok_bin.tar.gz
+echo ok! result: ${resultFileName}.tar.gz
 ```
 运行 `sh build_ngrok.sh`
 
 ## 打包
-tar -zcvf ngrok_bin.tar.gz bin
+tar -zcvf ngrok_lyloou_com.tar.gz bin
 
 ## 下载
-scp root@170.10.0.100:/root/t/ngrok_bin.tar.gz ngrok_bin.tar.gz
+scp root@170.10.0.100:/root/t/ngrok_lyloou_com.tar.gz ngrok_lyloou_com.tar.gz
 
 ## 运行服务器
 ```sh

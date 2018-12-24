@@ -54,3 +54,6 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 运行 ps -e | grep ssh，查看是否有sshd进程：
 有时候虽然可以看到sshd 但是还是不能连接成功
 这时候就要想到重新启动一下：sudo service ssh restart
+
+
+## 

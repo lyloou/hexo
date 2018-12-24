@@ -205,6 +205,16 @@ git push --tags
 git pull --prune --tags # Finally, make sure that the other users remove the deleted tag. Please tell them (co-workers) to run the following command
 ```
 
+## [Remove a file from a Git repository without deleting it from the local filesystem](https://stackoverflow.com/questions/1143796/remove-a-file-from-a-git-repository-without-deleting-it-from-the-local-filesyste)
+
+``` sh
+# For single file:
+git rm --cached mylogfile.log
+
+# For single directory:
+git rm --cached -r mydirectory
+```
+
 ## 参考链接
 - 《GitHub入门与实践》
 - [10组最常用Git命令](http://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=401074259&idx=1&sn=6e69ce5338eb5d9212953068165c1cd0&mpshare=1&scene=23&srcid=1122laeBDuW58x2VncUQ44xs)
