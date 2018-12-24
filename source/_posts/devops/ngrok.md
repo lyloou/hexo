@@ -70,9 +70,11 @@ make release-server
 GOOS=linux GOARCH=amd64 make release-client
 GOOS=windows GOARCH=amd64 make release-client
 GOOS=linux GOARCH=arm make release-client
+GOOS=darwin GOARCH=amd64 make release-client
 
 mkdir -p bin/tls
-mkdir out
+mkdir -p bin/out
+
 cp device.crt bin/tls/snakeoil.crt
 cp device.key bin/tls/snakeoil.key
 echo 'nohup ./ngrokd -tlsKey="tls/snakeoil.key" -tlsCrt="tls/snakeoil.crt" -domain='"$DOMAIN"' -httpAddr=":80" -httpsAddr=":443" > out/nohupd.out 2>&1 &' > ./bin/start.sh
@@ -89,15 +91,19 @@ git clean -df
 git checkout -- .
 echo ok! result: ${resultFileName}.tar.gz
 ```
-运行 `sh build_ngrok.sh`
+- 运行 `sh build_ngrok.sh`
+- 根据提示输入已经配置好的域名，例如：ngrok.lyloou.com
+- 在域名对应的服务器上运行：`./start.sh` （这样，服务器端就完成了）
 
-## 打包
+## 打包和解压
 tar -zcvf ngrok_lyloou_com.tar.gz bin
+tar -zxvf ngrok_lyloou_com.tar.gz
 
 ## 下载
-scp root@170.10.0.100:/root/t/ngrok_lyloou_com.tar.gz ngrok_lyloou_com.tar.gz
+realpath ngrok_lyloou_com.tar.gz # 获取文件路径
+scp root@170.10.0.100:/root/t/ngrok_lyloou_com.tar.gz ngrok_lyloou_com.tar.gz # 从服务器拉取文件
 
-## 运行服务器
+## 运行服务器（已经在上面的`build_ngrok.sh`中配置过了）
 ```sh
 #!/bin/sh
 ./ngrokd -domain="ngrok.lyloou.com" -httpAddr=":80" -httpsAddr=":443" 
@@ -108,7 +114,7 @@ chmod +x ngrokd
 nohup ./ngrokd -domain="ngrok.lyloou.com" -httpAddr=":80" -httpsAddr=":443"  > out/nohup_log.out 2>&1 &
 ```
 
-## 运行客户端
+## 运行客户端（在上面的`build_ngrok.sh`中配置并生成了一个案例`ngrok_blog.sh`）
 添加配置ngrok.cfg：
 ```sh
 server_addr: "ngrok.lyloou.com:4443"
