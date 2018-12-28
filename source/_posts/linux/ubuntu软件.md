@@ -347,3 +347,6 @@ $ sudo apt -f install
 #!/bin/bash
 dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
 ```
+
+## wine
+https://wiki.winehq.org/Ubuntu
