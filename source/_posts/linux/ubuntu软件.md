@@ -117,8 +117,10 @@ sudo apt-get install emacs
 # ubuntu
 sudo apt-get install python-pip
 pip install --upgrade pip
+```
+
 ```python
-// edit /usr/bin/pip
+// sudo vim /usr/bin/pip
 from pip import __main__
 if __name__ == '__main__':
     sys.exit(__main__._main())
@@ -126,10 +128,6 @@ if __name__ == '__main__':
 
 sudo pip install shadowsocks
 
-# centos
-sudo yum install python-setuptools && easy_install pip
-sudo pip install shadowsocks
-```
 - config
 `sudo vi $HOME/p/shadowsocks.json`
 ```json
