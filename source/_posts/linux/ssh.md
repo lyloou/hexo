@@ -6,6 +6,11 @@ comments: true
 tags:
 - linux
 ---
+## connection refused
+https://askubuntu.com/questions/30080/how-to-solve-connection-refused-errors-in-ssh-connection
+```sh
+sudo apt-get install openssh-server openssh-client
+```
 
 ##  将 ssh keys 复制到 user@host 以启用无密码 SSH 登录。
 ```sh

@@ -179,6 +179,7 @@ sudo apt install proxychains
 sudo proxychains apt-get update
 
 # now you can config your proxy in /etc/proxychains.conf
+# sudo vim /etc/proxychains.conf
 socks5 127.0.0.1 1080
 ```
 
@@ -188,7 +189,7 @@ socks5 127.0.0.1 1080
 # install
 sudo apt-get install privoxy
 
-# vim /etc/privoxy/config
+# sudo vim /etc/privoxy/config
 # 添加下面这一行
 forward-socks5 / 0.0.0.0:1080 .
 
@@ -350,3 +351,6 @@ dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/
 
 ## wine
 https://wiki.winehq.org/Ubuntu
+
+## add C env
+apt-get install build-essential

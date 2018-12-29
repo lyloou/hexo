@@ -8,7 +8,13 @@ tags:
 - editor
 ---
 
-```vim
+	
+Ubuntu修改locale问题解决-Cannot set language to "zh_CN.utf-8"
+```sh
+sudo dpkg-reconfigure locales
+```
+
+```sh
 " Vim-Plug {{{
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
