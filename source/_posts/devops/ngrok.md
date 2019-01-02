@@ -81,7 +81,7 @@ echo 'nohup ./ngrokd -tlsKey="tls/snakeoil.key" -tlsCrt="tls/snakeoil.crt" -doma
 chmod +x ./bin/start.sh
 echo "server_addr: $DOMAIN:4443" > ./bin/ngrok.cfg
 echo "trust_host_root_certs: false" >> ./bin/ngrok.cfg
-echo 'nohup ./ngrok -config=./ngrok.cfg -subdomain=blog -proto=http 8078 > out/nohup_blog.out 2>&1 &' > ./bin/ngrok_blog.sh
+echo 'nohup ./ngrok -config=./ngrok.cfg -subdomain=blog -proto=http 8078 > /dev/null 2>&1 &' > ./bin/blog.sh
 chmod +x ./bin/ngrok_blog.sh
 
 mv bin ${resultFileName}
@@ -96,8 +96,10 @@ echo ok! result: ${resultFileName}.tar.gz
 - 在域名对应的服务器上运行：`./start.sh` （这样，服务器端就完成了）
 
 ## 打包和解压
+```sh
 tar -zcvf ngrok_lyloou_com.tar.gz bin
 tar -zxvf ngrok_lyloou_com.tar.gz
+```
 
 ## 下载
 realpath ngrok_lyloou_com.tar.gz # 获取文件路径
@@ -123,7 +125,7 @@ trust_host_root_certs: false
 
 ```sh
 #!/bin/sh
-nohup ./ngrok -config=./ngrok.cfg -subdomain=lou -proto=http 80 > out/nohup_lou.out 2>&1 &
+nohup ./ngrok -config=./ngrok.cfg -subdomain=lou -proto=http 80 > /dev/null 2>&1 &
 ```
 
 
@@ -138,3 +140,26 @@ nohup ./ngrok -config=./ngrok.cfg -subdomain=lou -proto=http 80 > out/nohup_lou.
 ## 参考资料
 - [从零教你搭建ngrok服务](https://morongs.github.io/2016/12/28/dajian-ngrok/)
 - [Ubuntu下编译安装ngrok](https://blog.csdn.net/cloume/article/details/51209493)
+
+## 客户端
+```md
+#一、系统说明
+* Windows使用`windows_amd64`版本
+* Mac使用`darwin_amd64`版本
+* Linux 使用`linux`版本
+
+#二、配置说明
+.\ngrok.exe -config=.\ngrok.cfg -subdomain=lou -proto=http 80
+
+* subdomain 指向自定义的子域名
+* proto 指向使用的协议
+* 随后的数字表示：准备映射出去的端口号
+
+# 三、使用方法
+* Windows系统执行ngrok.bat
+* Mac和Linux系统执行ngrok.sh
+
+# 四、访问方式
+浏览器中打开链接：
+[http://lou.ngrok.lyloou.com](http://lou.ngrok.lyloou.com)
+```
