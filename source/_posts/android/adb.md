@@ -32,3 +32,20 @@ adb shell am start -n com.tencent.mm/.ui.LauncherUI
 adb shell am force-stop com.tencent.mm
 ```
 
+
+## wifi 连接手机
+
+https://blog.csdn.net/u013250071/article/details/80527993
+```sh
+1.手机打开开发者模式，然后打开USB调试
+
+2.使用USB数据线连接手机和电脑
+
+3.在PC端打开cmd命令窗口，输入adb devices ，可以看到已经连接的设备
+
+4.输入adb tcpip 8888   （设置端口号为8888）
+
+5.断开手机和电脑的连接
+
+6.输入adb connect 10.67.161.8:8888，连接成功
+```

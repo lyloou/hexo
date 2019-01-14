@@ -352,3 +352,11 @@ https://wiki.winehq.org/Ubuntu
 
 ## add C env
 apt-get install build-essential
+
+## rg
+https://github.com/BurntSushi/ripgrep
+```sh
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+
+sudo dpkg -i ripgrep_0.10.0_amd64.deb
+``` 
