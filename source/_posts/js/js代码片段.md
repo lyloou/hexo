@@ -4,49 +4,50 @@ date: 2017.10.18 17:12
 toc: true
 comments: true
 tags:
-- js
+  - js
 ---
 
 ## 身份证验证
+
 ```js
-const isIDCard = function (str) {
+const isIDCard = function(str) {
   // 验证是否身份证号
   var city = {
-    11: "北京",
-    12: "天津",
-    13: "河北",
-    14: "山西",
-    15: "内蒙古",
-    21: "辽宁",
-    22: "吉林",
-    23: "黑龙江 ",
-    31: "上海",
-    32: "江苏",
-    33: "浙江",
-    34: "安徽",
-    35: "福建",
-    36: "江西",
-    37: "山东",
-    41: "河南",
-    42: "湖北 ",
-    43: "湖南",
-    44: "广东",
-    45: "广西",
-    46: "海南",
-    50: "重庆",
-    51: "四川",
-    52: "贵州",
-    53: "云南",
-    54: "西藏 ",
-    61: "陕西",
-    62: "甘肃",
-    63: "青海",
-    64: "宁夏",
-    65: "新疆",
-    71: "台湾",
-    81: "香港",
-    82: "澳门",
-    91: "国外"
+    11: '北京',
+    12: '天津',
+    13: '河北',
+    14: '山西',
+    15: '内蒙古',
+    21: '辽宁',
+    22: '吉林',
+    23: '黑龙江 ',
+    31: '上海',
+    32: '江苏',
+    33: '浙江',
+    34: '安徽',
+    35: '福建',
+    36: '江西',
+    37: '山东',
+    41: '河南',
+    42: '湖北 ',
+    43: '湖南',
+    44: '广东',
+    45: '广西',
+    46: '海南',
+    50: '重庆',
+    51: '四川',
+    52: '贵州',
+    53: '云南',
+    54: '西藏 ',
+    61: '陕西',
+    62: '甘肃',
+    63: '青海',
+    64: '宁夏',
+    65: '新疆',
+    71: '台湾',
+    81: '香港',
+    82: '澳门',
+    91: '国外'
   };
 
   // 基础验证，长度验证
@@ -60,12 +61,16 @@ const isIDCard = function (str) {
   }
 
   // 验证出生日期
-  var birthdayStr = str.substr(6, 4) + "/" + str.substr(10, 2) + "/" + str.substr(12, 2);
+  var birthdayStr =
+    str.substr(6, 4) + '/' + str.substr(10, 2) + '/' + str.substr(12, 2);
   var birthday = new Date(birthdayStr);
   if (!birthday) return false;
-  var transBirthdayStr = birthday.getFullYear() +
+  var transBirthdayStr =
+    birthday.getFullYear() +
     '/' +
-    (birthday.getMonth() >= 9 ? birthday.getMonth() + 1 : '0' + (birthday.getMonth() + 1)) +
+    (birthday.getMonth() >= 9
+      ? birthday.getMonth() + 1
+      : '0' + (birthday.getMonth() + 1)) +
     '/' +
     (birthday.getDate() >= 10 ? birthday.getDate() : '0' + birthday.getDate());
   if (birthdayStr != transBirthdayStr) {
@@ -96,9 +101,11 @@ const isIDCard = function (str) {
   }
 
   return true;
-}
+};
 ```
+
 ## [设定参数必须传递](http://es6.ruanyifeng.com/#docs/function#应用)
+
 ```js
 function throwIfMissing() {
   throw new Error('Missing parameter');
@@ -108,25 +115,26 @@ function foo(mustBeProvided = throwIfMissing()) {
   return mustBeProvided;
 }
 
-foo()
+foo();
 // Error: Missing parameter
 ```
 
-
 ## [为浮点数运算部署一个误差检查函数](http://es6.ruanyifeng.com/#docs/number#Number-EPSILON)
+
 ```js
-function withinErrorMargin (left, right) {
+function withinErrorMargin(left, right) {
   return Math.abs(left - right) < Number.EPSILON * Math.pow(2, 2);
 }
 
-0.1 + 0.2 === 0.3 // false
-withinErrorMargin(0.1 + 0.2, 0.3) // true
+0.1 + 0.2 === 0.3; // false
+withinErrorMargin(0.1 + 0.2, 0.3); // true
 
-1.1 + 1.3 === 2.4 // false
-withinErrorMargin(1.1 + 1.3, 2.4) // true
+1.1 + 1.3 === 2.4; // false
+withinErrorMargin(1.1 + 1.3, 2.4); // true
 ```
 
-## [正确返回字符串长度的函数（Unicode字符）](http://es6.ruanyifeng.com/#docs/regex#u-修饰符)
+## [正确返回字符串长度的函数（Unicode 字符）](http://es6.ruanyifeng.com/#docs/regex#u-修饰符)
+
 ```js
 function codePointLength(text) {
   var result = text.match(/[\s\S]/gu);
@@ -135,22 +143,26 @@ function codePointLength(text) {
 
 var s = '𠮷𠮷';
 
-s.length // 4
-codePointLength(s) // 2
+s.length; // 4
+codePointLength(s); // 2
 ```
 
 ## apply & call
+
 ```js
-var a = {x:1}
-var b = {x:2}
-function f(){ console.log(this.x)}
-a.f = f
-b.f = f
-f.apply(a)  //1
-f.apply(b)  //2
+var a = { x: 1 };
+var b = { x: 2 };
+function f() {
+  console.log(this.x);
+}
+a.f = f;
+b.f = f;
+f.apply(a); //1
+f.apply(b); //2
 ```
 
 ## 返回对象的类
+
 ```js
 // p214
 function classof(o) {
@@ -159,38 +171,39 @@ function classof(o) {
 ```
 
 ## 输出对象的类：Object.prototype.toString.call
+
 ```js
 Object.prototype.toString.call(1);
-"[object Number]"
+('[object Number]');
 
-Object.prototype.toString.call(function(){});
-"[object Function]"
+Object.prototype.toString.call(function() {});
+('[object Function]');
 ```
+
 typeof 得到的是类型；
 
-
 ## [How to pass url query params](https://github.com/github/fetch/issues/256)
-```js
 
+```js
 function getUrl(url, options) {
-  if(!isEmptyObject(options)) {
-      url += (url.indexOf('?') === -1 ? '?' : '&') + queryParams(options);
+  if (!isEmptyObject(options)) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + queryParams(options);
   }
   return url;
 }
 
 function queryParams(params) {
   return Object.keys(params)
-      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-      .join('&');
+    .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+    .join('&');
 }
 
 // 判断对象是否为空 https://stackoverflow.com/questions/4994201/is-object-empty
-function isEmptyObject (obj) {
+function isEmptyObject(obj) {
   if (obj == null) return true;
   if (obj.length > 0) return false;
   if (obj.length === 0) return true;
-  if (typeof obj != "object") return true;
+  if (typeof obj != 'object') return true;
 
   for (var name in obj) {
     if (obj.hasOwnProperty(name)) {
@@ -200,7 +213,32 @@ function isEmptyObject (obj) {
   return true;
 }
 
-var url = getUrl("http://lyloou.com", {})
-console.log(url)
+var url = getUrl('http://lyloou.com', {});
+console.log(url);
 ```
 
+## 对象转数组
+
+```js
+json2array = function(json) {
+  let result = [];
+  let keys = Object.keys(json);
+  keys.forEach(function(key) {
+    result.push(json[key]);
+  });
+  return result;
+};
+
+arr2Obj = function(array) {
+  var obj = new Object();
+  if (typeof array == 'object') {
+    for (var i in array) {
+      var thisEle = convArrToObj(array[i]);
+      obj[i] = thisEle;
+    }
+  } else {
+    obj = array;
+  }
+  return obj;
+};
+```
