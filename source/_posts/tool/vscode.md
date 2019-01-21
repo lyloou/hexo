@@ -26,6 +26,7 @@ tags:
 - vscode-wechat
 - code runner
 - vetur
+- auto rename tag
 
 ## setting.json
 ```json
