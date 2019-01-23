@@ -360,3 +360,7 @@ curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_
 
 sudo dpkg -i ripgrep_0.10.0_amd64.deb
 ``` 
+
+## trash-cli
+- [andreafrancia/trash-cli: Command line interface to the freedesktop.org trashcan.](https://github.com/andreafrancia/trash-cli)
+- [分享|Trash-Cli：Linux 上的命令行回收站工具](https://linux.cn/article-10029-1.html)
