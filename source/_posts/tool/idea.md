@@ -16,6 +16,11 @@ tags:
 - Markdown support
 - GO
 - lombok plugin
+- Mybatis plugin
+- AceJump
+- Key promoter X
+
+- https://www.hollischuang.com/archives/3220
 
 ## THEME
 http://ethanschoonover.com/solarized

@@ -207,11 +207,13 @@ sudo apt-get install caja
 ```
 
 ## terminal
+### terminator
 ```sh
 # http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html
 # https://linux.cn/article-2978-1.html
 sudo apt-get install terminator
 ```
+### PAC Manager
 
 ## tmux
 ```sh
