@@ -242,3 +242,32 @@ arr2Obj = function(array) {
   return obj;
 };
 ```
+
+## 输入银行卡号，4位自动加上空格分隔
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <title>test</title>
+    <script type="text/javascript">
+        window.onload =function() {
+            document.getElementById("test").onkeyup =function() {
+                  this.value =this.value.replace(/\s/g,'').replace(/\D/g,'').replace(/(\d{4})(?=\d)/g,"$1 ");;
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="test"/>
+</body>
+
+</html>
+```
+
+在前台读取数字时自动忽略空格
+```js
+// 这样的话会把a b c d读取为abc
+String newStr = "a b c".replaceAll(" ","");
+```
+- [JS控制文本框：输入银行卡号，4位自动加上空格分隔 - 别在熬夜了！ - CSDN博客](https://blog.csdn.net/happy_jijiawei/article/details/22850839)
