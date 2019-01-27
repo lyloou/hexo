@@ -1,4 +1,12 @@
-2019-01-07 13:50:34
+---
+title: samba
+date: 2019-01-07 13:50:34
+toc: true
+comments: true
+tags:
+- linux
+---
+
 
 https://tutorials.ubuntu.com/tutorial/install-and-configure-samba#0
 

@@ -1,4 +1,12 @@
-2019-01-22 11:26:19
+---
+title: JVM参数列表
+date: 2019-01-22 11:26:19
+toc: true
+comments: true
+tags:
+- java
+---
+
 
 On the basis of how we specify JVM option it can be divided into two parts, JVM Options which starts with –X and those which starts with -XX:
 

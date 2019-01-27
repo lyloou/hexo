@@ -1,9 +1,19 @@
-2018-12-21 10:12:40
+---
+title: C编译
+date: 2018-12-21 10:12:40
+toc: true
+comments: true
+tags:
+- c
+---
+
 
 https://www.videolan.org/developers/libdvbcsa.html
 
+```sh
 export LD_LIBRARY_PATH=/usr/local/lib
 sudo ldconfig -v
+```
 
 ```sh
 # configure.ac

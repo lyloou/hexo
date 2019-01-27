@@ -1,4 +1,11 @@
-2018-12-27 14:18:45
+---
+title: tv开发
+date: 2018-12-27 14:18:45
+toc: true
+tags:
+- android
+---
+
 
 https://developer.android.com/training/tv/start/
 https://developer.android.com/training/tv/playback/
