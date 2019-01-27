@@ -8,3 +8,6 @@ public/
 /.idea/
 .projectKnowledge/
 *.iml
+build.gradle
+local.properties
+.gradle
